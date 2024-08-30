@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 1s forwards;
+}
+
+
+disabled:opacity-50 {
+    opacity: 0.5;
+    pointer-events: none;
+  }
