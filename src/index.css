@@ -13,12 +13,21 @@
   }
 }
 
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
 .animate-fadeOut {
   animation: fadeOut 1s forwards;
 }
 
-
-disabled:opacity-50 {
-    opacity: 0.5;
-    pointer-events: none;
-  }
+.animate-fadeOutRight {
+  animation: fadeOutRight 1s forwards;
+}

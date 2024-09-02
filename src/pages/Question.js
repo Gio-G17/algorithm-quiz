@@ -7,8 +7,8 @@ const Question = ({ question, userAnswer, handleAnswerClick, handleTextEntrySubm
 
   const handleOptionClick = (index) => {
     if (question.type === 'text-entry') {
-      setTextFieldsCount(index + 1); // Number of text fields is equal to the option index + 1 (since indexes are 0-based)
-      setUserTextAnswers(Array(index + 1).fill('')); // Initialize text fields
+      setTextFieldsCount(index + 1);
+      setUserTextAnswers(Array(index + 1).fill(''));
       setShowPopup(true);
     } else {
       handleAnswerClick(index);
@@ -23,11 +23,11 @@ const Question = ({ question, userAnswer, handleAnswerClick, handleTextEntrySubm
 
   const handlePopupSubmit = () => {
     setShowPopup(false);
-    handleTextEntrySubmit(userTextAnswers); // Submit the user's text answers for validation
+    handleTextEntrySubmit(userTextAnswers);
   };
 
   const handlePopupClose = () => {
-    setShowPopup(false); // Simply close the popup without submitting
+    setShowPopup(false);
   };
 
   const renderAnswerFeedback = (index) => {
@@ -56,23 +56,21 @@ const Question = ({ question, userAnswer, handleAnswerClick, handleTextEntrySubm
   };
 
   return (
-    <div className="text-center w-full max-w-xl">
+    <div className="text-center w-full max-w-xl sm:max-w-lg lg:max-w-md p-4">
       <div className="text-2xl font-bold mb-4">{question.questionText}</div>
       <div className={`grid gap-4 ${question.answers.length === 3 ? 'grid-cols-2 grid-rows-2' : 'grid-cols-2'}`}>
         {question.answers.map((answer, index) => (
           <button
             key={index}
             onClick={() => handleOptionClick(index)}
-            className={`p-4 border-2 rounded-lg transition-all flex items-center justify-center ${
-              isSubmitted && (userAnswer === index || index === question.correctAnswer)
-                ? userAnswer === index && userAnswer === question.correctAnswer
-                  ? 'border-green-500'
-                  : userAnswer === index && userAnswer !== question.correctAnswer
-                  ? 'border-red-500'
-                  : 'border-green-500'
-                : 'border-red-500'
-            }`}
+            className={`p-4 rounded-lg transition-all flex items-center justify-center box-border
+              ${isSubmitted ? 'border-2 border-red-500' : userAnswer === index ? 'border-4 border-red-600' : 'border-2 border-red-500'}`}
             disabled={isSubmitted}
+            style={{
+              minWidth: '120px',  // Set the minimum width to prevent size changes
+              minHeight: '50px',   // Set the minimum height to prevent size changes
+              boxSizing: 'border-box',
+            }}
           >
             {answer}
             {renderAnswerFeedback(index)}
