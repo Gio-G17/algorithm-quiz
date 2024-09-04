@@ -10,7 +10,9 @@ const AnswerOptions = ({
   handlePrevQuestion,
   currentQuestionIndex,
   totalQuestions,
-  handleTextEntrySubmit, // Make sure this prop is passed
+  handleTextEntrySubmit,
+  persistedState,  // Added persistedState
+  setPersistedState // Added setPersistedState
 }) => {
   if (!question) {
     return null;
@@ -48,11 +50,13 @@ const AnswerOptions = ({
                   userAnswer={userAnswer}
                   isSubmitted={isSubmitted}
                   correctAnswer={question.correctAnswer}
-                  type={question.type} // Pass the question type
-                  correctNumber={question.correctNumber} // Pass the correct number of text fields
-                  correctAnswers={question.correctAnswers} // Pass the correct answers array
-                  handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
-                  currentQuestionIndex={currentQuestionIndex}  // Ensure this is being passed
+                  type={question.type}
+                  correctNumber={question.correctNumber}
+                  correctAnswers={question.correctAnswers}
+                  handleTextEntrySubmit={handleTextEntrySubmit}
+                  currentQuestionIndex={currentQuestionIndex}
+                  persistedState={persistedState}       // Pass persistedState
+                  setPersistedState={setPersistedState} // Pass setPersistedState
                 />
               ))}
             </div>
@@ -71,11 +75,13 @@ const AnswerOptions = ({
                     userAnswer={userAnswer}
                     isSubmitted={isSubmitted}
                     correctAnswer={question.correctAnswer}
-                    type={question.type} // Pass the question type
-                    correctNumber={question.correctNumber} // Pass the correct number of text fields
-                    correctAnswers={question.correctAnswers} // Pass the correct answers array
-                    handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
-                    currentQuestionIndex={currentQuestionIndex}  // Pass this down
+                    type={question.type}
+                    correctNumber={question.correctNumber}
+                    correctAnswers={question.correctAnswers}
+                    handleTextEntrySubmit={handleTextEntrySubmit}
+                    currentQuestionIndex={currentQuestionIndex}
+                    persistedState={persistedState}       // Pass persistedState
+                    setPersistedState={setPersistedState} // Pass setPersistedState
                   />
                 ))}
               </div>
@@ -88,11 +94,13 @@ const AnswerOptions = ({
                   userAnswer={userAnswer}
                   isSubmitted={isSubmitted}
                   correctAnswer={question.correctAnswer}
-                  type={question.type} // Pass the question type
-                  correctNumber={question.correctNumber} // Pass the correct number of text fields
-                  correctAnswers={question.correctAnswers} // Pass the correct answers array
-                  handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
-                  currentQuestionIndex={currentQuestionIndex}  // Pass this down
+                  type={question.type}
+                  correctNumber={question.correctNumber}
+                  correctAnswers={question.correctAnswers}
+                  handleTextEntrySubmit={handleTextEntrySubmit}
+                  currentQuestionIndex={currentQuestionIndex}
+                  persistedState={persistedState}       // Pass persistedState
+                  setPersistedState={setPersistedState} // Pass setPersistedState
                 />
               </div>
             </>
@@ -110,11 +118,13 @@ const AnswerOptions = ({
                   userAnswer={userAnswer}
                   isSubmitted={isSubmitted}
                   correctAnswer={question.correctAnswer}
-                  type={question.type} // Pass the question type
-                  correctNumber={question.correctNumber} // Pass the correct number of text fields
-                  correctAnswers={question.correctAnswers} // Pass the correct answers array
-                  handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
-                  currentQuestionIndex={currentQuestionIndex}  // Pass this down
+                  type={question.type}
+                  correctNumber={question.correctNumber}
+                  correctAnswers={question.correctAnswers}
+                  handleTextEntrySubmit={handleTextEntrySubmit}
+                  currentQuestionIndex={currentQuestionIndex}
+                  persistedState={persistedState}       // Pass persistedState
+                  setPersistedState={setPersistedState} // Pass setPersistedState
                 />
               ))}
             </div>

@@ -6,7 +6,7 @@ import ExplanationModal from '../components/ExplanationModal';
 const questions = [
   {
     questionText: 'What is the capital of France?',
-    answers: ['Berlin', 'Madrid', 'Paris'],
+    answers: ['Berlin', 'Madrid', 'Paris',],
     correctAnswer: 2,
     explanation: 'Paris is the capital and most populous city of France.',
   },
@@ -66,6 +66,7 @@ const QuizPage = () => {
     // Calculate correct and missing answers
     const correctList = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]);
     const missingList = correctAnswers.filter((ans, idx) => ans !== userTextAnswers[idx]);
+    
   
     console.log("Submitting Text Entry:", {
       userTextAnswers,
@@ -129,15 +130,18 @@ const QuizPage = () => {
 
       {/* Answer Options with Prev/Next Buttons */}
       <AnswerOptions
-        question={currentQuestion}
-        userAnswer={persistedState[currentQuestionIndex]?.userAnswer}
-        handleAnswerClick={handleAnswerClick}
-        isSubmitted={submittedQuestions[currentQuestionIndex]}
-        handleTextEntrySubmit={handleTextEntrySubmit}
-        handleNextQuestion={handleNextQuestion}
-        handlePrevQuestion={handlePrevQuestion}
-        currentQuestionIndex={currentQuestionIndex}  // Passed correctly
-        totalQuestions={questions.length}
+     question={currentQuestion}
+     userAnswer={persistedState[currentQuestionIndex]?.userAnswer}
+     handleAnswerClick={handleAnswerClick}
+     isSubmitted={submittedQuestions[currentQuestionIndex]}
+     handleTextEntrySubmit={handleTextEntrySubmit}
+     handleNextQuestion={handleNextQuestion}
+     handlePrevQuestion={handlePrevQuestion}
+     currentQuestionIndex={currentQuestionIndex}  // Passed correctly
+     totalQuestions={questions.length}
+     persistedState={persistedState}  // Add this line
+     setPersistedState={setPersistedState}  // Pass the setter function as well
+
       />
 
       {/* Submit Button */}

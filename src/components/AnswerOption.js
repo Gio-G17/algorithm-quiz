@@ -12,6 +12,8 @@ const AnswerOption = ({
   correctAnswers,
   handleTextEntrySubmit,
   currentQuestionIndex,
+  persistedState,
+  setPersistedState
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [userTextAnswers, setUserTextAnswers] = useState([]);
@@ -19,53 +21,79 @@ const AnswerOption = ({
   const [comparisonResult, setComparisonResult] = useState(null);
   const [correctList, setCorrectList] = useState([]);
   const [missingList, setMissingList] = useState([]);
-  const [submitError, setSubmitError] = useState(false); // New state for submission error
+  const [submitError, setSubmitError] = useState(false);
 
+  // Handle loading of persisted state
   useEffect(() => {
-    console.log("Current Question Index: ", currentQuestionIndex); // This should not be undefined
-    console.log("User Answer: ", userAnswer);
-    console.log("Comparison Result: ", comparisonResult);
-    console.log("Correct List: ", correctList);
-    console.log("Missing List: ", missingList);
-  
-    if (userAnswer && Array.isArray(userAnswer)) {
-      setUserTextAnswers(userAnswer);
-      setTextFieldsCount(userAnswer.length);
+    if (persistedState[currentQuestionIndex] && isSubmitted) {
+      const { feedback, correctList, missingList, userAnswer } = persistedState[currentQuestionIndex];
+
+      // Restore previous feedback and answers
+      setComparisonResult(feedback);
+      setCorrectList(correctList || []);
+      setMissingList(missingList || []);
+      setUserTextAnswers(userAnswer || []);
+      setTextFieldsCount(userAnswer.length || 0);
     } else {
-      setUserTextAnswers([]);
-      setTextFieldsCount(0);
-    }
-  
-    // Only reset feedback if the question hasn't been submitted yet
-    if (!isSubmitted) {
       setComparisonResult(null);
       setCorrectList([]);
       setMissingList([]);
+      setUserTextAnswers([]);
+      setTextFieldsCount(0);
     }
-  
-    setSubmitError(false); // Reset error when question index changes
-  }, [currentQuestionIndex, isSubmitted]);  // Ensure currentQuestionIndex is here
-  
-  
+
+    setSubmitError(false);
+  }, [currentQuestionIndex, isSubmitted, persistedState]);
 
   const renderAnswerFeedback = () => {
+    // Multiple-choice questions: show "✔️" or "❌"
     if (type !== 'text-entry' && isSubmitted) {
+      console.log(correctAnswer);
       if (index === correctAnswer) {
-        return <span className="text-green-500 ml-2">✔️</span>;
+        return <span className="text-green-500 ml-2">✔️</span>; // Correct answer gets a checkmark
       }
-      if (userAnswer === index) {
-        return <span className="text-red-500 ml-2">❌</span>;
+      if (userAnswer === index && index !== correctAnswer) {
+        return <span className="text-red-500 ml-2">❌</span>; // Only the wrong selected answer gets an X
       }
     }
 
-    if (comparisonResult === 'correct') {
-      return <span className="text-green-500 ml-2">✔️</span>;
-    }
-    if (comparisonResult === 'half-correct') {
-      return <span className="text-yellow-500 ml-2">⚠️</span>;
-    }
-    if (comparisonResult === 'incorrect') {
-      return <span className="text-red-500 ml-2">❌</span>;
+    // Text-entry questions: show feedback only on the correct answer box
+    if (type === 'text-entry' && isSubmitted) {
+      console.log('CorrectAnswer:' + correctNumber);
+      console.log('Index:' + (index - 1));
+      // Display correct and missing data on the feedback result
+
+      if (index == correctNumber - 1) {
+
+
+        return (
+          <div className="flex flex-col text-left">
+            {comparisonResult === 'correct' && <span className="text-green-500">✔️</span>}
+            {correctList.length > 0 && <span className="text-yellow-500">⚠️ Partially Correct</span>}
+            {comparisonResult === 'incorrect' && correctList.length === 0 && <span className="text-red-500">✔️</span>}
+
+
+            {correctList.length > 0 && <span className="text-green-500">Correct: {correctList.join(', ')}</span>}
+            {missingList.length > 0 && <span className="text-red-500">Missing: {missingList.join(', ')}</span>}
+          </div>
+        );
+
+
+      }
+
+      if (answer == textFieldsCount) {
+        if (comparisonResult === 'correct' || comparisonResult === 'half-correct' || comparisonResult === 'incorrect') {
+          return (
+            <div className="flex flex-col text-left">
+              {comparisonResult === 'correct' && <span className="text-green-500">✔️ Correct</span>}
+              {comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️ Partially Correct</span>}
+              {comparisonResult === 'incorrect' && <span className="text-red-500">❌</span>}
+              {/* Show correct and missing answers */}
+
+            </div>
+          );
+        }
+      }
     }
 
     return null;
@@ -139,9 +167,8 @@ const AnswerOption = ({
     <>
       <button
         onClick={handleOptionSelect}
-        className={`flex justify-between items-center p-4 rounded-lg transition-all ${
-          isSubmitted ? 'cursor-not-allowed' : ''
-        } ${userAnswer === index ? 'border-4' : 'border-2'} border-red-500`}
+        className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''
+          } ${userAnswer === index ? 'border-4' : 'border-2'} border-red-500`}
         disabled={isSubmitted}
         style={{
           minWidth: '300px',
@@ -149,17 +176,7 @@ const AnswerOption = ({
         }}
       >
         <span className="text-left">{answer}</span>
-        {comparisonResult && type === 'text-entry' && (
-          <div className="flex flex-col text-left">
-            {correctList.length > 0 && (
-              <span className="text-green-500">Correct: {correctList.join(', ')}</span>
-            )}
-            {missingList.length > 0 && (
-              <span className="text-yellow-500">Missing: {missingList.join(', ')}</span>
-            )}
-          </div>
-        )}
-        <span>{renderAnswerFeedback()}</span>
+        {renderAnswerFeedback()}
       </button>
 
       {showPopup && (
