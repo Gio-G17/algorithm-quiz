@@ -21,7 +21,7 @@ const questions = [
     answers: ['1', '2', '3', '4'],
     type: 'text-entry',
     correctNumber: 3,
-    correctAnswers: ['2', '3', '5'],
+    correctAnswers: ['Ribavan', 'Avixan', 'Klotego'],
     explanation: 'The prime factors of 30 are 2, 3, and 5.',
   },
   // More questions as needed
