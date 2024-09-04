@@ -121,40 +121,43 @@ const AnswerOption = ({
     updatedTextAnswers[i] = value;
     setUserTextAnswers(updatedTextAnswers);
   };
-
   const handlePopupSubmit = () => {
     setShowPopup(false);
-
-    if (userTextAnswers.length !== correctNumber) {
-      setComparisonResult('incorrect');
-      setCorrectList([]);
-      setMissingList([]);
-    } else {
-      const correctList = [];
-      const missingList = [];
-
-      userTextAnswers.forEach((ans, idx) => {
-        if (ans === correctAnswers[idx]) {
-          correctList.push(ans);
-        } else {
-          missingList.push(correctAnswers[idx]);
+  
+    // Initialize lists to hold correct answers
+    let correctList = [];
+  
+    // Loop through user answers and compare them to correct answers
+    for (let i = 0; i < userTextAnswers.length; i++) {
+      for (let j = 0; j < correctAnswers.length; j++) {
+        if (userTextAnswers[i] === correctAnswers[j]) {
+          correctList.push(userTextAnswers[i]);
+          
+          break; // Stop inner loop if we find a match
         }
-      });
-
-      if (correctList.length === correctNumber) {
-        setComparisonResult('correct');
-      } else if (correctList.length > 0) {
-        setComparisonResult('half-correct');
-      } else {
-        setComparisonResult('incorrect');
       }
-
-      setCorrectList(correctList);
-      setMissingList(missingList);
     }
-
-    handleTextEntrySubmit(userTextAnswers);
+    // Determine the result: if all correct answers were provided, it's correct
+    if (correctList.length === correctAnswers.length) {
+      setComparisonResult('correct');
+    } else if (correctList.length > 0) {
+      setComparisonResult('half-correct');
+    } else {
+      setComparisonResult('incorrect');
+    }
+  
+    console.log(correctList);
+    // Set the lists for UI display
+    setCorrectList(correctList);
+  
+    // Send the user's answers back to the parent
+    handleTextEntrySubmit(userTextAnswers, correctList);
   };
+  
+  
+
+  
+  
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -173,7 +176,8 @@ const AnswerOption = ({
       <button
         onClick={handleOptionSelect}
         className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''
-          } ${userAnswer === index ? 'border-4' : 'border-2'} border-red-500`}
+          } ${userAnswer === index || answer == textFieldsCount 
+            ? 'border-4' : 'border-2'} border-red-500`}
         disabled={isSubmitted}
         style={{
           minWidth: '350px',

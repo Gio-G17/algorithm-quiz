@@ -53,20 +53,34 @@ const QuizPage = () => {
     }
   };
 
-  // Handling text-entry answers
-  const handleTextEntrySubmit = (userTextAnswers) => {
+
+  const handleTextEntrySubmit = (userTextAnswers, correctList) => {
     const correctAnswers = currentQuestion.correctAnswers;
-    const correctCount = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]).length;
 
     let feedback = 'incorrect';
+
+    // Use the correctList passed from handlePopupSubmit
+    const correctCount = correctList.length;
+
+    // Set feedback based on the correct count and number of correct answers
     if (userTextAnswers.length === currentQuestion.correctNumber) {
       feedback = correctCount === correctAnswers.length ? 'correct' : 'half-correct';
     }
 
-    // Calculate correct and missing answers
-    const correctList = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]);
-    const missingList = correctAnswers.filter((ans, idx) => ans !== userTextAnswers[idx]);
-
+    // Calculate missing list: correctAnswers not in correctList
+    let missingList = [];
+    for (let i = 0; i < correctAnswers.length; i++) {
+      let found = false;
+      for (let j = 0; j < correctList.length; j++) {
+        if (correctAnswers[i] === correctList[j]) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        missingList.push(correctAnswers[i]);
+      }
+    }
 
     console.log("Submitting Text Entry:", {
       userTextAnswers,
@@ -150,7 +164,7 @@ const QuizPage = () => {
           disabled={isSubmitDisabled} // Disable if no answer is selected
           className={`mt-4 ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
           style={{
-            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop:'0'
+            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop: '0'
           }}
         >
           Submit
@@ -160,7 +174,7 @@ const QuizPage = () => {
           onClick={handleNextQuestion}
           className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
           style={{
-            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop:'0'
+            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop: '0'
           }}
           disabled={currentQuestionIndex === questions.length - 1}
         >
