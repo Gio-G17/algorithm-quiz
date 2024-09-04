@@ -21,7 +21,7 @@ const AnswerOptions = ({
   const answerCount = question.answers.length;
 
   return (
-    <div className="flex flex-col items-center w-full max-w-3xl mt-4">
+    <div className="flex flex-col items-center w-full max-w-4xl mt-4">
       <div className="flex items-center justify-between w-full">
         {/* Previous Button */}
         <button
@@ -40,7 +40,7 @@ const AnswerOptions = ({
         <div className="flex flex-col w-full">
           {/* 2x2 Grid for 4 Answers */}
           {answerCount === 4 && (
-            <div className="grid grid-cols-2 gap-x-12 gap-y-8 mx-4">
+            <div className="grid grid-cols-2 gap-x-2 gap-y-2 mx-5">
               {question.answers.map((answer, index) => (
                 <AnswerOption
                   key={index}
@@ -65,8 +65,8 @@ const AnswerOptions = ({
           {/* 2x1 Grid for First Row and Centered Second Row for 3 Answers */}
           {answerCount === 3 && (
             <>
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8 mx-4">
-                {question.answers.slice(0, 2).map((answer, index) => (
+            <div className="grid grid-cols-2 gap-x-2 gap-y-2 mx-5">
+            {question.answers.slice(0, 2).map((answer, index) => (
                   <AnswerOption
                     key={index}
                     index={index}
@@ -85,7 +85,7 @@ const AnswerOptions = ({
                   />
                 ))}
               </div>
-              <div className="grid grid-cols-1 place-items-center mt-8 mx-4">
+              <div className="grid grid-cols-1 place-items-center mt-2 mx-4">
                 <AnswerOption
                   key={2}
                   index={2}

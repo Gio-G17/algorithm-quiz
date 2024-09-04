@@ -57,24 +57,24 @@ const QuizPage = () => {
   const handleTextEntrySubmit = (userTextAnswers) => {
     const correctAnswers = currentQuestion.correctAnswers;
     const correctCount = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]).length;
-  
+
     let feedback = 'incorrect';
     if (userTextAnswers.length === currentQuestion.correctNumber) {
       feedback = correctCount === correctAnswers.length ? 'correct' : 'half-correct';
     }
-  
+
     // Calculate correct and missing answers
     const correctList = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]);
     const missingList = correctAnswers.filter((ans, idx) => ans !== userTextAnswers[idx]);
-    
-  
+
+
     console.log("Submitting Text Entry:", {
       userTextAnswers,
       feedback,
       correctList,
       missingList
     });
-  
+
     const updatedState = {
       ...persistedState,
       [currentQuestionIndex]: {
@@ -85,15 +85,15 @@ const QuizPage = () => {
         missingList
       },
     };
-  
+
     setPersistedState(updatedState);
     console.log("Updated Persisted State: ", updatedState);
-  
+
     setSubmittedQuestions((prev) =>
       prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
     );
   };
-  
+
 
   // Handling Submit button click
   const handleSubmit = () => {
@@ -130,38 +130,44 @@ const QuizPage = () => {
 
       {/* Answer Options with Prev/Next Buttons */}
       <AnswerOptions
-     question={currentQuestion}
-     userAnswer={persistedState[currentQuestionIndex]?.userAnswer}
-     handleAnswerClick={handleAnswerClick}
-     isSubmitted={submittedQuestions[currentQuestionIndex]}
-     handleTextEntrySubmit={handleTextEntrySubmit}
-     handleNextQuestion={handleNextQuestion}
-     handlePrevQuestion={handlePrevQuestion}
-     currentQuestionIndex={currentQuestionIndex}  // Passed correctly
-     totalQuestions={questions.length}
-     persistedState={persistedState}  // Add this line
-     setPersistedState={setPersistedState}  // Pass the setter function as well
+        question={currentQuestion}
+        userAnswer={persistedState[currentQuestionIndex]?.userAnswer}
+        handleAnswerClick={handleAnswerClick}
+        isSubmitted={submittedQuestions[currentQuestionIndex]}
+        handleTextEntrySubmit={handleTextEntrySubmit}
+        handleNextQuestion={handleNextQuestion}
+        handlePrevQuestion={handlePrevQuestion}
+        currentQuestionIndex={currentQuestionIndex}  // Passed correctly
+        totalQuestions={questions.length}
+        persistedState={persistedState}  // Add this line
+        setPersistedState={setPersistedState}  // Pass the setter function as well
 
       />
-
       {/* Submit Button */}
       {!submittedQuestions[currentQuestionIndex] ? (
         <button
           onClick={handleSubmit}
           disabled={isSubmitDisabled} // Disable if no answer is selected
-          className={`mt-4 ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`mt-4 ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
+          style={{
+            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop:'0'
+          }}
         >
           Submit
         </button>
       ) : (
         <button
           onClick={handleNextQuestion}
-          className="mt-4"
+          className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
+          style={{
+            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop:'0'
+          }}
           disabled={currentQuestionIndex === questions.length - 1}
         >
-          Next Question
+          Next
         </button>
       )}
+
 
       {/* Explanation Modal */}
       {showExplanation && (

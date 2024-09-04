@@ -56,37 +56,30 @@ const AnswerOption = ({
         return <span className="text-red-500 ml-2">❌</span>; // Only the wrong selected answer gets an X
       }
     }
-
     // Text-entry questions: show feedback only on the correct answer box
     if (type === 'text-entry' && isSubmitted) {
-      console.log('CorrectAnswer:' + correctNumber);
-      console.log('Index:' + (index - 1));
+      // console.log('CorrectAnswer:' + correctNumber);
+      // console.log('Index:' + (index - 1));
       // Display correct and missing data on the feedback result
-
+  
       if (index == correctNumber - 1) {
-
-
+        console.log(comparisonResult);
         return (
           <div className="flex flex-col text-left">
             {comparisonResult === 'correct' && <span className="text-green-500">✔️</span>}
-            {correctList.length > 0 && <span className="text-yellow-500">⚠️ Partially Correct</span>}
+            {comparisonResult === 'half-correct' && <span className="text-green-500">⚠️</span>}
+            {correctList.length > 0 && comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️</span>}
+            {correctList.length > 0 && comparisonResult === 'incorrect' && <span className="text-yellow-500">⚠️</span>}
             {comparisonResult === 'incorrect' && correctList.length === 0 && <span className="text-red-500">✔️</span>}
-
-
-            {correctList.length > 0 && <span className="text-green-500">Correct: {correctList.join(', ')}</span>}
-            {missingList.length > 0 && <span className="text-red-500">Missing: {missingList.join(', ')}</span>}
           </div>
         );
-
-
       }
-
       if (answer == textFieldsCount) {
         if (comparisonResult === 'correct' || comparisonResult === 'half-correct' || comparisonResult === 'incorrect') {
           return (
             <div className="flex flex-col text-left">
-              {comparisonResult === 'correct' && <span className="text-green-500">✔️ Correct</span>}
-              {comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️ Partially Correct</span>}
+              {comparisonResult === 'correct' && <span className="text-green-500">✔️</span>}
+              {comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️</span>}
               {comparisonResult === 'incorrect' && <span className="text-red-500">❌</span>}
               {/* Show correct and missing answers */}
 
@@ -97,6 +90,18 @@ const AnswerOption = ({
     }
 
     return null;
+  };
+
+
+  const renderAnswerText = () => {
+    if (index == correctNumber - 1) {
+      return (
+        <div className="flex flex-col text-left">
+          {correctList.length > 0 && <span className="text-green-500">Correct: {correctList.join(', ')}</span>}
+          {missingList.length > 0 && <span className="text-red-500">Missing: {missingList.join(', ')}</span>}
+        </div>
+      );
+    }
   };
 
   const handleOptionSelect = () => {
@@ -171,11 +176,12 @@ const AnswerOption = ({
           } ${userAnswer === index ? 'border-4' : 'border-2'} border-red-500`}
         disabled={isSubmitted}
         style={{
-          minWidth: '300px',
-          minHeight: '50px',
+          minWidth: '350px',
+          minHeight: '80px',
         }}
       >
         <span className="text-left">{answer}</span>
+        {renderAnswerText()}
         {renderAnswerFeedback()}
       </button>
 

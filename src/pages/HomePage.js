@@ -18,7 +18,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="relative w-full h-screen bg-cover bg-center flex justify-center items-start bg-no-repeat bg-[url('/public/assets/images/waves.png')]">
+    <div className="relative w-full h-screen bg-cover bg-center flex justify-center items-start bg-no-repeat bg-[url('/public/assets/images/WavesBg.png')]">
       {!quizStarted ? (
         <>
           <div id="clock-container" className="absolute top-0 left-0 w-[40%]">
