@@ -19,8 +19,15 @@ const AnswerOption = ({
   const [comparisonResult, setComparisonResult] = useState(null);
   const [correctList, setCorrectList] = useState([]);
   const [missingList, setMissingList] = useState([]);
+  const [submitError, setSubmitError] = useState(false); // New state for submission error
 
   useEffect(() => {
+    console.log("Current Question Index: ", currentQuestionIndex); // This should not be undefined
+    console.log("User Answer: ", userAnswer);
+    console.log("Comparison Result: ", comparisonResult);
+    console.log("Correct List: ", correctList);
+    console.log("Missing List: ", missingList);
+  
     if (userAnswer && Array.isArray(userAnswer)) {
       setUserTextAnswers(userAnswer);
       setTextFieldsCount(userAnswer.length);
@@ -28,10 +35,18 @@ const AnswerOption = ({
       setUserTextAnswers([]);
       setTextFieldsCount(0);
     }
-    setComparisonResult(null);
-    setCorrectList([]);
-    setMissingList([]);
-  }, [currentQuestionIndex]);
+  
+    // Only reset feedback if the question hasn't been submitted yet
+    if (!isSubmitted) {
+      setComparisonResult(null);
+      setCorrectList([]);
+      setMissingList([]);
+    }
+  
+    setSubmitError(false); // Reset error when question index changes
+  }, [currentQuestionIndex, isSubmitted]);  // Ensure currentQuestionIndex is here
+  
+  
 
   const renderAnswerFeedback = () => {
     if (type !== 'text-entry' && isSubmitted) {
@@ -63,6 +78,7 @@ const AnswerOption = ({
       setUserTextAnswers(Array(fieldCount).fill(''));
       setShowPopup(true);
     } else {
+      setSubmitError(false); // Reset the error state when selecting an option
       handleOptionClick(index);
     }
   };
@@ -109,6 +125,14 @@ const AnswerOption = ({
 
   const handlePopupClose = () => {
     setShowPopup(false);
+  };
+
+  const handleSubmitClick = () => {
+    if (userAnswer === null || userAnswer === undefined) {
+      setSubmitError(true); // Set the error state when no answer is selected
+    } else {
+      setSubmitError(false); // Reset the error state if an answer is selected
+    }
   };
 
   return (
@@ -165,6 +189,10 @@ const AnswerOption = ({
             </button>
           </div>
         </div>
+      )}
+
+      {submitError && (
+        <p className="text-red-500 mt-2">Please select an answer before submitting!</p>
       )}
     </>
   );

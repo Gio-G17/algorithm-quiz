@@ -39,51 +39,74 @@ const QuizPage = () => {
     return <div>Loading...</div>;
   }
 
+  // Handling answer click for non-text-entry questions
   const handleAnswerClick = (index) => {
     if (!submittedQuestions[currentQuestionIndex]) {
       const updatedState = {
         ...persistedState,
         [currentQuestionIndex]: {
           ...persistedState[currentQuestionIndex],
-          userAnswer: index,
+          userAnswer: index,  // Fix for the first answer selection (index can be 0)
         },
       };
       setPersistedState(updatedState);
     }
   };
 
+  // Handling text-entry answers
   const handleTextEntrySubmit = (userTextAnswers) => {
     const correctAnswers = currentQuestion.correctAnswers;
     const correctCount = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]).length;
-
+  
     let feedback = 'incorrect';
     if (userTextAnswers.length === currentQuestion.correctNumber) {
       feedback = correctCount === correctAnswers.length ? 'correct' : 'half-correct';
     }
-
+  
+    // Calculate correct and missing answers
+    const correctList = correctAnswers.filter((ans, idx) => ans === userTextAnswers[idx]);
+    const missingList = correctAnswers.filter((ans, idx) => ans !== userTextAnswers[idx]);
+  
+    console.log("Submitting Text Entry:", {
+      userTextAnswers,
+      feedback,
+      correctList,
+      missingList
+    });
+  
     const updatedState = {
       ...persistedState,
       [currentQuestionIndex]: {
         ...persistedState[currentQuestionIndex],
         userAnswer: userTextAnswers,
         feedback,
+        correctList,
+        missingList
       },
     };
+  
     setPersistedState(updatedState);
-
-    setSubmittedQuestions((prev) => prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted)));
+    console.log("Updated Persisted State: ", updatedState);
+  
+    setSubmittedQuestions((prev) =>
+      prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
+    );
   };
+  
 
+  // Handling Submit button click
   const handleSubmit = () => {
     setSubmittedQuestions((prev) => prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted)));
     setShowExplanation(true);
   };
 
+  // Next question logic
   const handleNextQuestion = () => {
     setShowExplanation(false);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
+  // Previous question logic
   const handlePrevQuestion = () => {
     if (currentQuestionIndex > 0) {
       setShowExplanation(false);
@@ -91,9 +114,13 @@ const QuizPage = () => {
     }
   };
 
+  // Close explanation modal
   const closeExplanation = () => {
     setShowExplanation(false);
   };
+
+  // Determine if Submit button should be disabled
+  const isSubmitDisabled = persistedState[currentQuestionIndex]?.userAnswer === undefined;
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full p-4">
@@ -103,13 +130,13 @@ const QuizPage = () => {
       {/* Answer Options with Prev/Next Buttons */}
       <AnswerOptions
         question={currentQuestion}
-        userAnswer={persistedState[currentQuestionIndex]?.userAnswer || null}
+        userAnswer={persistedState[currentQuestionIndex]?.userAnswer}
         handleAnswerClick={handleAnswerClick}
         isSubmitted={submittedQuestions[currentQuestionIndex]}
         handleTextEntrySubmit={handleTextEntrySubmit}
         handleNextQuestion={handleNextQuestion}
         handlePrevQuestion={handlePrevQuestion}
-        currentQuestionIndex={currentQuestionIndex}
+        currentQuestionIndex={currentQuestionIndex}  // Passed correctly
         totalQuestions={questions.length}
       />
 
@@ -117,8 +144,8 @@ const QuizPage = () => {
       {!submittedQuestions[currentQuestionIndex] ? (
         <button
           onClick={handleSubmit}
-          disabled={persistedState[currentQuestionIndex]?.userAnswer === null}
-          className="mt-4 disabled:opacity-50"
+          disabled={isSubmitDisabled} // Disable if no answer is selected
+          className={`mt-4 ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           Submit
         </button>

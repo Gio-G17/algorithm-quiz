@@ -52,6 +52,7 @@ const AnswerOptions = ({
                   correctNumber={question.correctNumber} // Pass the correct number of text fields
                   correctAnswers={question.correctAnswers} // Pass the correct answers array
                   handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
+                  currentQuestionIndex={currentQuestionIndex}  // Ensure this is being passed
                 />
               ))}
             </div>
@@ -74,6 +75,7 @@ const AnswerOptions = ({
                     correctNumber={question.correctNumber} // Pass the correct number of text fields
                     correctAnswers={question.correctAnswers} // Pass the correct answers array
                     handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
+                    currentQuestionIndex={currentQuestionIndex}  // Pass this down
                   />
                 ))}
               </div>
@@ -90,6 +92,7 @@ const AnswerOptions = ({
                   correctNumber={question.correctNumber} // Pass the correct number of text fields
                   correctAnswers={question.correctAnswers} // Pass the correct answers array
                   handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
+                  currentQuestionIndex={currentQuestionIndex}  // Pass this down
                 />
               </div>
             </>
@@ -111,6 +114,7 @@ const AnswerOptions = ({
                   correctNumber={question.correctNumber} // Pass the correct number of text fields
                   correctAnswers={question.correctAnswers} // Pass the correct answers array
                   handleTextEntrySubmit={handleTextEntrySubmit} // Ensure this is passed
+                  currentQuestionIndex={currentQuestionIndex}  // Pass this down
                 />
               ))}
             </div>
