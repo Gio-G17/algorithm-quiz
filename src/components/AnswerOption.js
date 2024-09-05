@@ -190,38 +190,41 @@ const AnswerOption = ({
       </button>
 
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75">
-          <div className="bg-gray-800 text-white p-6 rounded-lg max-w-md w-full">
-            <h2 className="text-xl font-bold mb-4">Enter your answers:</h2>
-            {/* Input fields with numbering and increased height */}
+        <div className="fixed inset-0 flex flex-col items-center justify-start bg-white bg-opacity-75">
+          <h1 className="text-xl  text-4xl font-semibold mb-4 text-white mt-36 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]" style={{ width: '49rem', borderRadius: '10px', backgroundSize: 'contain', height: '150px' }}>What are their Brand Names</h1>
+          <div className="bg-white border border-red-500 rounded-lg p-6" style={{width: '49rem',}}>
+
+
             {Array.from({ length: textFieldsCount }).map((_, i) => (
-              <div key={i} className="mt-4 flex flex-row items-center">
-                <label className="block mb-1 flex flex-row items-center pr-5">{i+1 + '.'}</label>
+              <div key={i} className="mt-4 flex flex-row items-center justify-center">
+                <label className="block mb-1 flex flex-row items-center pr-5">{i + 1 + '.'}</label>
                 <input
+                  key={i}
                   type="text"
-                  className="text-black w-full p-3 rounded-lg"
-                  style={{ height: '60px' }} // Increased input height
+                  className="w-full p-3 rounded-lg border border-black"
+                  style={{ height: '60px', width: '38rem',}}
                   value={userTextAnswers[i] || ''}
-                  onChange={(e) => handleTextInputChange(index, e.target.value)}
+                  onChange={(e) => handleTextInputChange(i, e.target.value)}
+                  placeholder = 'Tap to Type ...'
                 />
               </div>
             ))}
 
-            {/* Submit and Cancel buttons */}
-            <div className="flex justify-between mt-6">
-              <button
-                onClick={handlePopupSubmit}
-                className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg w-1/2 mr-2"
-              >
-                Submit
-              </button>
-              <button
-                onClick={handlePopupClose}
-                className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-1/2 ml-2"
-              >
-                Cancel
-              </button>
-            </div>
+
+          </div>
+          <div className='flex flex-row'>
+            <button
+              onClick={handlePopupClose}
+              className="py-2 px-4 rounded-lg w-1/2 mr-2"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handlePopupSubmit}
+              className="py-2 px-4 rounded-lg w-1/2 ml-2"
+            >
+              Submit
+            </button>
           </div>
         </div>
       )}
