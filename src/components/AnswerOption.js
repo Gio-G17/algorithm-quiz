@@ -61,7 +61,7 @@ const AnswerOption = ({
       // console.log('CorrectAnswer:' + correctNumber);
       // console.log('Index:' + (index - 1));
       // Display correct and missing data on the feedback result
-  
+
       if (index == correctNumber - 1) {
         console.log(comparisonResult);
         return (
@@ -123,16 +123,16 @@ const AnswerOption = ({
   };
   const handlePopupSubmit = () => {
     setShowPopup(false);
-  
+
     // Initialize lists to hold correct answers
     let correctList = [];
-  
+
     // Loop through user answers and compare them to correct answers
     for (let i = 0; i < userTextAnswers.length; i++) {
       for (let j = 0; j < correctAnswers.length; j++) {
         if (userTextAnswers[i] === correctAnswers[j]) {
           correctList.push(userTextAnswers[i]);
-          
+
           break; // Stop inner loop if we find a match
         }
       }
@@ -145,19 +145,19 @@ const AnswerOption = ({
     } else {
       setComparisonResult('incorrect');
     }
-  
+
     console.log(correctList);
     // Set the lists for UI display
     setCorrectList(correctList);
-  
+
     // Send the user's answers back to the parent
     handleTextEntrySubmit(userTextAnswers, correctList);
   };
-  
-  
 
-  
-  
+
+
+
+
 
   const handlePopupClose = () => {
     setShowPopup(false);
@@ -176,7 +176,7 @@ const AnswerOption = ({
       <button
         onClick={handleOptionSelect}
         className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''
-          } ${userAnswer === index || answer == textFieldsCount 
+          } ${userAnswer === index || answer == textFieldsCount
             ? 'border-4' : 'border-2'} border-red-500`}
         disabled={isSubmitted}
         style={{
@@ -193,27 +193,35 @@ const AnswerOption = ({
         <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75">
           <div className="bg-gray-800 text-white p-6 rounded-lg max-w-md w-full">
             <h2 className="text-xl font-bold mb-4">Enter your answers:</h2>
+            {/* Input fields with numbering and increased height */}
             {Array.from({ length: textFieldsCount }).map((_, i) => (
-              <input
-                key={i}
-                type="text"
-                className="text-black w-full p-2 mt-2"
-                value={userTextAnswers[i] || ''}
-                onChange={(e) => handleTextInputChange(i, e.target.value)}
-              />
+              <div key={i} className="mt-4 flex flex-row items-center">
+                <label className="block mb-1 flex flex-row items-center pr-5">{i+1 + '.'}</label>
+                <input
+                  type="text"
+                  className="text-black w-full p-3 rounded-lg"
+                  style={{ height: '60px' }} // Increased input height
+                  value={userTextAnswers[i] || ''}
+                  onChange={(e) => handleTextInputChange(index, e.target.value)}
+                />
+              </div>
             ))}
-            <button
-              onClick={handlePopupSubmit}
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg mt-4 w-full"
-            >
-              Submit Answers
-            </button>
-            <button
-              onClick={handlePopupClose}
-              className="absolute top-2 right-2 bg-red-500 text-white font-bold py-1 px-2 rounded-lg"
-            >
-              X
-            </button>
+
+            {/* Submit and Cancel buttons */}
+            <div className="flex justify-between mt-6">
+              <button
+                onClick={handlePopupSubmit}
+                className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg w-1/2 mr-2"
+              >
+                Submit
+              </button>
+              <button
+                onClick={handlePopupClose}
+                className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-1/2 ml-2"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}

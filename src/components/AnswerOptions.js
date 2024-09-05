@@ -32,7 +32,7 @@ const AnswerOptions = ({
           <img
             src="/assets/icons/leftArrow.png"
             alt="Previous"
-            className="w-12 h-12"
+            className="w-12 h-24"
           />
         </button>
 
@@ -140,7 +140,7 @@ const AnswerOptions = ({
           <img
             src="/assets/icons/rightArrow.png"
             alt="Next"
-            className="w-12 h-12"
+            className="w-12 h-24"
           />
         </button>
       </div>

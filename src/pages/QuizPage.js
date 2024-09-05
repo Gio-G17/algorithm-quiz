@@ -132,6 +132,7 @@ const QuizPage = () => {
   // Close explanation modal
   const closeExplanation = () => {
     setShowExplanation(false);
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
   // Determine if Submit button should be disabled

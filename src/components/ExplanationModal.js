@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ExplanationModal = ({ explanation, closeExplanation }) => {
+const ExplanationModal = ({ explanation, closeExplanation}) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50">
       <div className="bg-gray-800 text-white p-6 rounded-lg max-w-sm w-full">
