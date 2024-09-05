@@ -215,13 +215,13 @@ const AnswerOption = ({
           <div className='flex flex-row'>
             <button
               onClick={handlePopupClose}
-              className="py-2 px-4 rounded-lg w-1/2 mr-2 bg-[url('/public/assets/images/CancelBtnBg.png')]"
+              className="py-2 px-4 rounded-lg w-1/2 mr-2 bg-center bg-[url('/public/assets/images/CancelBtnBg.png')]"
             >
               Cancel
             </button>
             <button
               onClick={handlePopupSubmit}
-              className="py-2 px-4 rounded-lg w-1/2 ml-2 bg-[url('/public/assets/images/SubmitBtnBg.png')]"
+              className="py-2 px-4 rounded-lg w-52  h-20 ml-2 bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')]"
             >
               Submit
             </button>
