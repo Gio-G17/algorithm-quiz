@@ -3,8 +3,6 @@ import React from 'react';
 const InfoPage = ({ onNext, onPrev }) => {
   return (
 
-
-    
     <div className="relative flex flex-col  items-center justify-start h-full w-full p-4">
 
       {/* Exit Quiz Button */}
@@ -17,13 +15,12 @@ const InfoPage = ({ onNext, onPrev }) => {
         </button>
       </div>
 
-<div className="text-5xl w-96 text-black font-light text-center mx-4 mt-44 mb-20">
-Challenge Your Understanding of</div>
-
-
+      <h1 className="text-6xl w-auto text-black font-light text-center mx-4 mt-36 mb-14">
+        Challenge Your <br/> Understanding of</h1>
 
       {/* Text section with Previous and Next buttons on either side */}
-      <div className="flex justify-between items-center w-full max-w-4xl mt-3 ">
+      <div className="flex justify-between items-center w-full max-w-4xl mt-3 mb-10 ">
+       
         {/* Previous Button */}
         <button
           onClick={onPrev}
@@ -32,13 +29,13 @@ Challenge Your Understanding of</div>
           <img
             src="/assets/icons/leftArrow.png"
             alt="Previous"
-            className="w-10 h-24"
+            className="w-11 h-24"
           />
         </button>
 
         {/* Informational Text */}
-        <div className='flex flex-col'>
-        <img src="/assets/images/AlgoLogo.png" alt="AlgoLogo" className="w-max" />
+        <div className='flex items-center justify-center'>
+          <img src="/assets/images/RibaLogo.png" alt="AlgoLogo" className="w-3/4" />
         </div>
 
 
@@ -50,9 +47,10 @@ Challenge Your Understanding of</div>
           <img
             src="/assets/icons/rightArrow.png"
             alt="Next"
-            className="w-10 h-24"
+            className="w-11 h-24"
           />
         </button>
+
       </div>
 
       {/* Submit/Next Button at the bottom */}

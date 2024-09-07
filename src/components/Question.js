@@ -24,7 +24,7 @@ const Question = ({ questionText }) => {
 
   return (
     <div
-      className="text-white text-center bg-center bg-no-repeat bg-[url('/public/assets/images/QuestionBg.png')]"
+      className="text-white mb-4text-center bg-center bg-no-repeat bg-[url('/public/assets/images/QuestionBg.png')]"
       style={{
         height: '10rem',
         width: '51rem',

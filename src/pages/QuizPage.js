@@ -31,11 +31,9 @@ const questions = [
 ];
 
 const QuizPage = () => {
-
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
-  const [persistedState, setPersistedState] = useState({}); // Stores state per question
+  const [persistedState, setPersistedState] = useState({});
   const [submittedQuestions, setSubmittedQuestions] = useState(Array(questions.length).fill(false));
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -51,28 +49,23 @@ const QuizPage = () => {
         ...persistedState,
         [currentQuestionIndex]: {
           ...persistedState[currentQuestionIndex],
-          userAnswer: index,  // Fix for the first answer selection (index can be 0)
+          userAnswer: index,
         },
       };
       setPersistedState(updatedState);
     }
   };
 
-
   const handleTextEntrySubmit = (userTextAnswers, correctList) => {
     const correctAnswers = currentQuestion.correctAnswers;
 
     let feedback = 'incorrect';
-
-    // Use the correctList passed from handlePopupSubmit
     const correctCount = correctList.length;
 
-    // Set feedback based on the correct count and number of correct answers
     if (userTextAnswers.length === currentQuestion.correctNumber) {
       feedback = correctCount === correctAnswers.length ? 'correct' : 'half-correct';
     }
 
-    // Calculate missing list: correctAnswers not in correctList
     let missingList = [];
     for (let i = 0; i < correctAnswers.length; i++) {
       let found = false;
@@ -87,13 +80,6 @@ const QuizPage = () => {
       }
     }
 
-    console.log("Submitting Text Entry:", {
-      userTextAnswers,
-      feedback,
-      correctList,
-      missingList
-    });
-
     const updatedState = {
       ...persistedState,
       [currentQuestionIndex]: {
@@ -101,34 +87,31 @@ const QuizPage = () => {
         userAnswer: userTextAnswers,
         feedback,
         correctList,
-        missingList
+        missingList,
       },
     };
 
     setPersistedState(updatedState);
-    console.log("Updated Persisted State: ", updatedState);
 
     setSubmittedQuestions((prev) =>
       prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
     );
 
-    setShowExplanation(true); 
-  };
-
-
-  // Handling Submit button click
-  const handleSubmit = () => {
-    setSubmittedQuestions((prev) => prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted)));
     setShowExplanation(true);
   };
 
-  // Next question logic
+  const handleSubmit = () => {
+    setSubmittedQuestions((prev) =>
+      prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
+    );
+    setShowExplanation(true);
+  };
+
   const handleNextQuestion = () => {
     setShowExplanation(false);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
-  // Previous question logic
   const handlePrevQuestion = () => {
     if (currentQuestionIndex > 0) {
       setShowExplanation(false);
@@ -136,30 +119,32 @@ const QuizPage = () => {
     }
   };
 
-  // Close explanation modal
   const closeExplanation = () => {
     setShowExplanation(false);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
-  
+
   const isInfoPage = currentQuestion?.type === 'info';
 
-  // Show the InfoPage when it's time
   if (isInfoPage) {
-    return <InfoPage onNext={handleNextQuestion}  onPrev={handlePrevQuestion}/>;
+    return <InfoPage onNext={handleNextQuestion} onPrev={handlePrevQuestion} />;
   }
 
-
-  // Determine if Submit button should be disabled
   const isSubmitDisabled = persistedState[currentQuestionIndex]?.userAnswer === undefined;
+
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full p-4">
-      
+
+      {/* Render the logo only after passing the info page */}
+      {currentQuestionIndex > 2 && (
+      <img src="/assets/images/RibaLogo.png" alt="Slogan" className="absolute top-[4%] left-[3%] h-[5%]" />
+      )}
+
       {/* Exit Quiz Button */}
       <div className="absolute top-[4%] right-[3%]">
         <button
           className="text-xl font-bold text-white bg-red-600 hover:bg-red-800 px-4 py-2 rounded-lg"
-          onClick={() => window.location.reload()} // Refreshes the page
+          onClick={() => window.location.reload()} 
         >
           Exit Quiz
         </button>
@@ -177,10 +162,10 @@ const QuizPage = () => {
         handleTextEntrySubmit={handleTextEntrySubmit}
         handleNextQuestion={handleNextQuestion}
         handlePrevQuestion={handlePrevQuestion}
-        currentQuestionIndex={currentQuestionIndex}  // Passed correctly
+        currentQuestionIndex={currentQuestionIndex}
         totalQuestions={questions.length}
-        persistedState={persistedState}  // Add this line
-        setPersistedState={setPersistedState}  // Pass the setter function as well
+        persistedState={persistedState}
+        setPersistedState={setPersistedState}
       />
   
       {/* Submit Button */}
@@ -188,9 +173,9 @@ const QuizPage = () => {
         <button
           onClick={handleSubmit}
           disabled={isSubmitDisabled}
-          className={`mt-4 ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
+          className={` ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
           style={{
-            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop: '0'
+            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
           }}
         >
           Submit
@@ -200,7 +185,7 @@ const QuizPage = () => {
           onClick={handleNextQuestion}
           className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
           style={{
-            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop: '0'
+            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
           }}
           disabled={currentQuestionIndex === questions.length - 1}
         >
@@ -217,7 +202,6 @@ const QuizPage = () => {
       )}
     </div>
   );
-  
 };
 
 export default QuizPage;

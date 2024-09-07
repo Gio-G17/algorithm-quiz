@@ -175,6 +175,7 @@ const AnswerOption = ({
         style={{
           minWidth: '350px',
           minHeight: '80px',
+          fontWeight: isAnswerStartingWithNumber() ? 'bolder' : 'normal',
           fontSize: isAnswerStartingWithNumber() ? '2rem' : '1rem', // Large font for number-starting answers
         }}
       >
