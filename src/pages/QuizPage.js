@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+import InfoPage from './InfoPage';
 import Question from '../components/Question';
 import AnswerOptions from '../components/AnswerOptions';
 import ExplanationModal from '../components/ExplanationModal';
 
 const questions = [
   {
-    questionText: 'What is the capital of France?',
-    answers: ['Berlin', 'Madrid', 'Paris',],
+    questionText: 'How many products does Algorithm currently have within the Blood Thinners Portfolio?',
+    answers: ['1', '2', '3', '4'],
+    type: 'text-entry',
+    correctNumber: 3,
+    correctAnswers: ['Ribavan', 'Avixan', 'Klotego'],
+    explanation: 'Algorithm is the Unique company with a Complete Blood Thinners Portfolio since 2021',
+  },
+  {
+    questionText: 'Till date, the total number of patients on RIBAVAN®, AVIXAN® & KLOTEGO® is?',
+    answers: ['5000', '7000', '9000',],
     correctAnswer: 2,
-    explanation: 'Paris is the capital and most populous city of France.',
+    explanation: 'Algorithm is the leading Pharmaceutical company in the Blood Thinners Portfolio with over 9000 patients on treatment in 2024',
+  },
+  {
+    type: 'info', // Custom type for this page
   },
   {
     questionText: 'Which of these is not a programming language?',
@@ -16,18 +28,11 @@ const questions = [
     correctAnswer: 2,
     explanation: 'HTML is a markup language, not a programming language.',
   },
-  {
-    questionText: 'List the prime factors of 30',
-    answers: ['1', '2', '3', '4'],
-    type: 'text-entry',
-    correctNumber: 3,
-    correctAnswers: ['Ribavan', 'Avixan', 'Klotego'],
-    explanation: 'The prime factors of 30 are 2, 3, and 5.',
-  },
-  // More questions as needed
 ];
 
 const QuizPage = () => {
+
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
   const [persistedState, setPersistedState] = useState({}); // Stores state per question
@@ -106,6 +111,8 @@ const QuizPage = () => {
     setSubmittedQuestions((prev) =>
       prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
     );
+
+    setShowExplanation(true); 
   };
 
 
@@ -134,15 +141,33 @@ const QuizPage = () => {
     setShowExplanation(false);
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
+  
+  const isInfoPage = currentQuestion?.type === 'info';
+
+  // Show the InfoPage when it's time
+  if (isInfoPage) {
+    return <InfoPage onNext={handleNextQuestion}  onPrev={handlePrevQuestion}/>;
+  }
+
 
   // Determine if Submit button should be disabled
   const isSubmitDisabled = persistedState[currentQuestionIndex]?.userAnswer === undefined;
-
   return (
-    <div className="flex flex-col items-center justify-center h-full w-full p-4">
+    <div className="relative flex flex-col items-center justify-center h-full w-full p-4">
+      
+      {/* Exit Quiz Button */}
+      <div className="absolute top-[4%] right-[3%]">
+        <button
+          className="text-xl font-bold text-white bg-red-600 hover:bg-red-800 px-4 py-2 rounded-lg"
+          onClick={() => window.location.reload()} // Refreshes the page
+        >
+          Exit Quiz
+        </button>
+      </div>
+  
       {/* Question */}
       <Question questionText={currentQuestion.questionText} />
-
+  
       {/* Answer Options with Prev/Next Buttons */}
       <AnswerOptions
         question={currentQuestion}
@@ -156,13 +181,13 @@ const QuizPage = () => {
         totalQuestions={questions.length}
         persistedState={persistedState}  // Add this line
         setPersistedState={setPersistedState}  // Pass the setter function as well
-
       />
+  
       {/* Submit Button */}
       {!submittedQuestions[currentQuestionIndex] ? (
         <button
           onClick={handleSubmit}
-          disabled={isSubmitDisabled} // Disable if no answer is selected
+          disabled={isSubmitDisabled}
           className={`mt-4 ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
           style={{
             height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.3rem', paddingTop: '0'
@@ -182,8 +207,7 @@ const QuizPage = () => {
           Next
         </button>
       )}
-
-
+  
       {/* Explanation Modal */}
       {showExplanation && (
         <ExplanationModal
@@ -193,6 +217,7 @@ const QuizPage = () => {
       )}
     </div>
   );
+  
 };
 
 export default QuizPage;

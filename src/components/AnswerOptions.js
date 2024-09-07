@@ -37,7 +37,7 @@ const AnswerOptions = ({
         </button>
 
         {/* Answer Options Grid */}
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full px-2">
           {/* 2x2 Grid for 4 Answers */}
           {answerCount === 4 && (
             <div className="grid grid-cols-2 gap-x-2 gap-y-2 mx-5">

@@ -41,7 +41,6 @@ const HomePage = () => {
       ) : (
         <QuizPage />
       )}
-
       <img src="/assets/images/AlgoLogo.png" alt="AlgoLogo" className="absolute bottom-[5%] left-[3%] h-[4%]" />
       <img src="/assets/images/Slogan.png" alt="Slogan" className="absolute bottom-[4%] right-[3%] h-[5%]" />
     </div>

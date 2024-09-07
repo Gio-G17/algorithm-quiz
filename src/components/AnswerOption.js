@@ -45,10 +45,14 @@ const AnswerOption = ({
     setSubmitError(false);
   }, [currentQuestionIndex, isSubmitted, persistedState]);
 
+  // Helper to determine if the answer starts with a number
+  const isAnswerStartingWithNumber = () => {
+    const firstChar = answer?.trim().charAt(0);
+    return !isNaN(firstChar) && firstChar !== ' '; // Check if the first character is a number
+  };
+
   const renderAnswerFeedback = () => {
-    // Multiple-choice questions: show "✔️" or "❌"
     if (type !== 'text-entry' && isSubmitted) {
-      console.log(correctAnswer);
       if (index === correctAnswer) {
         return <span className="text-green-500 ml-2">✔️</span>; // Correct answer gets a checkmark
       }
@@ -56,49 +60,38 @@ const AnswerOption = ({
         return <span className="text-red-500 ml-2">❌</span>; // Only the wrong selected answer gets an X
       }
     }
-    // Text-entry questions: show feedback only on the correct answer box
     if (type === 'text-entry' && isSubmitted) {
-      // console.log('CorrectAnswer:' + correctNumber);
-      // console.log('Index:' + (index - 1));
-      // Display correct and missing data on the feedback result
-
       if (index == correctNumber - 1) {
-        console.log(comparisonResult);
         return (
           <div className="flex flex-col text-left">
             {comparisonResult === 'correct' && <span className="text-green-500">✔️</span>}
-            {comparisonResult === 'half-correct' && <span className="text-green-500">⚠️</span>}
-            {correctList.length > 0 && comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️</span>}
+            {comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️</span>}
             {correctList.length > 0 && comparisonResult === 'incorrect' && <span className="text-yellow-500">⚠️</span>}
             {comparisonResult === 'incorrect' && correctList.length === 0 && <span className="text-red-500">✔️</span>}
           </div>
         );
-      }
-      if (answer == textFieldsCount) {
-        if (comparisonResult === 'correct' || comparisonResult === 'half-correct' || comparisonResult === 'incorrect') {
-          return (
-            <div className="flex flex-col text-left">
-              {comparisonResult === 'correct' && <span className="text-green-500">✔️</span>}
-              {comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️</span>}
-              {comparisonResult === 'incorrect' && <span className="text-red-500">❌</span>}
-              {/* Show correct and missing answers */}
-
-            </div>
-          );
-        }
       }
     }
 
     return null;
   };
 
-
   const renderAnswerText = () => {
     if (index == correctNumber - 1) {
       return (
         <div className="flex flex-col text-left">
-          {correctList.length > 0 && <span className="text-green-500">Correct: {correctList.join(', ')}</span>}
-          {missingList.length > 0 && <span className="text-red-500">Missing: {missingList.join(', ')}</span>}
+          {/* Correct List */}
+          {correctList.length > 0 && (
+            <span className="text-green-500 text-sm"> {/* Smaller text for correct answers */}
+              Correct: {correctList.join(', ')}
+            </span>
+          )}
+          {/* Missing List */}
+          {missingList.length > 0 && (
+            <span className="text-red-500 text-sm"> {/* Smaller text for missing answers */}
+              Missing: {missingList.join(', ')}
+            </span>
+          )}
         </div>
       );
     }
@@ -132,12 +125,10 @@ const AnswerOption = ({
       for (let j = 0; j < correctAnswers.length; j++) {
         if (userTextAnswers[i] === correctAnswers[j]) {
           correctList.push(userTextAnswers[i]);
-
           break; // Stop inner loop if we find a match
         }
       }
     }
-    // Determine the result: if all correct answers were provided, it's correct
     if (correctList.length === correctAnswers.length) {
       setComparisonResult('correct');
     } else if (correctList.length > 0) {
@@ -146,28 +137,31 @@ const AnswerOption = ({
       setComparisonResult('incorrect');
     }
 
-    console.log(correctList);
-    // Set the lists for UI display
     setCorrectList(correctList);
-
-    // Send the user's answers back to the parent
     handleTextEntrySubmit(userTextAnswers, correctList);
   };
 
-
-
-
-
-
   const handlePopupClose = () => {
-    setShowPopup(false);
+    setTextFieldsCount(0);          // Reset the textFieldsCount to 0
+    setShowPopup(false);            // Close the popup
+    handleOptionClick(null);        // Reset the selected answer to null
+  
+    // Update persistedState to clear the userAnswer for this question
+    setPersistedState((prevState) => ({
+      ...prevState,
+      [currentQuestionIndex]: {
+        ...prevState[currentQuestionIndex],
+        userAnswer: undefined // Reset userAnswer to undefined when canceling
+      },
+    }));
   };
+  
 
   const handleSubmitClick = () => {
     if (userAnswer === null || userAnswer === undefined) {
-      setSubmitError(true); // Set the error state when no answer is selected
+      setSubmitError(true);
     } else {
-      setSubmitError(false); // Reset the error state if an answer is selected
+      setSubmitError(false);
     }
   };
 
@@ -175,13 +169,13 @@ const AnswerOption = ({
     <>
       <button
         onClick={handleOptionSelect}
-        className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''
-          } ${userAnswer === index || answer == textFieldsCount
-            ? 'border-4' : 'border-2'} border-red-500`}
+        className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
+          ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-red-500`}
         disabled={isSubmitted}
         style={{
           minWidth: '350px',
           minHeight: '80px',
+          fontSize: isAnswerStartingWithNumber() ? '2rem' : '1rem', // Large font for number-starting answers
         }}
       >
         <span className="text-left">{answer}</span>
@@ -190,42 +184,61 @@ const AnswerOption = ({
       </button>
 
       {showPopup && (
-        <div className="fixed inset-0 flex flex-col items-center justify-start bg-white bg-opacity-75">
-          <h1 className="text-xl  text-4xl font-semibold mb-4 text-white mt-36 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]" style={{ width: '49rem', borderRadius: '10px', backgroundSize: 'contain', height: '150px' }}>What are their Brand Names</h1>
-          <div className="bg-white border border-red-500 rounded-lg p-6" style={{width: '49rem',}}>
+        <div
+          className="fixed inset-0 flex flex-col items-center justify-start bg-white bg-opacity-80 z-50"
+          style={{ zIndex: 9999 }}
+        >
+          <h1 className="text-4xl font-normal pl-14 mb-4 text-white mt-16 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]" 
+            style={{ width: '49rem', borderRadius: '10px', backgroundSize: 'contain', height: '150px' }}
+          >
+            What are their Brand Names
+          </h1>
 
-
+          <div className="bg-white border border-red-500 rounded-lg p-6" style={{ width: '49rem', zIndex: 9999 }}>
             {Array.from({ length: textFieldsCount }).map((_, i) => (
               <div key={i} className="mt-4 flex flex-row items-center justify-center">
-                <label className="block mb-1 flex flex-row items-center pr-5">{i + 1 + '.'}</label>
+                <label className="block text-xl mb-1 flex flex-row items-center pr-5">{i + 1 + '.'}</label>
                 <input
                   key={i}
                   type="text"
                   className="w-full p-3 rounded-lg border border-black"
-                  style={{ height: '60px', width: '38rem',}}
+                  style={{ height: '60px', width: '38rem' }}
                   value={userTextAnswers[i] || ''}
                   onChange={(e) => handleTextInputChange(i, e.target.value)}
-                  placeholder = 'Tap to Type ...'
+                  placeholder="Tap to Type ..."
                 />
               </div>
             ))}
-
-
           </div>
-          <div className='flex flex-row'>
+
+          <div className="flex flex-row space-x-52 mt-4">
             <button
               onClick={handlePopupClose}
-              className="py-2 px-4 rounded-lg w-1/2 mr-2 bg-center bg-[url('/public/assets/images/CancelBtnBg.png')]"
+              className="py-2 px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/CancelBtnBg.png')] text-red-700 font-bold text-2xl"
+              style={{
+                zIndex: 9998,
+                backgroundSize: 'contain',
+                width: '10rem',
+                height: '4rem',
+              }}
             >
               Cancel
             </button>
+
             <button
               onClick={handlePopupSubmit}
-              className="py-2 px-4 rounded-lg w-52  h-20 ml-2 bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')]"
+              className="py-2 px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')] text-white font-bold text-2xl"
+              style={{
+                zIndex: 9999,
+                backgroundSize: 'contain',
+                width: '10rem',
+                height: '4rem',
+              }}
             >
               Submit
             </button>
           </div>
+
         </div>
       )}
 
