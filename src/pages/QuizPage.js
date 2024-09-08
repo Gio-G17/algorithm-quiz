@@ -23,10 +23,22 @@ const questions = [
     type: 'info', // Custom type for this page
   },
   {
-    questionText: 'Which of these is not a programming language?',
-    answers: ['Python', 'JavaScript', 'HTML', 'C#'],
-    correctAnswer: 2,
-    explanation: 'HTML is a markup language, not a programming language.',
+    questionText: 'RIBAVAN®: Efficacy and Beyond ',
+    answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
+    correctAnswer: 0,
+    explanation: 'RIBAVAN® Provides patients with the Power of Efficacy',
+  },
+  {
+    questionText: 'RIBAVAN®: Safety?',
+    answers: ['Bioequivalent to Originator', 'Higher rates of major or nonmajor clinically relevant bleeding in the Rivaroxaban group vs warfarin', 'Higher rates of Intracranial and fatal bleeding in the Rivaroxaban group vs warfarin',],
+    correctAnswer: 0,
+    explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
+  },
+  {
+    questionText: 'In what year was RIBAVAN® Introduced into the Lebanese Market?',
+    answers: ['2020', '2021', '2022','2023'],
+    correctAnswer: 0,
+    explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
   },
 ];
 
@@ -121,7 +133,6 @@ const QuizPage = () => {
 
   const closeExplanation = () => {
     setShowExplanation(false);
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
   const isInfoPage = currentQuestion?.type === 'info';
@@ -198,6 +209,7 @@ const QuizPage = () => {
         <ExplanationModal
           explanation={questions[currentQuestionIndex].explanation}
           closeExplanation={closeExplanation}
+          type={questions[currentQuestionIndex].type}
         />
       )}
     </div>

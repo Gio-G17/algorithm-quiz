@@ -47,27 +47,51 @@ const AnswerOption = ({
 
   // Helper to determine if the answer starts with a number
   const isAnswerStartingWithNumber = () => {
-    const firstChar = answer?.trim().charAt(0);
-    return !isNaN(firstChar) && firstChar !== ' '; // Check if the first character is a number
+    // Trim the answer to ensure no leading spaces
+    const trimmedAnswer = answer?.trim();
+    
+    // Check if the answer starts with a number
+    const firstChar = trimmedAnswer.charAt(0);
+    const isNumber = !isNaN(firstChar) && firstChar !== ' ';
+  
+    // If the answer starts with a number and contains "RRR"
+    if (isNumber && trimmedAnswer.includes('RRR')) {
+      return 'startsWithNumberAndRRR';
+    }
+  
+    // If it's just a number
+    if (isNumber) {
+      return 'startsWithNumber';
+    }
+  
+    // If it's not a number at all
+    return 'notANumber';
   };
+  
 
   const renderAnswerFeedback = () => {
     if (type !== 'text-entry' && isSubmitted) {
       if (index === correctAnswer) {
-        return <span className="text-green-500 ml-2">✔️</span>; // Correct answer gets a checkmark
+        return <span className="text-green-500 ml-2" style={{ fontSize: '2rem' }}>✔️</span>; // Correct answer gets a checkmark
       }
-      if (userAnswer === index && index !== correctAnswer) {
-        return <span className="text-red-500 ml-2">❌</span>; // Only the wrong selected answer gets an X
+      if (index !== correctAnswer) {
+        return <span className="text-red-500 ml-2" style={{ fontSize: '2rem' }}>❌</span>; // Only the wrong selected answer gets an X
       }
     }
     if (type === 'text-entry' && isSubmitted) {
       if (index == correctNumber - 1) {
         return (
           <div className="flex flex-col text-left">
-            {comparisonResult === 'correct' && <span className="text-green-500">✔️</span>}
-            {comparisonResult === 'half-correct' && <span className="text-yellow-500">⚠️</span>}
-            {correctList.length > 0 && comparisonResult === 'incorrect' && <span className="text-yellow-500">⚠️</span>}
-            {comparisonResult === 'incorrect' && correctList.length === 0 && <span className="text-red-500">✔️</span>}
+            {comparisonResult === 'correct' && <span className="text-green-500" style={{ fontSize: '2rem' }}>✔️</span>}
+            {comparisonResult === 'half-correct' && <span className="text-yellow-500" style={{ fontSize: '2rem' }}>⚠️</span>}
+            {comparisonResult === 'incorrect' && correctList.length > 0 && <span className="text-yellow-500" style={{ fontSize: '2rem' }}>⚠️</span>}
+            {comparisonResult === 'incorrect' && correctList.length === 0 && <span className="text-red-500" style={{ fontSize: '2rem' }}>✔️</span>}
+          </div>
+        );
+      } else {
+        return (
+          <div className="flex flex-col text-left">
+            {<span className="text-red-500" style={{ fontSize: '2rem' }}>❌</span>}
           </div>
         );
       }
@@ -79,16 +103,16 @@ const AnswerOption = ({
   const renderAnswerText = () => {
     if (index == correctNumber - 1) {
       return (
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-center">
           {/* Correct List */}
           {correctList.length > 0 && (
-            <span className="text-green-500 text-sm"> {/* Smaller text for correct answers */}
+            <span className="text-gray-400 text-sm font-normal"> {/* Smaller text for correct answers */}
               Correct: {correctList.join(', ')}
             </span>
           )}
           {/* Missing List */}
           {missingList.length > 0 && (
-            <span className="text-red-500 text-sm"> {/* Smaller text for missing answers */}
+            <span className="text-gray-400 text-sm font-normal"> {/* Smaller text for missing answers */}
               Missing: {missingList.join(', ')}
             </span>
           )}
@@ -145,7 +169,7 @@ const AnswerOption = ({
     setTextFieldsCount(0);          // Reset the textFieldsCount to 0
     setShowPopup(false);            // Close the popup
     handleOptionClick(null);        // Reset the selected answer to null
-  
+
     // Update persistedState to clear the userAnswer for this question
     setPersistedState((prevState) => ({
       ...prevState,
@@ -155,7 +179,7 @@ const AnswerOption = ({
       },
     }));
   };
-  
+
 
   const handleSubmitClick = () => {
     if (userAnswer === null || userAnswer === undefined) {
@@ -167,29 +191,71 @@ const AnswerOption = ({
 
   return (
     <>
-      <button
-        onClick={handleOptionSelect}
-        className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
-          ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-red-500`}
-        disabled={isSubmitted}
-        style={{
-          minWidth: '350px',
-          minHeight: '80px',
-          fontWeight: isAnswerStartingWithNumber() ? 'bolder' : 'normal',
-          fontSize: isAnswerStartingWithNumber() ? '2rem' : '1rem', // Large font for number-starting answers
-        }}
-      >
-        <span className="text-left">{answer}</span>
-        {renderAnswerText()}
-        {renderAnswerFeedback()}
-      </button>
+<button
+  onClick={handleOptionSelect}
+  className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
+    ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-red-500`}
+  disabled={isSubmitted}
+  style={{
+    width: '372px', // Fixed width
+    height: '80px', // Fixed height
+    whiteSpace: 'normal', // Ensure text wrapping
+    overflow: 'hidden',  // Prevent overflow
+    textOverflow: 'ellipsis', // Optional: If you want to add "..." for overflowed text
+  }}
+>
+<span className="flex flex-row items-center text-left break-words" >
+    {(() => {
+      const answerType = isAnswerStartingWithNumber();
+      
+      if (answerType === 'startsWithNumberAndRRR') {
+        // Split the answer into two parts: before/including "RRR" and the rest
+        const [firstPart, rrrPart, ...restParts] = answer.split(' ');
+        const restOfText = restParts.join(' ');
+
+        return (
+          <span style={{ display: 'inline', lineHeight: '1' }}>
+          {/* Part before and including "RRR" */}
+          <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
+            {`${firstPart} ${rrrPart}`}
+          </span>
+          &nbsp;
+          {/* Rest of the text after "RRR", which wraps normally */}
+          <span style={{ fontSize: '0.90rem', fontWeight: 'normal', display: 'inline' }}>
+            {restOfText}
+          </span>
+        </span>
+        
+        );
+      } else if (answerType === 'startsWithNumber') {
+        // If the answer just starts with a number
+        return (
+          <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
+            {answer}
+          </span>
+        );
+      } else {
+        // If the answer does not start with a number
+        return (
+          <span style={{ fontSize: '1rem', fontWeight: 'normal', display: 'inline' }}>
+            {answer}
+          </span>
+        );
+      }
+    })()}
+  </span>
+  {renderAnswerText()}
+  {renderAnswerFeedback()}
+</button>
+
+
 
       {showPopup && (
         <div
           className="fixed inset-0 flex flex-col items-center justify-start bg-white bg-opacity-80 z-50"
           style={{ zIndex: 9999 }}
         >
-          <h1 className="text-4xl font-normal pl-14 mb-4 text-white mt-16 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]" 
+          <h1 className="text-4xl font-normal pl-14 mb-4 text-white mt-16 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]"
             style={{ width: '49rem', borderRadius: '10px', backgroundSize: 'contain', height: '150px' }}
           >
             What are their Brand Names

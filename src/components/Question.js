@@ -38,6 +38,7 @@ const Question = ({ questionText }) => {
         fontSize: '2rem',
         lineHeight: '2.5rem',
         whiteSpace: 'normal', // Allow text to wrap
+        textAlign: 'center'
       }}
     >
       <div>
