@@ -3,6 +3,7 @@ import InfoPage from './InfoPage';
 import Question from '../components/Question';
 import AnswerOptions from '../components/AnswerOptions';
 import ExplanationModal from '../components/ExplanationModal';
+import ResultsPage from './ResultsPage'; // Import Results Page
 
 const questions = [
   {
@@ -36,7 +37,7 @@ const questions = [
   },
   {
     questionText: 'In what year was RIBAVAN® Introduced into the Lebanese Market?',
-    answers: ['2020', '2021', '2022','2023'],
+    answers: ['2020', '2021', '2022', '2023'],
     correctAnswer: 0,
     explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
   },
@@ -47,6 +48,8 @@ const QuizPage = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [persistedState, setPersistedState] = useState({});
   const [submittedQuestions, setSubmittedQuestions] = useState(Array(questions.length).fill(false));
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0); // New state to track correct answers
+  const [quizCompleted, setQuizCompleted] = useState(false); // New state to track if quiz is completed
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -65,6 +68,11 @@ const QuizPage = () => {
         },
       };
       setPersistedState(updatedState);
+
+      // Track correct answer
+      if (index === currentQuestion.correctAnswer) {
+        setCorrectAnswersCount((prev) => prev + 1);
+      }
     }
   };
 
@@ -109,6 +117,10 @@ const QuizPage = () => {
       prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
     );
 
+    if (correctList.length === correctAnswers.length) {
+      setCorrectAnswersCount((prev) => prev + 1);
+    }
+
     setShowExplanation(true);
   };
 
@@ -121,7 +133,11 @@ const QuizPage = () => {
 
   const handleNextQuestion = () => {
     setShowExplanation(false);
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    if (currentQuestionIndex === questions.length - 1) {
+      setQuizCompleted(true); // Mark the quiz as completed when the last question is answered
+    } else {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   const handlePrevQuestion = () => {
@@ -143,27 +159,33 @@ const QuizPage = () => {
 
   const isSubmitDisabled = persistedState[currentQuestionIndex]?.userAnswer === undefined;
 
+  if (quizCompleted) {
+    console.log(correctAnswersCount);
+    return (
+      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length} /> // Show results page
+    );
+  }
+
   return (
     <div className="relative flex flex-col items-center justify-center h-full w-full p-4">
-
       {/* Render the logo only after passing the info page */}
       {currentQuestionIndex > 2 && (
-      <img src="/assets/images/RibaLogo.png" alt="Slogan" className="absolute top-[4%] left-[3%] h-[5%]" />
+        <img src="/assets/images/RibaLogo.png" alt="Slogan" className="absolute top-[4%] left-[3%] h-[5%]" />
       )}
 
       {/* Exit Quiz Button */}
       <div className="absolute top-[4%] right-[3%]">
         <button
           className="text-xl font-bold text-white bg-red-600 hover:bg-red-800 px-4 py-2 rounded-lg"
-          onClick={() => window.location.reload()} 
+          onClick={() => window.location.reload()}
         >
           Exit Quiz
         </button>
       </div>
-  
+
       {/* Question */}
       <Question questionText={currentQuestion.questionText} />
-  
+
       {/* Answer Options with Prev/Next Buttons */}
       <AnswerOptions
         question={currentQuestion}
@@ -178,8 +200,8 @@ const QuizPage = () => {
         persistedState={persistedState}
         setPersistedState={setPersistedState}
       />
-  
-      {/* Submit Button */}
+
+      {/* Submit/Next Button */}
       {!submittedQuestions[currentQuestionIndex] ? (
         <button
           onClick={handleSubmit}
@@ -193,17 +215,17 @@ const QuizPage = () => {
         </button>
       ) : (
         <button
-          onClick={handleNextQuestion}
+          onClick={currentQuestionIndex === questions.length - 1 ? () => setQuizCompleted(true) : handleNextQuestion}
           className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
           style={{
             height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
           }}
-          disabled={currentQuestionIndex === questions.length - 1}
         >
-          Next
+          {currentQuestionIndex === questions.length - 1 ? 'Submit Quiz' : 'Next'}
         </button>
       )}
-  
+
+
       {/* Explanation Modal */}
       {showExplanation && (
         <ExplanationModal
