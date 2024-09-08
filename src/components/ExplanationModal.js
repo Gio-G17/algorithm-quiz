@@ -1,18 +1,27 @@
 import React from 'react';
 
 const ExplanationModal = ({ explanation, closeExplanation, type }) => {
-  const keywords = ['Blood', 'Thinners', 'Portfolio', 'Algorithm']; // Array of strings to be bolded and colored red
-
+  const keywords = ['Unique', 'Complete', '2021', 'Algorithm','leading','Blood','Thinners','Portfolio', 'over', '9000','Power','of','Efficacy','Bioequivalent','safe','3','years','highly','trusted','High-Quality','Cost-Effective','affordable']; // Array of strings to be bolded and colored red
+  const keywordsBlack =['RIBAVAN®','1.3','MLBP'];
   const highlightText = (text, keywords) => {
     const words = text.split(' ');
 
     return words.map((word, index) => {
-      const cleanWord = word.replace(/[.,!?]/g, ''); // Remove punctuation for cleaner matching
+      const cleanWord = word.replace(/[,!?]/g, ''); // Remove punctuation for cleaner matching
       if (keywords.includes(cleanWord)) {
         return (
           <React.Fragment key={index}>
             <span> </span>
-            <strong className="font-bold text-red-500">{word}</strong>
+            <strong className="font-bold text-[#BC202E]">{word}</strong>
+            <span> </span>
+          </React.Fragment>
+        );
+      } else if (keywordsBlack.includes(cleanWord)) {
+      
+        return (
+          <React.Fragment key={index}>
+            <span> </span>
+            <strong className="font-bold text-black font-bold">{word}</strong>
             <span> </span>
           </React.Fragment>
         );
@@ -24,7 +33,7 @@ const ExplanationModal = ({ explanation, closeExplanation, type }) => {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-white bg-opacity-50">
       {/* Popup container with red border, white background, and rounded corners */}
-      <div className="bg-white text-black text-3xl p-6 rounded-lg border-4 border-red-500 h-1/2 w-1/2 flex flex-col justify-center items-center">
+      <div className="bg-white text-black text-3xl p-6 rounded-lg border-4 border-[#BC202E] h-1/2 w-1/2 flex flex-col justify-center items-center">
         <p className="text-center">{highlightText(explanation, keywords)}</p>
 
         {/* Add logos if the type is 'text-entry' */}

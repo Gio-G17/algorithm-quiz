@@ -39,8 +39,21 @@ const questions = [
     questionText: 'In what year was RIBAVAN® Introduced into the Lebanese Market?',
     answers: ['2020', '2021', '2022', '2023'],
     correctAnswer: 0,
-    explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
+    explanation: 'RIBAVAN®, is a highly trusted Rivaroxaban with over 3 years of experience in the Lebanese market',
   },
+  {
+    questionText: 'Which of the below is correct?',
+    answers: ['Ribavan® is the 1st Blood Thinner Product launched by Algorithm', 'The Active Pharmaceutical Ingredients of Ribavan is Certified by European Pharmacopoeia', 'Ribavan® is Bioequivalent to the originator', 'All are correct'],
+    correctAnswer: 3,
+    explanation: 'RIBAVAN®, is a High-Quality Bioequivalent Rivaroxaban Generic',
+  },
+  {
+    questionText: 'RIBAVAN® is .......... more affordable than the originator?',
+    answers: ['40%', '50%', '60%', '70%'],
+    correctAnswer: 3,
+    explanation: 'RIBAVAN®, is a Cost-Effective Rivaroxaban which provides patients with the Power of Efficacy at an affordable price with an average public price of 1.3 MLBP',
+  },
+  
 ];
 
 const QuizPage = () => {
@@ -162,7 +175,7 @@ const QuizPage = () => {
   if (quizCompleted) {
     console.log(correctAnswersCount);
     return (
-      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length} /> // Show results page
+      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length-1} /> // Show results page
     );
   }
 
@@ -176,10 +189,10 @@ const QuizPage = () => {
       {/* Exit Quiz Button */}
       <div className="absolute top-[4%] right-[3%]">
         <button
-          className="text-xl font-bold text-white bg-red-600 hover:bg-red-800 px-4 py-2 rounded-lg"
+          className="text-xl font-bold text-white bg-[#E02334] hover:bg-[#BC202E] px-4 py-2 rounded-lg"
           onClick={() => window.location.reload()}
         >
-          Exit Quiz
+          Restart Quiz
         </button>
       </div>
 
@@ -218,7 +231,7 @@ const QuizPage = () => {
           onClick={currentQuestionIndex === questions.length - 1 ? () => setQuizCompleted(true) : handleNextQuestion}
           className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
           style={{
-            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
+            height: currentQuestionIndex === questions.length - 1 ? '100px' : '80px', width: currentQuestionIndex === questions.length - 1 ? '350px' : '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
           }}
         >
           {currentQuestionIndex === questions.length - 1 ? 'Submit Quiz' : 'Next'}

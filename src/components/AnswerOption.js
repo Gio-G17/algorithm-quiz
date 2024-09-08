@@ -49,49 +49,95 @@ const AnswerOption = ({
   const isAnswerStartingWithNumber = () => {
     // Trim the answer to ensure no leading spaces
     const trimmedAnswer = answer?.trim();
-    
+
     // Check if the answer starts with a number
     const firstChar = trimmedAnswer.charAt(0);
     const isNumber = !isNaN(firstChar) && firstChar !== ' ';
-  
+
     // If the answer starts with a number and contains "RRR"
     if (isNumber && trimmedAnswer.includes('RRR')) {
       return 'startsWithNumberAndRRR';
     }
-  
+
     // If it's just a number
     if (isNumber) {
       return 'startsWithNumber';
     }
-  
+
     // If it's not a number at all
     return 'notANumber';
   };
-  
+
 
   const renderAnswerFeedback = () => {
+    const checkmarkPath = '/assets/icons/checkmark.png'; // Replace with actual path
+    const crossPath = '/assets/icons/cross.png'; // Replace with actual path
+    const halfCheck = '/assets/icons/half-checkmark.png'; // Replace with actual path
+
     if (type !== 'text-entry' && isSubmitted) {
       if (index === correctAnswer) {
-        return <span className="text-green-500 ml-2" style={{ fontSize: '2rem' }}>✔️</span>; // Correct answer gets a checkmark
+        return (
+          <img
+            src={checkmarkPath}
+            alt="Correct"
+            className="ml-2"
+            style={{ width: '2.5rem', height: '2rem' }}
+          /> // Correct answer gets a checkmark image
+        );
       }
       if (index !== correctAnswer) {
-        return <span className="text-red-500 ml-2" style={{ fontSize: '2rem' }}>❌</span>; // Only the wrong selected answer gets an X
+        return (
+          <img
+            src={crossPath}
+            alt="Incorrect"
+            className="ml-2"
+            style={{ width: '2.5rem', height: '2rem' }}
+          /> // Incorrect answer gets a cross image
+        );
       }
     }
     if (type === 'text-entry' && isSubmitted) {
       if (index == correctNumber - 1) {
         return (
           <div className="flex flex-col text-left">
-            {comparisonResult === 'correct' && <span className="text-green-500" style={{ fontSize: '2rem' }}>✔️</span>}
-            {comparisonResult === 'half-correct' && <span className="text-yellow-500" style={{ fontSize: '2rem' }}>⚠️</span>}
-            {comparisonResult === 'incorrect' && correctList.length > 0 && <span className="text-yellow-500" style={{ fontSize: '2rem' }}>⚠️</span>}
-            {comparisonResult === 'incorrect' && correctList.length === 0 && <span className="text-red-500" style={{ fontSize: '2rem' }}>✔️</span>}
+            {comparisonResult === 'correct' && (
+              <img
+                src={checkmarkPath}
+                alt="Correct"
+                style={{ width: '2.5rem', height: '2rem' }}
+              />
+            )}
+            {comparisonResult === 'half-correct' && (
+              <img
+                src={halfCheck}
+                alt="Half-Correct"
+                style={{ width: '2.5rem', height: '2rem' }}
+              />
+            )}
+            {comparisonResult === 'incorrect' && correctList.length > 0 && (
+              <img
+                src={halfCheck}
+                alt="Half-Correct"
+                style={{ width: '2.5rem', height: '2rem' }}
+              />
+            )}
+            {comparisonResult === 'incorrect' && correctList.length === 0 && (
+              <img
+                src={checkmarkPath}
+                alt="Correct"
+                style={{ width: '2.5rem', height: '2rem' }}
+              />
+            )}
           </div>
         );
       } else {
         return (
           <div className="flex flex-col text-left">
-            {<span className="text-red-500" style={{ fontSize: '2rem' }}>❌</span>}
+            <img
+              src={crossPath}
+              alt="Incorrect"
+              style={{ width: '2rem', height: '2rem' }}
+            />
           </div>
         );
       }
@@ -100,26 +146,46 @@ const AnswerOption = ({
     return null;
   };
 
+
   const renderAnswerText = () => {
     if (index == correctNumber - 1) {
       return (
-        <div className="flex flex-col text-center">
-          {/* Correct List */}
-          {correctList.length > 0 && (
-            <span className="text-gray-400 text-sm font-normal"> {/* Smaller text for correct answers */}
-              Correct: {correctList.join(', ')}
+        <div
+          className={`flex items-center flex-row text-center w-full ${
+            correctList.length > 0 && missingList.length > 0 ? 'justify-between' : ''
+          } ${
+            correctList.length > 0 && missingList.length > 0 ? 'pr-12' : ''
+          }`}
+        >
+          {(correctList.length > 0 || missingList.length > 0) && (
+            <span className="text-gray-400 text-sm font-normal mr-3 ml-4">
+              {/* Smaller text for correct answers */}
+              {correctList.length} of {correctList.length + missingList.length}
             </span>
           )}
-          {/* Missing List */}
-          {missingList.length > 0 && (
-            <span className="text-gray-400 text-sm font-normal"> {/* Smaller text for missing answers */}
-              Missing: {missingList.join(', ')}
-            </span>
-          )}
+          
+          <div className="flex flex-col text-center">
+            {/* Correct List */}
+            {correctList.length > 0 && (
+              <span className="text-gray-400 text-sm font-normal">
+                {/* Smaller text for correct answers */}
+                Correct: {correctList.join(', ')}
+              </span>
+            )}
+            
+            {/* Missing List */}
+            {missingList.length > 0 && (
+              <span className="text-gray-400 text-sm font-normal">
+                {/* Smaller text for missing answers */}
+                Missing: {missingList.join(', ')}
+              </span>
+            )}
+          </div>
         </div>
       );
     }
   };
+  
 
   const handleOptionSelect = () => {
     if (type === 'text-entry') {
@@ -191,62 +257,62 @@ const AnswerOption = ({
 
   return (
     <>
-<button
-  onClick={handleOptionSelect}
-  className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
-    ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-red-500`}
-  disabled={isSubmitted}
-  style={{
-    width: '372px', // Fixed width
-    height: '80px', // Fixed height
-    whiteSpace: 'normal', // Ensure text wrapping
-    overflow: 'hidden',  // Prevent overflow
-    textOverflow: 'ellipsis', // Optional: If you want to add "..." for overflowed text
-  }}
->
-<span className="flex flex-row items-center text-left break-words" >
-    {(() => {
-      const answerType = isAnswerStartingWithNumber();
-      
-      if (answerType === 'startsWithNumberAndRRR') {
-        // Split the answer into two parts: before/including "RRR" and the rest
-        const [firstPart, rrrPart, ...restParts] = answer.split(' ');
-        const restOfText = restParts.join(' ');
+      <button
+        onClick={handleOptionSelect}
+        className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
+    ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-[#BC202E]`}
+        disabled={isSubmitted}
+        style={{
+          width: '372px', // Fixed width
+          height: '80px', // Fixed height
+          whiteSpace: 'normal', // Ensure text wrapping
+          overflow: 'hidden',  // Prevent overflow
+          textOverflow: 'ellipsis', // Optional: If you want to add "..." for overflowed text
+        }}
+      >
+        <span className="flex flex-row items-center text-left break-words" >
+          {(() => {
+            const answerType = isAnswerStartingWithNumber();
 
-        return (
-          <span style={{ display: 'inline', lineHeight: '1' }}>
-          {/* Part before and including "RRR" */}
-          <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
-            {`${firstPart} ${rrrPart}`}
-          </span>
-          &nbsp;
-          {/* Rest of the text after "RRR", which wraps normally */}
-          <span style={{ fontSize: '0.90rem', fontWeight: 'normal', display: 'inline' }}>
-            {restOfText}
-          </span>
+            if (answerType === 'startsWithNumberAndRRR') {
+              // Split the answer into two parts: before/including "RRR" and the rest
+              const [firstPart, rrrPart, ...restParts] = answer.split(' ');
+              const restOfText = restParts.join(' ');
+
+              return (
+                <span style={{ display: 'inline', lineHeight: '1' }}>
+                  {/* Part before and including "RRR" */}
+                  <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
+                    {`${firstPart} ${rrrPart}`}
+                  </span>
+                  &nbsp;
+                  {/* Rest of the text after "RRR", which wraps normally */}
+                  <span style={{ fontSize: '0.90rem', fontWeight: 'normal', display: 'inline' }}>
+                    {restOfText}
+                  </span>
+                </span>
+
+              );
+            } else if (answerType === 'startsWithNumber') {
+              // If the answer just starts with a number
+              return (
+                <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
+                  {answer}
+                </span>
+              );
+            } else {
+              // If the answer does not start with a number
+              return (
+                <span style={{ fontSize: '1rem', fontWeight: 'bolder', display: 'inline' }}>
+                  {answer}
+                </span>
+              );
+            }
+          })()}
         </span>
-        
-        );
-      } else if (answerType === 'startsWithNumber') {
-        // If the answer just starts with a number
-        return (
-          <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
-            {answer}
-          </span>
-        );
-      } else {
-        // If the answer does not start with a number
-        return (
-          <span style={{ fontSize: '1rem', fontWeight: 'normal', display: 'inline' }}>
-            {answer}
-          </span>
-        );
-      }
-    })()}
-  </span>
-  {renderAnswerText()}
-  {renderAnswerFeedback()}
-</button>
+        {renderAnswerText()}
+        {renderAnswerFeedback()}
+      </button>
 
 
 
@@ -255,15 +321,15 @@ const AnswerOption = ({
           className="fixed inset-0 flex flex-col items-center justify-start bg-white bg-opacity-80 z-50"
           style={{ zIndex: 9999 }}
         >
-          <h1 className="text-4xl font-normal pl-14 mb-4 text-white mt-16 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]"
+          <h1 className="text-4xl font-normal pl-14 text-white mt-16 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]"
             style={{ width: '49rem', borderRadius: '10px', backgroundSize: 'contain', height: '150px' }}
           >
             What are their Brand Names
           </h1>
 
-          <div className="bg-white border border-red-500 rounded-lg p-6" style={{ width: '49rem', zIndex: 9999 }}>
+          <div className="bg-white border-2 border-[#BC202E] rounded-lg p-6" style={{ width: '49rem', zIndex: 9999 }}>
             {Array.from({ length: textFieldsCount }).map((_, i) => (
-              <div key={i} className="mt-4 flex flex-row items-center justify-center">
+              <div key={i} className="mt-2 mb-2 flex flex-row items-center justify-center">
                 <label className="block text-xl mb-1 flex flex-row items-center pr-5">{i + 1 + '.'}</label>
                 <input
                   key={i}

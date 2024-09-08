@@ -20,7 +20,7 @@ const highlightText = (text, keywords) => {
 };
 
 const Question = ({ questionText }) => {
-  const keywords = ['Blood', 'Thinners', 'Portfolio', 'Algorithm']; // Your array of strings to be bolded
+  const keywords = ['Blood', 'Thinners', 'Portfolio', 'Algorithm','RIBAVAN®','AVIXAN®','KLOTEGO®','RIBAVAN®:']; // Your array of strings to be bolded
 
   return (
     <div
@@ -36,6 +36,7 @@ const Question = ({ questionText }) => {
         paddingLeft: '2.75rem',
         paddingRight: '2.75rem',
         fontSize: '2rem',
+        fontWeight:'lighter',
         lineHeight: '2.5rem',
         whiteSpace: 'normal', // Allow text to wrap
         textAlign: 'center'
