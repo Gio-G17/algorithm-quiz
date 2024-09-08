@@ -91,7 +91,7 @@ const AnswerOption = ({
             src={crossPath}
             alt="Incorrect"
             className="ml-2"
-            style={{ width: '2.5rem', height: '2rem' }}
+            style={{ width: '2rem', height: '2rem' }}
           /> // Incorrect answer gets a cross image
         );
       }

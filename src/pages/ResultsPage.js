@@ -38,7 +38,7 @@ const ResultsPage = ({ correctAnswersCount, totalQuestions }) => {
 
             {/* Right side - Text */}
             <div className="w-2/3 flex flex-col items-center justify-center pl-8">
-                <h1 className="text-5xl font-light mt-5 text-center"><strong>Congratulations</strong> on <br />completing the quiz!</h1>
+                <h1 className="text-5xl font-light mt-5 text-center"><strong style={{fontWeight:'bold'}}>Congratulations</strong> on <br />completing the quiz!</h1>
                 <p className="text-5xl font-light mt-12 mb-12 text-center">Thank you for testing your knowledge with us.</p>
 
                 {/* Restart Quiz Button */}
