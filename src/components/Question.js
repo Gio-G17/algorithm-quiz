@@ -1,4 +1,6 @@
 import React from 'react';
+import '../styling/QuizPage.css'; // Import your QuizPage CSS file
+
 
 // Helper function to check if a word is in the keywords array
 const highlightText = (text, keywords) => {
@@ -24,23 +26,8 @@ const Question = ({ questionText }) => {
 
   return (
     <div
+      id='QuestContainer'
       className="text-white mb-4text-center bg-center bg-no-repeat bg-[url('/public/assets/images/QuestionBg.png')]"
-      style={{
-        height: '10rem',
-        width: '51rem',
-        borderRadius: '10px',
-        backgroundSize: 'contain',
-        display: 'flex', // Use flexbox
-        justifyContent: 'center', // Center horizontally
-        alignItems: 'center', // Center vertically
-        paddingLeft: '2.75rem',
-        paddingRight: '2.75rem',
-        fontSize: '2rem',
-        fontWeight:'lighter',
-        lineHeight: '2.5rem',
-        whiteSpace: 'normal', // Allow text to wrap
-        textAlign: 'center'
-      }}
     >
       <div>
         {highlightText(questionText, keywords)}

@@ -1,5 +1,7 @@
 import React from 'react';
 import AnswerOption from './AnswerOption';
+import '../styling/QuizPage.css'; // Import your QuizPage CSS file
+
 
 const AnswerOptions = ({
   question,
@@ -21,10 +23,11 @@ const AnswerOptions = ({
   const answerCount = question.answers.length;
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mt-4">
+    <div id='AnsNavCont' className="flex flex-col items-center w-full max-w-4xl mt-4">
       <div className="flex items-center justify-between w-full">
         {/* Previous Button */}
         <button
+          id='prevBtn'
           onClick={handlePrevQuestion}
           disabled={currentQuestionIndex === 0}
           className="disabled:opacity-70"
@@ -65,8 +68,8 @@ const AnswerOptions = ({
           {/* 2x1 Grid for First Row and Centered Second Row for 3 Answers */}
           {answerCount === 3 && (
             <>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-2 mx-5">
-            {question.answers.slice(0, 2).map((answer, index) => (
+              <div className="grid grid-cols-2 gap-x-2 gap-y-2 mx-5">
+                {question.answers.slice(0, 2).map((answer, index) => (
                   <AnswerOption
                     key={index}
                     index={index}
@@ -133,6 +136,7 @@ const AnswerOptions = ({
 
         {/* Next Button */}
         <button
+          id='nextBtn'
           onClick={handleNextQuestion}
           disabled={!isSubmitted || currentQuestionIndex === totalQuestions - 1}
           className="disabled:opacity-50"

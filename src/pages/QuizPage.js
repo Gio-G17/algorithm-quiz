@@ -54,7 +54,7 @@ const questions = [
     correctAnswer: 3,
     explanation: 'RIBAVAN®, is a Cost-Effective Rivaroxaban which provides patients with the Power of Efficacy at an affordable price with an average public price of 1.3 MLBP',
   },
-  
+
 ];
 
 const QuizPage = () => {
@@ -176,7 +176,7 @@ const QuizPage = () => {
   if (quizCompleted) {
     console.log(correctAnswersCount);
     return (
-      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length-1} /> // Show results page
+      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length - 1} /> // Show results page
     );
   }
 
@@ -184,13 +184,13 @@ const QuizPage = () => {
     <div className="relative flex flex-col items-center justify-center h-full w-full p-4">
       {/* Render the logo only after passing the info page */}
       {currentQuestionIndex > 2 && (
-        <img src="/assets/images/RibaLogo.png" alt="Slogan" className="absolute top-[4%] left-[3%] h-[5%]" />
+        <img src="/assets/images/RibaLogo.png" alt="Slogan" id='RibaLogo' className="absolute top-[4%] left-[3%] h-[5%]" />
       )}
 
       {/* Exit Quiz Button */}
       <div className="absolute top-[4%] right-[3%]">
         <button
-        id='restartBtn'
+          id='restartBtn'
           className="text-xl font-bold text-white bg-[#E02334] hover:bg-[#BC202E] px-4 py-2 rounded-lg"
           onClick={() => window.location.reload()}
         >
@@ -219,25 +219,30 @@ const QuizPage = () => {
       {/* Submit/Next Button */}
       {!submittedQuestions[currentQuestionIndex] ? (
         <button
+          id='SubmitBtn'
           onClick={handleSubmit}
           disabled={isSubmitDisabled}
           className={` ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
-          style={{
-            height: '80px', width: '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
-          }}
         >
           Submit
         </button>
       ) : (
-        <button
-          onClick={currentQuestionIndex === questions.length - 1 ? () => setQuizCompleted(true) : handleNextQuestion}
-          className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
-          style={{
-            height: currentQuestionIndex === questions.length - 1 ? '100px' : '80px', width: currentQuestionIndex === questions.length - 1 ? '350px' : '150px', borderRadius: '10px', backgroundSize: 'contain', marginTop: '2.4rem', paddingTop: '0',
-          }}
-        >
-          {currentQuestionIndex === questions.length - 1 ? 'Submit Quiz' : 'Next'}
-        </button>
+        currentQuestionIndex === questions.length - 1 ?
+          <button
+            id='SubmitQzBtn'
+            onClick={() => setQuizCompleted(true)}
+            className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
+          >
+            Submit Quiz
+          </button> :
+          <button
+            id='NextBtn'
+            onClick={handleNextQuestion}
+            className="mt-4 text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
+
+          >
+            Next
+          </button>
       )}
 
 

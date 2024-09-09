@@ -1,72 +1,178 @@
-
-
-  
-  /* Media queries for different screen sizes */
-  
   /* For screens larger than 1920px (Full HD) */
   @media (min-width: 1920px) {
 
-#restartBtn{
-    height: 100px;
-}
+      #restartBtn {
+          height: 70px;
+          width: 250px;
+          font-size: 30px;
+      }
 
-    #riba-logo {
-      height: 6%;
-    }
-  
-    .text-xl {
-      font-size: 2.5rem;
-    }
+      #SubmitBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #SubmitQzBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 28px;
+      }
+
+      #NextBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #RibaLogo {
+          width: 285px;
+          height: 80px;
+      }
+
+      #QuestContainer {
+          height: 15rem;
+          width: 70rem;
+          margin-top: -5rem;
+          border-radius: 10px;
+          background-size: contain;
+          display: flex;
+          /* Use flexbox */
+          justify-content: center;
+          /* Center horizontally */
+          align-items: center;
+          /* Center vertically */
+          padding-left: 2.75rem;
+          padding-right: 2.75rem;
+          font-size: 2.5rem;
+          font-weight: lighter;
+          line-height: 2.5rem;
+          white-space: normal;
+          /* Allow text to wrap */
+          text-align: center;
+      }
+
+      #prevBtn {
+          height: 100px;
+          width: 50px;
+      }
+
+      #nextBtn {
+          height: 100px;
+          width: 50px;
+      }
+
+      #AnsNavCont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 79rem;
+          /* 4xl in Tailwind equals 64rem */
+          margin-top: 2cqw;
+          /* 4 in Tailwind equals 1rem */
+      }
+
+      #answersCont {
+          width: 35rem;
+          height: 7rem;
+          white-space: normal;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+
+      #xMark {
+          width: 3rem;
+          height: 3rem;
+      }
+
+      #checkMark {
+          width: 4rem;
+          height: 3.5rem;
+      }
+
+      #resultOf {
+          font-size: 1.25rem;
+      }
+
+      #CorMissText {
+          font-size: 1.25rem;
+      }
+
   }
-  
+
   /* For screens between 1536px and 1919px */
   @media (min-width: 1536px) and (max-width: 1919px) {
-    button {
-      height: 90px;
-      width: 180px;
-      font-size: 2.2rem;
-    }
-  
-    #riba-logo {
-      height: 5.5%;
-    }
-  
-    .text-xl {
-      font-size: 2.2rem;
-    }
+
+      #restartBtn {
+          height: 70px;
+          width: 250px;
+          font-size: 30px;
+      }
+
+      #SubmitBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #SubmitQzBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 28px;
+      }
+
+      #NextBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #RibaLogo {
+          width: 285px;
+          height: 80px;
+      }
+
   }
-  
+
   /* For screens between 1280px and 1535px */
   @media (min-width: 1280px) and (max-width: 1535px) {
-    button {
-      height: 80px;
-      width: 150px;
-      font-size: 2rem;
-    }
-  
-    #riba-logo {
-      height: 5%;
-    }
-  
-    .text-xl {
-      font-size: 2rem;
-    }
+
+      #restartBtn {
+          height: 40px;
+          width: 150px;
+          font-size: 20px;
+      }
+
+      #SubmitBtn {
+          margin-top: 2rem;
+          width: 155px;
+          height: 70px;
+          font-size: 25px;
+      }
+
+      #SubmitQzBtn {
+          margin-top: 2rem;
+          width: 155px;
+          height: 70px;
+          font-size: 20px;
+      }
+
+      #NextBtn {
+          margin-top: 2rem;
+          width: 155px;
+          height: 70px;
+          font-size: 25px;
+      }
+
+      #RibaLogo {
+          width: 285px;
+          height: 80px;
+      }
   }
-  
-  /* For smaller screens (under 1280px) */
-  @media (max-width: 1279px) {
-    button {
-      height: 70px;
-      width: 140px;
-      font-size: 1.8rem;
-    }
-  
-    #riba-logo {
-      height: 4.5%;
-    }
-  
-    .text-xl {
-      font-size: 1.8rem;
-    }
-  }
-  

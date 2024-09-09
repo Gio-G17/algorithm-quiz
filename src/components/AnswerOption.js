@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import '../styling/QuizPage.css'; // Import your QuizPage CSS file
+
 
 const AnswerOption = ({
   answer,
@@ -78,21 +80,20 @@ const AnswerOption = ({
       if (index === correctAnswer) {
         return (
           <img
-            src={checkmarkPath}
+            id='checkMark' src={checkmarkPath}
             alt="Correct"
             className="ml-2"
-            style={{ width: '2.5rem', height: '2rem' }}
-          /> // Correct answer gets a checkmark image
+          /> 
         );
       }
       if (index !== correctAnswer) {
         return (
           <img
+            id='xMark'
             src={crossPath}
             alt="Incorrect"
             className="ml-2"
-            style={{ width: '2rem', height: '2rem' }}
-          /> // Incorrect answer gets a cross image
+          /> 
         );
       }
     }
@@ -102,30 +103,29 @@ const AnswerOption = ({
           <div className="flex flex-col text-left">
             {comparisonResult === 'correct' && (
               <img
-                src={checkmarkPath}
+                id='checkMark' src={checkmarkPath}
                 alt="Correct"
-                style={{ width: '2.5rem', height: '2rem' }}
               />
             )}
             {comparisonResult === 'half-correct' && (
               <img
+                id='checkMark'
                 src={halfCheck}
                 alt="Half-Correct"
-                style={{ width: '2.5rem', height: '2rem' }}
               />
             )}
             {comparisonResult === 'incorrect' && correctList.length > 0 && (
               <img
+                id='checkMark'
                 src={halfCheck}
                 alt="Half-Correct"
-                style={{ width: '2.5rem', height: '2rem' }}
               />
             )}
             {comparisonResult === 'incorrect' && correctList.length === 0 && (
               <img
+                id='checkMark'
                 src={checkmarkPath}
                 alt="Correct"
-                style={{ width: '2.5rem', height: '2rem' }}
               />
             )}
           </div>
@@ -134,9 +134,9 @@ const AnswerOption = ({
         return (
           <div className="flex flex-col text-left">
             <img
+              id='xMark'
               src={crossPath}
               alt="Incorrect"
-              style={{ width: '2rem', height: '2rem' }}
             />
           </div>
         );
@@ -151,31 +151,29 @@ const AnswerOption = ({
     if (index == correctNumber - 1) {
       return (
         <div
-          className={`flex items-center flex-row text-center w-full ${
-            correctList.length > 0 && missingList.length > 0 ? 'justify-between' : ''
-          } ${
-            correctList.length > 0 && missingList.length > 0 ? 'pr-12' : ''
-          }`}
+          className={`flex items-center flex-row text-center w-full ${correctList.length > 0 && missingList.length > 0 ? 'justify-between' : ''
+            } ${correctList.length > 0 && missingList.length > 0 ? 'pr-12' : ''
+            }`}
         >
           {(correctList.length > 0 || missingList.length > 0) && (
-            <span className="text-gray-400 text-sm font-normal mr-3 ml-4">
+            <span id='resultOf' className="text-gray-400 text-sm font-normal mr-3 ml-4">
               {/* Smaller text for correct answers */}
               {correctList.length} of {correctList.length + missingList.length}
             </span>
           )}
-          
-          <div className="flex flex-col text-center">
+
+          <div  className="flex flex-col text-center">
             {/* Correct List */}
             {correctList.length > 0 && (
-              <span className="text-gray-400 text-sm font-normal">
+              <span id='CorMissText' className="text-gray-400 text-sm font-normal">
                 {/* Smaller text for correct answers */}
                 Correct: {correctList.join(', ')}
               </span>
             )}
-            
+
             {/* Missing List */}
             {missingList.length > 0 && (
-              <span className="text-gray-400 text-sm font-normal">
+              <span  id='CorMissText' className="text-gray-400 text-sm font-normal">
                 {/* Smaller text for missing answers */}
                 Missing: {missingList.join(', ')}
               </span>
@@ -185,7 +183,7 @@ const AnswerOption = ({
       );
     }
   };
-  
+
 
   const handleOptionSelect = () => {
     if (type === 'text-entry') {
@@ -258,17 +256,11 @@ const AnswerOption = ({
   return (
     <>
       <button
+        id='answersCont'
         onClick={handleOptionSelect}
         className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
     ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-[#BC202E]`}
         disabled={isSubmitted}
-        style={{
-          width: '372px', // Fixed width
-          height: '80px', // Fixed height
-          whiteSpace: 'normal', // Ensure text wrapping
-          overflow: 'hidden',  // Prevent overflow
-          textOverflow: 'ellipsis', // Optional: If you want to add "..." for overflowed text
-        }}
       >
         <span className="flex flex-row items-center text-left break-words" >
           {(() => {
