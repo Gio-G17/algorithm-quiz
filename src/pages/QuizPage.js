@@ -4,6 +4,7 @@ import Question from '../components/Question';
 import AnswerOptions from '../components/AnswerOptions';
 import ExplanationModal from '../components/ExplanationModal';
 import ResultsPage from './ResultsPage'; // Import Results Page
+import '../styling/QuizPage.css'; // Import your QuizPage CSS file
 
 const questions = [
   {
@@ -189,6 +190,7 @@ const QuizPage = () => {
       {/* Exit Quiz Button */}
       <div className="absolute top-[4%] right-[3%]">
         <button
+        id='restartBtn'
           className="text-xl font-bold text-white bg-[#E02334] hover:bg-[#BC202E] px-4 py-2 rounded-lg"
           onClick={() => window.location.reload()}
         >

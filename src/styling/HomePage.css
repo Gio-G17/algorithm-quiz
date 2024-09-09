@@ -1,0 +1,80 @@
+/* HomePage.css */
+
+/* Default styles (base view) */
+#clock-container img {
+    width: 40%;
+    /* Default width for larger screens */
+}
+
+#titles h1 {
+    font-size: 50px;
+}
+
+
+#start-button-container img {
+    width: 200px;
+}
+
+/* Media queries for different screen sizes */
+
+/* For screens larger than 1920px (Full HD) */
+@media (min-width: 1920px) {
+    #clock-container img {
+        width: 90%;
+    }
+
+    #titles h1 {
+        font-size: 70px;
+    }
+
+    #title-start-container {
+        margin-left: 20%;
+        margin-top: 7%;
+    }
+
+    #start-button-container img {
+        width: 300px;
+    }
+}
+
+/* For screens between 1536px and 1919px */
+@media (min-width: 1536px) and (max-width: 1919px) {
+
+    #clock-container img {
+        width: 85%;
+    }
+
+    #titles h1 {
+        font-size: 60px;
+    }
+
+    #title-start-container {
+        margin-left: 38%;
+        margin-top: 7%;
+    }
+
+    #start-button-container img {
+        width: 300px;
+    }
+}
+
+/* For screens between 1280px and 1535px */
+@media (min-width: 1280px) and (max-width: 1535px) {
+
+    #clock-container img {
+        width: 70%;
+    }
+
+    #titles h1 {
+        font-size: 60px;
+    }
+
+    #title-start-container {
+        margin-left: 38%;
+        margin-top: 5%;
+    }
+
+    #start-button-container img {
+        width: 200px;
+    }
+}
