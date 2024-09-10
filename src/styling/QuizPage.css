@@ -102,6 +102,71 @@
           font-size: 1.25rem;
       }
 
+      #preRRR{
+        display: inline;
+        font-weight: bold;
+        font-size: 3.5rem;
+        padding-left: 1rem;
+      }
+
+      #postRRR{
+        display: inline;
+        font-weight: normal;
+        font-size: 1.25rem;
+      }
+
+      #nbAns{
+        display: inline;
+        font-weight: bold;
+        font-size: 3.5rem;
+        padding-left: 1rem;
+      }
+
+      #wordAns{
+        display: inline;
+        font-weight: bolder;
+        font-size: 1.40rem;
+        padding-left: 1rem;
+      }
+
+      #ansPopup{
+        z-index: 9999;
+      }
+
+      #ansPopupQues{
+        width: 70rem;
+        height: 11rem;
+        margin-top: 11rem;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        background-size: contain;
+      }
+
+      #ansPopupFields{
+        width: 70rem;
+        z-index: 9999;
+        border: 0.25rem solid #BC202E;
+      }
+
+      #ansNumbering{
+        font-size: 2rem;
+      }
+
+      #ansPopupSingField{
+        width: 55rem;
+        height: 5rem;
+        font-size: 2rem;
+        font-weight: lighter;
+      }
+
+      #subCancelBtn{
+        z-index: 9999;
+        background-size: contain;
+        width: 17.25rem;
+        height: 7rem;
+        margin-top: 2rem;
+      }
+
   }
 
   /* For screens between 1536px and 1919px */

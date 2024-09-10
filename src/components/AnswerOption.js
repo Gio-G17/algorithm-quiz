@@ -83,7 +83,7 @@ const AnswerOption = ({
             id='checkMark' src={checkmarkPath}
             alt="Correct"
             className="ml-2"
-          /> 
+          />
         );
       }
       if (index !== correctAnswer) {
@@ -93,7 +93,7 @@ const AnswerOption = ({
             src={crossPath}
             alt="Incorrect"
             className="ml-2"
-          /> 
+          />
         );
       }
     }
@@ -162,7 +162,7 @@ const AnswerOption = ({
             </span>
           )}
 
-          <div  className="flex flex-col text-center">
+          <div className="flex flex-col text-center">
             {/* Correct List */}
             {correctList.length > 0 && (
               <span id='CorMissText' className="text-gray-400 text-sm font-normal">
@@ -173,7 +173,7 @@ const AnswerOption = ({
 
             {/* Missing List */}
             {missingList.length > 0 && (
-              <span  id='CorMissText' className="text-gray-400 text-sm font-normal">
+              <span id='CorMissText' className="text-gray-400 text-sm font-normal">
                 {/* Smaller text for missing answers */}
                 Missing: {missingList.join(', ')}
               </span>
@@ -274,12 +274,12 @@ const AnswerOption = ({
               return (
                 <span style={{ display: 'inline', lineHeight: '1' }}>
                   {/* Part before and including "RRR" */}
-                  <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
+                  <span id='preRRR' >
                     {`${firstPart} ${rrrPart}`}
                   </span>
                   &nbsp;
                   {/* Rest of the text after "RRR", which wraps normally */}
-                  <span style={{ fontSize: '0.90rem', fontWeight: 'normal', display: 'inline' }}>
+                  <span id='postRRR' >
                     {restOfText}
                   </span>
                 </span>
@@ -288,14 +288,14 @@ const AnswerOption = ({
             } else if (answerType === 'startsWithNumber') {
               // If the answer just starts with a number
               return (
-                <span style={{ fontSize: '2rem', fontWeight: 'bold', display: 'inline' }}>
+                <span id='nbAns'>
                   {answer}
                 </span>
               );
             } else {
               // If the answer does not start with a number
               return (
-                <span style={{ fontSize: '1rem', fontWeight: 'bolder', display: 'inline' }}>
+                <span id='wordAns'>
                   {answer}
                 </span>
               );
@@ -309,25 +309,24 @@ const AnswerOption = ({
 
 
       {showPopup && (
-        <div
+        <div id='ansPopup'
           className="fixed inset-0 flex flex-col items-center justify-start bg-white bg-opacity-80 z-50"
-          style={{ zIndex: 9999 }}
         >
           <h1 className="text-4xl font-normal pl-14 text-white mt-16 text-center bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/TextFieldBg.png')]"
-            style={{ width: '49rem', borderRadius: '10px', backgroundSize: 'contain', height: '150px' }}
+            id='ansPopupQues'
           >
             What are their Brand Names
           </h1>
 
-          <div className="bg-white border-2 border-[#BC202E] rounded-lg p-6" style={{ width: '49rem', zIndex: 9999 }}>
+          <div className="bg-white  border-[#BC202E] rounded-lg p-6" id='ansPopupFields'>
             {Array.from({ length: textFieldsCount }).map((_, i) => (
               <div key={i} className="mt-2 mb-2 flex flex-row items-center justify-center">
-                <label className="block text-xl mb-1 flex flex-row items-center pr-5">{i + 1 + '.'}</label>
+                <label id='ansNumbering' className="block text-xl mb-1 flex flex-row items-center pr-5">{i + 1 + '.'}</label>
                 <input
+                  id='ansPopupSingField'
                   key={i}
                   type="text"
                   className="w-full p-3 rounded-lg border border-black"
-                  style={{ height: '60px', width: '38rem' }}
                   value={userTextAnswers[i] || ''}
                   onChange={(e) => handleTextInputChange(i, e.target.value)}
                   placeholder="Tap to Type ..."
@@ -336,29 +335,19 @@ const AnswerOption = ({
             ))}
           </div>
 
-          <div className="flex flex-row space-x-52 mt-4">
+          <div className="flex flex-row space-x-52">
             <button
+              id='subCancelBtn'
               onClick={handlePopupClose}
-              className="py-2 px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/CancelBtnBg.png')] text-red-700 font-bold text-2xl"
-              style={{
-                zIndex: 9998,
-                backgroundSize: 'contain',
-                width: '10rem',
-                height: '4rem',
-              }}
+              className="] px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/CancelBtnBg.png')] text-red-700 font-bold text-2xl"
             >
               Cancel
             </button>
 
             <button
+              id='subCancelBtn'
               onClick={handlePopupSubmit}
-              className="py-2 px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')] text-white font-bold text-2xl"
-              style={{
-                zIndex: 9999,
-                backgroundSize: 'contain',
-                width: '10rem',
-                height: '4rem',
-              }}
+              className=" px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')] text-white font-bold text-2xl"
             >
               Submit
             </button>
