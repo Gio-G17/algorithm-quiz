@@ -4,7 +4,9 @@ import Question from '../components/Question';
 import AnswerOptions from '../components/AnswerOptions';
 import ExplanationModal from '../components/ExplanationModal';
 import ResultsPage from './ResultsPage'; // Import Results Page
-import '../styling/QuizPage.css'; // Import your QuizPage CSS file
+import '../styling/QuizPageDesktop.css'; // Import your QuizPage CSS file
+import '../styling/QuizPageTablet.css'; // Import your QuizPage CSS file
+
 
 const questions = [
   {

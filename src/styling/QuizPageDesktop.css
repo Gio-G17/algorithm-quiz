@@ -1,0 +1,556 @@
+  /* For screens larger than 1920px (Full HD) */
+  @media (min-width: 1920px) {
+
+      #restartBtn {
+          height: 70px;
+          width: 250px;
+          font-size: 30px;
+      }
+
+      #SubmitBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #SubmitQzBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 28px;
+      }
+
+      #NextBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #RibaLogo {
+          width: 285px;
+          height: 80px;
+      }
+
+      #QuestContainer {
+          height: 15rem;
+          width: 70rem;
+          margin-top: -5rem;
+          border-radius: 10px;
+          background-size: contain;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-left: 2.75rem;
+          padding-right: 2.75rem;
+          font-size: 2.5rem;
+          font-weight: lighter;
+          line-height: 2.5rem;
+          white-space: normal;
+          text-align: center;
+      }
+
+      #prevBtn {
+          height: 100px;
+          width: 50px;
+      }
+
+      #nextBtn {
+          height: 100px;
+          width: 50px;
+      }
+
+      #AnsNavCont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 79rem;
+          margin-top: 2cqw;
+      }
+
+      #answersCont {
+          width: 35rem;
+          height: 7rem;
+          white-space: normal;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+
+      #xMark {
+          width: 3rem;
+          height: 3rem;
+      }
+
+      #checkMark {
+          width: 4rem;
+          height: 3.5rem;
+      }
+
+      #resultOf {
+          font-size: 1.25rem;
+      }
+
+      #CorMissText {
+          font-size: 1.25rem;
+      }
+
+      #preRRR {
+          display: inline;
+          font-weight: bold;
+          font-size: 3.5rem;
+          padding-left: 1rem;
+      }
+
+      #postRRR {
+          display: inline;
+          font-weight: normal;
+          font-size: 1.25rem;
+      }
+
+      #nbAns {
+          display: inline;
+          font-weight: bold;
+          font-size: 3.5rem;
+          padding-left: 1rem;
+      }
+
+      #wordAns {
+          display: inline;
+          font-weight: bolder;
+          font-size: 1.40rem;
+          padding-left: 1rem;
+      }
+
+      #ansPopup {
+          z-index: 9999;
+      }
+
+      #ansPopupQues {
+          width: 70rem;
+          height: 11rem;
+          margin-top: 6rem;
+          margin-bottom: 2rem;
+          border-radius: 10px;
+          background-size: contain;
+      }
+
+      #ansPopupFields {
+          width: 70rem;
+          z-index: 9999;
+          border: 0.25rem solid #BC202E;
+      }
+
+      #ansNumbering {
+          font-size: 2rem;
+      }
+
+      #ansPopupSingField {
+          width: 55rem;
+          height: 5rem;
+          font-size: 2rem;
+          font-weight: lighter;
+      }
+
+      #subCancelBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 17.25rem;
+          height: 7rem;
+          margin-top: 2rem;
+      }
+
+      #expContainer {
+          background-color: white;
+          color: black;
+          font-size: 3rem;
+          line-height: 5rem;
+          padding: 3rem;
+          border-radius: 1.5rem;
+          border: 0.25rem solid #BC202E;
+          height: 70%;
+          width: 59%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      #expLogo1 {
+          height: 6rem;
+      }
+
+      #expLogo2 {
+          height: 8.5rem;
+      }
+
+      #expLogo3 {
+          height: 6rem;
+          margin-top: 1rem;
+      }
+
+      #expCloseBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 15rem;
+          height: 6rem;
+      }
+
+
+
+  }
+
+  /* For screens between 1536px and 1919px */
+  @media (min-width: 1536px) and (max-width: 1919px) {
+
+      #restartBtn {
+          height: 45px;
+          width: 200px;
+          font-size: 25px;
+      }
+
+      #SubmitBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #SubmitQzBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 28px;
+      }
+
+      #NextBtn {
+          margin-top: 2rem;
+          width: 210px;
+          height: 100px;
+          font-size: 40px;
+      }
+
+      #RibaLogo {
+          width: 225px;
+          height: 60px;
+      }
+
+      #QuestContainer {
+          height: 13rem;
+          width: 65rem;
+          margin-top: -4rem;
+          border-radius: 10px;
+          background-size: contain;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-left: 2.5rem;
+          padding-right: 2.5rem;
+          font-size: 2rem;
+          font-weight: lighter;
+          line-height: 2rem;
+          white-space: normal;
+          text-align: center;
+      }
+
+      #prevBtn,
+      #nextBtn {
+          height: 85px;
+          width: 45px;
+      }
+
+      #AnsNavCont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 70rem;
+          margin-top: 2cqw;
+      }
+
+      #answersCont {
+          width: 30rem;
+          height: 6rem;
+          white-space: normal;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+
+      #xMark {
+          width: 2.8rem;
+          height: 2.8rem;
+      }
+
+      #checkMark {
+          width: 3.5rem;
+          height: 3rem;
+      }
+
+      #resultOf,
+      #CorMissText {
+          font-size: 1.15rem;
+      }
+
+      #preRRR,
+      #nbAns {
+          font-size: 3rem;
+          padding-left: 1rem;
+      }
+
+      #postRRR {
+          font-size: 1.15rem;
+      }
+
+      #wordAns {
+          font-size: 1.2rem;
+          padding-left: 1rem;
+      }
+
+      #ansPopup {
+          z-index: 9999;
+      }
+
+      #ansPopupQues {
+          width: 61.5rem;
+          height: 10rem;
+          margin-top: 5rem;
+          margin-bottom: 1.5rem;
+          border-radius: 10px;
+          background-size: contain;
+      }
+
+      #ansPopupFields {
+          width: 61.5rem;
+          z-index: 9999;
+          border: 0.2rem solid #BC202E;
+      }
+
+      #ansNumbering {
+          font-size: 1.8rem;
+      }
+
+      #ansPopupSingField {
+          width: 50rem;
+          height: 4.5rem;
+          font-size: 1.8rem;
+          font-weight: lighter;
+      }
+
+      #subCancelBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 16rem;
+          height: 6.5rem;
+          margin-top: 2rem;
+      }
+
+      #expContainer {
+          background-color: white;
+          color: black;
+          font-size: 2.5rem;
+          line-height: 4rem;
+          padding: 2.5rem;
+          border-radius: 1.5rem;
+          border: 0.2rem solid #BC202E;
+          height: 65%;
+          width: 55%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      #expLogo1,
+      #expLogo3 {
+          height: 5.5rem;
+      }
+
+      #expLogo2 {
+          height: 8rem;
+      }
+
+      #expCloseBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 14rem;
+          height: 5.5rem;
+      }
+
+  }
+
+  /* For screens between 1280px and 1535px */
+  @media (min-width: 1280px) and (max-width: 1535px) {
+
+      #restartBtn {
+          height: 40px;
+          width: 150px;
+          font-size: 20px;
+      }
+
+      #SubmitBtn {
+          margin-top: 2rem;
+          width: 155px;
+          height: 70px;
+          font-size: 25px;
+      }
+
+      #SubmitQzBtn {
+          margin-top: 2rem;
+          width: 155px;
+          height: 70px;
+          font-size: 20px;
+      }
+
+      #NextBtn {
+          margin-top: 2rem;
+          width: 155px;
+          height: 70px;
+          font-size: 25px;
+      }
+
+      #RibaLogo {
+          width: 190px;
+          height: 50px;
+      }
+
+      #QuestContainer {
+          height: 12rem;
+          width: 60rem;
+          border-radius: 10px;
+          background-size: contain;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-left: 4rem;
+          padding-right: 4rem;
+          font-size: 1.75rem;
+          font-weight: lighter;
+          line-height: 2rem;
+          white-space: normal;
+          text-align: center;
+      }
+
+      #prevBtn,
+      #nextBtn {
+          height: 70px;
+          width: 40px;
+      }
+
+      #AnsNavCont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          max-width: 65rem;
+          margin-top: 2cqw;
+      }
+
+      #answersCont {
+          width: 28rem;
+          height: 5.5rem;
+          white-space: normal;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+
+      #xMark {
+          width: 2.5rem;
+          height: 2.5rem;
+      }
+
+      #checkMark {
+          width: 3.2rem;
+          height: 2.8rem;
+      }
+
+      #resultOf,
+      #CorMissText {
+          font-size: 1rem;
+      }
+
+      #preRRR,
+      #nbAns {
+          font-size: 2.8rem;
+          padding-left: 1rem;
+      }
+
+      #postRRR {
+          font-size: 1.1rem;
+      }
+
+      #wordAns {
+          font-size: 1.1rem;
+          padding-left: 1rem;
+      }
+
+      #ansPopup {
+          z-index: 9999;
+      }
+
+      #ansPopupQues {
+          width: 60rem;
+          height: 9rem;
+          margin-top: 4.5rem;
+          margin-bottom: 1.5rem;
+          border-radius: 10px;
+          background-size: contain;
+      }
+
+      #ansPopupFields {
+          width: 57rem;
+          z-index: 9999;
+          border: 0.2rem solid #BC202E;
+      }
+
+      #ansNumbering {
+          font-size: 1.6rem;
+      }
+
+      #ansPopupSingField {
+          width: 45rem;
+          height: 4rem;
+          font-size: 1.6rem;
+          font-weight: lighter;
+      }
+
+      #subCancelBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 10rem;
+          height: 4rem;
+          margin-top: 2rem;
+      }
+
+      #expContainer {
+          background-color: white;
+          color: black;
+          font-size: 2.3rem;
+          line-height: 3.8rem;
+          padding: 2.2rem;
+          border-radius: 1.5rem;
+          border: 0.2rem solid #BC202E;
+          height: 70%;
+          width: 72%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      #expLogo1,
+      #expLogo3 {
+          height: 5rem;
+      }
+
+      #expLogo2 {
+          height: 7.5rem;
+      }
+
+      #expCloseBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 12rem;
+          height: 4.9rem;
+      }
+  }

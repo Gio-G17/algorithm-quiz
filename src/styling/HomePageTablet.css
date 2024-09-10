@@ -1,0 +1,188 @@
+@media (min-width: 601px) and (max-width: 767px) {
+
+    #homeLayout {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #clock-container img {
+        width: 60%;
+    }
+
+    #title-start-container {
+        width: 100%;
+        margin-top: 65% !important;
+        margin-left: 0%;
+    }
+
+    #titles h1 {
+        width: 100%;
+        font-size: 40px;
+        justify-content: center;
+        text-align: center;
+        margin-left: 0;
+
+    }
+
+    #titlept2 {
+        margin: 0;
+    }
+
+
+    #start-button-container img {
+        position: absolute;
+        left: 30%;
+        top: 65%;
+        width: 250px;
+    }
+
+    #alogSlogan {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #AlgoLogo {
+        width: 50%;
+        height: 4%;
+        position: absolute;
+        bottom: 12.5%;
+        left: 25%;
+
+    }
+
+    #Slogan {
+        position: absolute;
+        width: 80%;
+        height: 4%;
+        left: 10%;
+
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 820px) and (max-height: 1080px) {
+
+    #homeLayout {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+
+    #clock-container img {
+        width: 60%;
+    }
+
+    #titles h1 {
+        font-size: 45px;
+        justify-content: end;
+        text-align: end;
+        margin-top: 5rem;
+        margin-right: 3rem;
+        margin-left: 1.5rem;
+    }
+
+    #title-start-container {
+        margin-left: 20%;
+        margin-top: 7%;
+    }
+
+    #start-button-container img {
+        position: absolute;
+        left: 35%;
+        top: 57%;
+        width: 250px;
+    }
+
+    #alogSlogan {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #AlgoLogo {
+        position: absolute;
+        bottom: 15%;
+        left: 25%;
+
+    }
+
+}
+
+/* For screens between 811px and 1919px */
+@media (min-width: 821px) and (max-width: 962px) {
+
+
+    #homeLayout {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+
+    #clock-container img {
+        width: 50%;
+    }
+
+    #titles h1 {
+        font-size: 50px;
+        justify-content: end;
+        text-align: end;
+        margin-top: 5rem;
+        margin-right: 3rem;
+        margin-left: 0rem;
+    }
+
+    #title-start-container {
+        margin-left: 20%;
+        margin-top: 7%;
+    }
+
+    #start-button-container img {
+        position: absolute;
+        left: 34%;
+        top: 57%;
+        width: 250px;
+    }
+
+    #alogSlogan {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #AlgoLogo {
+        position: absolute;
+        bottom: 15%;
+        left: 25%;
+    }
+
+    #Slogan{
+        position: absolute;
+        left: 8%;
+    }
+
+}
+
+/* For screens between 1280px and 1535px */
+@media (min-width: 1280px) and (max-width: 1535px) {
+
+    #clock-container img {
+        width: 70%;
+    }
+
+    #titles h1 {
+        font-size: 60px;
+    }
+
+    #title-start-container {
+        margin-left: 38%;
+        margin-top: 5%;
+    }
+
+    #start-button-container img {
+        width: 200px;
+    }
+}

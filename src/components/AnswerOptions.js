@@ -1,6 +1,8 @@
 import React from 'react';
 import AnswerOption from './AnswerOption';
-import '../styling/QuizPage.css'; // Import your QuizPage CSS file
+import '../styling/QuizPageDesktop.css'; // Import your QuizPage CSS file
+import '../styling/QuizPageTablet.css'; // Import your QuizPage CSS file
+
 
 
 const AnswerOptions = ({

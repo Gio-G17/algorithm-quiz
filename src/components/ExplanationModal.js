@@ -39,9 +39,9 @@ const ExplanationModal = ({ explanation, closeExplanation, type }) => {
         {/* Add logos if the type is 'text-entry' */}
         {type === 'text-entry' && (
           <div className="flex flex-col items-center mt-6">
-            <img id='expLogos' src="/assets/images/RibaLogo.png" alt="Logo 1" className="mb-2" style={{ height: '60px' }} />
-            <img id='expLogos' src="/assets/images/AviLogo.png" alt="Logo 2" className="mb-2" style={{ height: '80px' }} />
-            <img id='expLogos' src="/assets/images/KloLogo.png" alt="Logo 3" className="mb-2" style={{ height: '70px' }} />
+            <img id='expLogo1' src="/assets/images/RibaLogo.png" alt="Logo 1" className="mb-2"/>
+            <img id='expLogo2' src="/assets/images/AviLogo.png" alt="Logo 2" className="mb-2"/>
+            <img id='expLogo3' src="/assets/images/KloLogo.png" alt="Logo 3" className="mb-2"/>
           </div>
         )}
       </div>
@@ -49,14 +49,15 @@ const ExplanationModal = ({ explanation, closeExplanation, type }) => {
       {/* Close button below the container */}
 
       <button
+              id='expCloseBtn'
               onClick={closeExplanation}
               className="py-2 px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')] text-white font-bold text-2xl mt-3"
-              style={{
-                zIndex: 9999,
-                backgroundSize: 'contain',
-                width: '10rem',
-                height: '4rem',
-              }}
+              // style={{
+              //   zIndex: 9999,
+              //   backgroundSize: 'contain',
+              //   width: '10rem',
+              //   height: '4rem',
+              // }}
             >
               Close
             </button>

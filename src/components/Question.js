@@ -1,5 +1,7 @@
 import React from 'react';
-import '../styling/QuizPage.css'; // Import your QuizPage CSS file
+import '../styling/QuizPageDesktop.css'; // Import your QuizPage CSS file
+import '../styling/QuizPageTablet.css'; // Import your QuizPage CSS file
+
 
 
 // Helper function to check if a word is in the keywords array
