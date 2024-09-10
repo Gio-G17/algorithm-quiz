@@ -40,18 +40,14 @@
           border-radius: 10px;
           background-size: contain;
           display: flex;
-          /* Use flexbox */
           justify-content: center;
-          /* Center horizontally */
           align-items: center;
-          /* Center vertically */
           padding-left: 2.75rem;
           padding-right: 2.75rem;
           font-size: 2.5rem;
           font-weight: lighter;
           line-height: 2.5rem;
           white-space: normal;
-          /* Allow text to wrap */
           text-align: center;
       }
 
@@ -71,9 +67,7 @@
           align-items: center;
           width: 100%;
           max-width: 79rem;
-          /* 4xl in Tailwind equals 64rem */
           margin-top: 2cqw;
-          /* 4 in Tailwind equals 1rem */
       }
 
       #answersCont {
@@ -102,69 +96,94 @@
           font-size: 1.25rem;
       }
 
-      #preRRR{
-        display: inline;
-        font-weight: bold;
-        font-size: 3.5rem;
-        padding-left: 1rem;
+      #preRRR {
+          display: inline;
+          font-weight: bold;
+          font-size: 3.5rem;
+          padding-left: 1rem;
       }
 
-      #postRRR{
-        display: inline;
-        font-weight: normal;
-        font-size: 1.25rem;
+      #postRRR {
+          display: inline;
+          font-weight: normal;
+          font-size: 1.25rem;
       }
 
-      #nbAns{
-        display: inline;
-        font-weight: bold;
-        font-size: 3.5rem;
-        padding-left: 1rem;
+      #nbAns {
+          display: inline;
+          font-weight: bold;
+          font-size: 3.5rem;
+          padding-left: 1rem;
       }
 
-      #wordAns{
-        display: inline;
-        font-weight: bolder;
-        font-size: 1.40rem;
-        padding-left: 1rem;
+      #wordAns {
+          display: inline;
+          font-weight: bolder;
+          font-size: 1.40rem;
+          padding-left: 1rem;
       }
 
-      #ansPopup{
-        z-index: 9999;
+      #ansPopup {
+          z-index: 9999;
       }
 
-      #ansPopupQues{
-        width: 70rem;
-        height: 11rem;
-        margin-top: 11rem;
-        margin-bottom: 2rem;
-        border-radius: 10px;
-        background-size: contain;
+      #ansPopupQues {
+          width: 70rem;
+          height: 11rem;
+          margin-top: 11rem;
+          margin-bottom: 2rem;
+          border-radius: 10px;
+          background-size: contain;
       }
 
-      #ansPopupFields{
-        width: 70rem;
-        z-index: 9999;
-        border: 0.25rem solid #BC202E;
+      #ansPopupFields {
+          width: 70rem;
+          z-index: 9999;
+          border: 0.25rem solid #BC202E;
       }
 
-      #ansNumbering{
-        font-size: 2rem;
+      #ansNumbering {
+          font-size: 2rem;
       }
 
-      #ansPopupSingField{
-        width: 55rem;
-        height: 5rem;
-        font-size: 2rem;
-        font-weight: lighter;
+      #ansPopupSingField {
+          width: 55rem;
+          height: 5rem;
+          font-size: 2rem;
+          font-weight: lighter;
       }
 
-      #subCancelBtn{
-        z-index: 9999;
-        background-size: contain;
-        width: 17.25rem;
-        height: 7rem;
-        margin-top: 2rem;
+      #subCancelBtn {
+          z-index: 9999;
+          background-size: contain;
+          width: 17.25rem;
+          height: 7rem;
+          margin-top: 2rem;
+      }
+
+      #expContainer {
+          background-color: white;
+          color: black;
+          font-size: 4rem;
+          /* This is equivalent to text-3xl */
+          line-height: 5rem;
+          padding: 3rem;
+          /* Equivalent to p-6 */
+          border-radius: 1.5rem;
+          /* Equivalent to rounded-lg */
+          border: 0.25rem solid #BC202E;
+          height: 61%;
+          /* Equivalent to h-1/2 */
+          width: 61%;
+          /* Equivalent to w-1/2 */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+
+      #expLogos{
+
       }
 
   }

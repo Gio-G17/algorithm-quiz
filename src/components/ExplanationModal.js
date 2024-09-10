@@ -33,15 +33,15 @@ const ExplanationModal = ({ explanation, closeExplanation, type }) => {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-white bg-opacity-50">
       {/* Popup container with red border, white background, and rounded corners */}
-      <div className="bg-white text-black text-3xl p-6 rounded-lg border-4 border-[#BC202E] h-1/2 w-1/2 flex flex-col justify-center items-center">
+      <div id='expContainer' className="bg-white text-black text-3xl p-6 rounded-lg border-4 border-[#BC202E] h-1/2 w-1/2 flex flex-col justify-center items-center">
         <p className="text-center">{highlightText(explanation, keywords)}</p>
 
         {/* Add logos if the type is 'text-entry' */}
         {type === 'text-entry' && (
           <div className="flex flex-col items-center mt-6">
-            <img src="/assets/images/RibaLogo.png" alt="Logo 1" className="mb-2" style={{ height: '60px' }} />
-            <img src="/assets/images/AviLogo.png" alt="Logo 2" className="mb-2" style={{ height: '80px' }} />
-            <img src="/assets/images/KloLogo.png" alt="Logo 3" className="mb-2" style={{ height: '70px' }} />
+            <img id='expLogos' src="/assets/images/RibaLogo.png" alt="Logo 1" className="mb-2" style={{ height: '60px' }} />
+            <img id='expLogos' src="/assets/images/AviLogo.png" alt="Logo 2" className="mb-2" style={{ height: '80px' }} />
+            <img id='expLogos' src="/assets/images/KloLogo.png" alt="Logo 3" className="mb-2" style={{ height: '70px' }} />
           </div>
         )}
       </div>
