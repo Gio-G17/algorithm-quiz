@@ -1,21 +1,4 @@
-/* HomePage.css */
 
-/* Default styles (base view) */
-#clock-container img {
-    width: 40%;
-    /* Default width for larger screens */
-}
-
-#titles h1 {
-    font-size: 50px;
-}
-
-
-#start-button-container img {
-    width: 200px;
-}
-
-/* Media queries for different screen sizes */
 
 /* For screens larger than 1920px (Full HD) */
 @media (min-width: 1920px) {

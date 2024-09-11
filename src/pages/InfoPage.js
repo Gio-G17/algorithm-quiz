@@ -1,4 +1,8 @@
 import React from 'react';
+import '../styling/InfoPageTablet.css'; // Import your CSS file
+import '../styling/HomePageTablet.css'; // Import your CSS file
+
+
 
 const InfoPage = ({ onNext, onPrev }) => {
   return (
@@ -7,15 +11,16 @@ const InfoPage = ({ onNext, onPrev }) => {
 
       {/* Exit Quiz Button */}
       <div className="absolute top-[4%] right-[3%]">
-        <button
-          className="text-xl font-bold text-white bg-red-600 hover:bg-red-800 px-4 py-2 rounded-lg"
-          onClick={() => window.location.reload()} // Refreshes the page
+      <button
+          id='restartBtn'
+          className="text-xl font-bold text-white bg-[#E02334] hover:bg-[#BC202E] px-4 py-2 rounded-lg"
+          onClick={() => window.location.reload()}
         >
-          Exit Quiz
+          Restart Quiz
         </button>
       </div>
 
-      <h1 className="text-6xl w-auto text-black font-light text-center mx-4 mt-36 mb-14">
+      <h1 id='infoTitle' className="text-6xl w-auto text-black font-light text-center mx-4 mt-36 mb-14">
         Challenge Your <br/> Understanding of</h1>
 
       {/* Text section with Previous and Next buttons on either side */}

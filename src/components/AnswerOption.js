@@ -107,6 +107,7 @@ const AnswerOption = ({
               <img
                 id='checkMark' src={checkmarkPath}
                 alt="Correct"
+                className="ml-2 mr-2"
               />
             )}
             {comparisonResult === 'half-correct' && (
@@ -114,6 +115,7 @@ const AnswerOption = ({
                 id='checkMark'
                 src={halfCheck}
                 alt="Half-Correct"
+                className="ml-2 mr-2"
               />
             )}
             {comparisonResult === 'incorrect' && correctList.length > 0 && (
@@ -121,6 +123,7 @@ const AnswerOption = ({
                 id='checkMark'
                 src={halfCheck}
                 alt="Half-Correct"
+                className="ml-2 mr-2"
               />
             )}
             {comparisonResult === 'incorrect' && correctList.length === 0 && (
@@ -128,6 +131,7 @@ const AnswerOption = ({
                 id='checkMark'
                 src={checkmarkPath}
                 alt="Correct"
+                className="ml-2 mr-2"
               />
             )}
           </div>
@@ -139,6 +143,7 @@ const AnswerOption = ({
               id='xMark'
               src={crossPath}
               alt="Incorrect"
+              className="ml-2 mr-2"
             />
           </div>
         );
@@ -153,9 +158,8 @@ const AnswerOption = ({
     if (index == correctNumber - 1) {
       return (
         <div
-          className={`flex items-center flex-row text-center w-full ${correctList.length > 0 && missingList.length > 0 ? 'justify-between' : ''
-            } ${correctList.length > 0 && missingList.length > 0 ? 'pr-12' : ''
-            }`}
+        id='OfCorrMiss'
+          className={`flex items-center flex-row text-center w-full`}
         >
           {(correctList.length > 0 || missingList.length > 0) && (
             <span id='resultOf' className="text-gray-400 text-sm font-normal mr-3 ml-4">

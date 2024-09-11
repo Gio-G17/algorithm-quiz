@@ -1,4 +1,4 @@
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 962px) {
 
     #restartBtn {
         height: 50px;
@@ -28,8 +28,8 @@
     }
 
     #RibaLogo {
-        width: 150px;
-        height: 40px;
+        width: 185px;
+        height: 50px;
     }
 
     #QuestContainer {
@@ -38,7 +38,8 @@
         align-items: center;
         text-align: center;
         height: 12rem;
-        width: 81%; /* Set width to 100% to allow expansion */
+        width: 100%;
+        /* Set width to 100% to allow expansion */
         margin-top: -3rem;
         border-radius: 8px;
         padding-left: 1.5rem;
@@ -46,11 +47,9 @@
         font-size: 1.5rem;
         line-height: 1.8rem;
         background-image: url('../../public/assets/images/QuestionBg.png');
-        background-size: cover;
+        background-size: contain;
         background-position: center;
     }
-    
-    
 
     #prevBtn,
     #nextBtn {
@@ -59,21 +58,27 @@
     }
 
     #AnsNavCont {
-        width: 100%; /* Allow the container to take up 90% of the viewport width */
-        max-width: 50rem; /* Set a maximum width to prevent excessive expansion */
+        width: 100%;
+        /* Allow the container to take up 90% of the viewport width */
+        max-width: 54rem;
+        /* Set a maximum width to prevent excessive expansion */
         height: auto;
     }
-    
+
     #answersCont {
-        width: 100%; /* Make the answers container responsive */
+        width: 100%;
+        /* Make the answers container responsive */
         min-width: 14rem;
-        max-width: 20rem; /* Set a maximum width */
         height: 10rem;
     }
 
-    #xMark,
-    #checkMark {
+    #xMark{
         width: 2rem;
+        height: 2rem;   
+    }
+
+    #checkMark {
+        width: 2.25rem;
         height: 2rem;
     }
 
@@ -92,19 +97,18 @@
     }
 
     #ansPopupQues {
-        width: 77%;
+        width: 95%;
         height: 10rem;
-        margin-top: 8.4rem;
-        margin-bottom: 2rem;
+        margin-top: 10.4rem;
         border-radius: 0.5rem;
         background-image: url('../../public/assets/images/TextFieldBg.png');
-        background-size: cover;
+        background-size: contain;
         background-position: center;
         padding: 5rem;
     }
 
     #ansPopupFields {
-        width: 29rem;
+        width: 95%;
         z-index: 9999;
         border: 0.2rem solid #BC202E;
     }
@@ -120,8 +124,8 @@
         font-weight: lighter;
     }
 
-    
-    #subCancelRow{
+
+    #subCancelRow {
         margin-top: 2rem;
         --tw-space-x-reverse: 0;
         margin-right: 0rem;
@@ -158,598 +162,15 @@
 
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
 
-    #restartBtn {
-        height: 50px;
-        width: 150px;
-        font-size: 18px;
-    }
-
-    #SubmitBtn {
-        margin-top: 1.5rem;
-        width: 150px;
-        height: 70px;
-        font-size: 20px;
-    }
-
-    #SubmitQzBtn {
-        margin-top: 1.5rem;
-        width: 150px;
-        height: 70px;
-        font-size: 18px;
-    }
-
-    #NextBtn {
-        margin-top: 1.5rem;
-        width: 150px;
-        height: 70px;
-        font-size: 20px;
-    }
-
-    #RibaLogo {
-        width: 150px;
-        height: 40px;
-    }
-
-    #QuestContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        height: 12rem;
-        width: 81%; /* Set width to 100% to allow expansion */
-        margin-top: -3rem;
-        border-radius: 8px;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        font-size: 1.5rem;
-        line-height: 1.8rem;
-        background-image: url('../../public/assets/images/QuestionBg.png');
-        background-size: cover;
-        background-position: center;
-    }
-    
-    
-
-    #prevBtn,
-    #nextBtn {
-        height: 50px;
-        width: 30px;
-    }
-
-    #AnsNavCont {
-        width: 100%; /* Allow the container to take up 90% of the viewport width */
-        max-width: 50rem; /* Set a maximum width to prevent excessive expansion */
-        height: auto;
-    }
-    
-    #answersCont {
-        width: 100%; /* Make the answers container responsive */
-        min-width: 14rem;
-        max-width: 20rem; /* Set a maximum width */
-        height: 10rem;
-    }
-
-    #xMark,
-    #checkMark {
-        width: 2rem;
-        height: 2rem;
-    }
-
-    #resultOf,
-    #CorMissText {
-        font-size: 0.75rem;
-    }
-
-    #preRRR,
-    #nbAns {
-        font-size: 2rem;
-    }
-
-    #wordAns {
-        font-size: 1rem;
-    }
-
-    #ansPopupQues {
-        width: 77%;
-        height: 10rem;
-        margin-top: 8.4rem;
-        margin-bottom: 2rem;
-        border-radius: 0.5rem;
-        background-image: url('../../public/assets/images/TextFieldBg.png');
-        background-size: cover;
-        background-position: center;
-        padding: 5rem;
-    }
-
-    #ansPopupFields {
-        width: 29rem;
-        z-index: 9999;
-        border: 0.2rem solid #BC202E;
-    }
-
-    #ansNumbering {
-        font-size: 1.6rem;
-    }
-
-    #ansPopupSingField {
-        width: 45rem;
-        height: 4rem;
-        font-size: 1.6rem;
-        font-weight: lighter;
-    }
-
-    
-    #subCancelRow{
-        margin-top: 2rem;
-        --tw-space-x-reverse: 0;
-        margin-right: 0rem;
-        margin-left: 0rem;
-    }
-
-    #subCancelBtn {
-        width: 12rem;
-        height: 5rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-    }
-
-    #expContainer {
-        width: 77%;
-        font-size: 1.8rem;
-        line-height: 2.5rem;
-        padding: 1.5rem;
-    }
-
-    #expLogo1,
-    #expLogo3 {
-        height: 4rem;
-    }
-
-    #expLogo2 {
-        height: 6rem;
-    }
-
-    #expCloseBtn {
-        width: 12rem;
-        height: 5rem;
-    }
-    
-}
-
-@media (min-width: 810px) and (max-width: 1080px) {
-
-    #restartBtn {
-        height: 35px;
-        width: 140px;
-        font-size: 18px;
-    }
-
-    #SubmitBtn {
-        margin-top: 1.5rem;
-        width: 140px;
-        height: 60px;
-        font-size: 20px;
-    }
-
-    #SubmitQzBtn {
-        margin-top: 1.5rem;
-        width: 140px;
-        height: 60px;
-        font-size: 20px;
-    }
-
-    #NextBtn {
-        margin-top: 1.5rem;
-        width: 140px;
-        height: 60px;
-        font-size: 20px;
-    }
-
-    #RibaLogo {
-        width: 170px;
-        height: 50px;
-    }
-
-    #QuestContainer {
-        height: 10rem;
-        width: 50rem;
-        padding-left: 1.75rem;
-        padding-right: 1.75rem;
-        font-size: 1.75rem;
-        line-height: 2rem;
-    }
-
-    #prevBtn,
-    #nextBtn {
-        height: 55px;
-        width: 35px;
-    }
-
-    #AnsNavCont {
-        max-width: 55rem;
-    }
-
-    #answersCont {
-        width: 28rem;
-        height: 5.5rem;
-    }
-
-    #xMark,
-    #checkMark {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    #resultOf,
-    #CorMissText {
-        font-size: 1.1rem;
-    }
-
-    #preRRR,
-    #nbAns {
-        font-size: 2.2rem;
-    }
-
-    #wordAns {
-        font-size: 1.2rem;
-    }
-
-    #ansPopupQues {
-        width: 50rem;
-        height: 9rem;
-    }
-
-    #subCancelBtn {
-        width: 14rem;
-        height: 4.5rem;
-    }
-
-    #expContainer {
-        font-size: 2rem;
-        line-height: 2.8rem;
-        padding: 1.8rem;
-    }
-
-    #expLogo1,
-    #expLogo3 {
-        height: 4.5rem;
-    }
-
-    #expLogo2 {
-        height: 6.5rem;
-    }
-
-    #expCloseBtn {
-        width: 10.5rem;
-        height: 4.5rem;
+@media (min-width: 601px) and (max-width: 770px) {
+    #ansPopup h1 {
+        font-size: 25px;
     }
 }
 
-@media (min-width: 820px) and (max-width: 1180px) {
-
-    #restartBtn {
-        height: 38px;
-        width: 150px;
-        font-size: 20px;
-    }
-
-    #SubmitBtn {
-        margin-top: 1.5rem;
-        width: 150px;
-        height: 65px;
-        font-size: 22px;
-    }
-
-    #SubmitQzBtn {
-        margin-top: 1.5rem;
-        width: 150px;
-        height: 65px;
-        font-size: 22px;
-    }
-
-    #NextBtn {
-        margin-top: 1.5rem;
-        width: 150px;
-        height: 65px;
-        font-size: 22px;
-    }
-
-    #RibaLogo {
-        width: 175px;
-        height: 55px;
-    }
-
-    #QuestContainer {
-        height: 11rem;
-        width: 55rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        font-size: 2rem;
-        line-height: 2.2rem;
-    }
-
-    #prevBtn,
-    #nextBtn {
-        height: 60px;
-        width: 40px;
-    }
-
-    #AnsNavCont {
-        max-width: 60rem;
-    }
-
-    #answersCont {
-        width: 30rem;
-        height: 6rem;
-    }
-
-    #xMark,
-    #checkMark {
-        width: 3rem;
-        height: 3rem;
-    }
-
-    #resultOf,
-    #CorMissText {
-        font-size: 1.2rem;
-    }
-
-    #preRRR,
-    #nbAns {
-        font-size: 2.4rem;
-    }
-
-    #wordAns {
-        font-size: 1.3rem;
-    }
-
-    #ansPopupQues {
-        width: 55rem;
-        height: 10rem;
-    }
-
-    #subCancelBtn {
-        width: 14.5rem;
-        height: 5rem;
-    }
-
-    #expContainer {
-        font-size: 2.2rem;
-        line-height: 3rem;
-        padding: 2rem;
-    }
-
-    #expLogo1,
-    #expLogo3 {
-        height: 5rem;
-    }
-
-    #expLogo2 {
-        height: 7rem;
-    }
-
-    #expCloseBtn {
-        width: 11rem;
-        height: 5rem;
-    }
-}
-
-@media (min-width: 1280px) and (max-width: 800px) {
-
-    #restartBtn {
-        height: 40px;
-        width: 160px;
-        font-size: 20px;
-    }
-
-    #SubmitBtn {
-        margin-top: 1.5rem;
-        width: 160px;
-        height: 70px;
-        font-size: 24px;
-    }
-
-    #SubmitQzBtn {
-        margin-top: 1.5rem;
-        width: 160px;
-        height: 70px;
-        font-size: 24px;
-    }
-
-    #NextBtn {
-        margin-top: 1.5rem;
-        width: 160px;
-        height: 70px;
-        font-size: 24px;
-    }
-
-    #RibaLogo {
-        width: 180px;
-        height: 60px;
-    }
-
-    #QuestContainer {
-        height: 12rem;
-        width: 60rem;
-        padding-left: 2.25rem;
-        padding-right: 2.25rem;
-        font-size: 2.25rem;
-        line-height: 2.5rem;
-    }
-
-    #prevBtn,
-    #nextBtn {
-        height: 65px;
-        width: 40px;
-    }
-
-    #AnsNavCont {
-        max-width: 65rem;
-    }
-
-    #answersCont {
-        width: 32rem;
-        height: 6.5rem;
-    }
-
-    #xMark,
-    #checkMark {
-        width: 3.2rem;
-        height: 3.2rem;
-    }
-
-    #resultOf,
-    #CorMissText {
-        font-size: 1.3rem;
-    }
-
-    #preRRR,
-    #nbAns {
-        font-size: 2.5rem;
-    }
-
-    #wordAns {
-        font-size: 1.35rem;
-    }
-
-    #ansPopupQues {
-        width: 60rem;
-        height: 11rem;
-    }
-
-    #subCancelBtn {
-        width: 15rem;
-        height: 5.5rem;
-    }
-
-    #expContainer {
-        font-size: 2.4rem;
-        line-height: 3.2rem;
-        padding: 2.2rem;
-    }
-
-    #expLogo1,
-    #expLogo3 {
-        height: 5.5rem;
-    }
-
-    #expLogo2 {
-        height: 7.5rem;
-    }
-
-    #expCloseBtn {
-        width: 12rem;
-        height: 5.2rem;
-    }
-}
-
-@media (min-width: 962px) and (max-width: 601px) {
-
-    #restartBtn {
-        height: 28px;
-        width: 110px;
-        font-size: 14px;
-    }
-
-    #SubmitBtn {
-        margin-top: 1.5rem;
-        width: 110px;
-        height: 50px;
-        font-size: 16px;
-    }
-
-    #SubmitQzBtn {
-        margin-top: 1.5rem;
-        width: 110px;
-        height: 50px;
-        font-size: 16px;
-    }
-
-    #NextBtn {
-        margin-top: 1.5rem;
-        width: 110px;
-        height: 50px;
-        font-size: 16px;
-    }
-
-    #RibaLogo {
-        width: 135px;
-        height: 40px;
-    }
-
-    #QuestContainer {
-        height: 7rem;
-        width: 40rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-        font-size: 1.4rem;
-        line-height: 1.6rem;
-    }
-
-    #prevBtn,
-    #nextBtn {
-        height: 45px;
-        width: 25px;
-    }
-
-    #AnsNavCont {
-        max-width: 45rem;
-    }
-
-    #answersCont {
-        width: 22rem;
-        height: 4.5rem;
-    }
-
-    #xMark,
-    #checkMark {
-        width: 2rem;
-        height: 2rem;
-    }
-
-    #resultOf,
-    #CorMissText {
-        font-size: 0.9rem;
-    }
-
-    #preRRR,
-    #nbAns {
-        font-size: 1.8rem;
-    }
-
-    #wordAns {
-        font-size: 1rem;
-    }
-
-    #ansPopupQues {
-        width: 40rem;
-        height: 7rem;
-    }
-
-    #subCancelBtn {
-        width: 10rem;
-        height: 3.5rem;
-    }
-
-    #expContainer {
-        font-size: 1.6rem;
-        line-height: 2rem;
-        padding: 1.2rem;
-    }
-
-    #expLogo1,
-    #expLogo3 {
-        height: 3.5rem;
-    }
-
-    #expLogo2 {
-        height: 5rem;
-    }
-
-    #expCloseBtn {
-        width: 8rem;
-        height: 3.5rem;
+@media (min-width: 771px) and (max-width: 800px) {
+    #ansPopup h1 {
+        font-size: 35px;
     }
 }
