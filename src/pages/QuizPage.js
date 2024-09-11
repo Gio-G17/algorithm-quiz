@@ -248,7 +248,7 @@ const QuizPage = () => {
       )}
 
 
-      {/* Explanation Modal */}
+     
       {showExplanation && (
         <ExplanationModal
           explanation={questions[currentQuestionIndex].explanation}

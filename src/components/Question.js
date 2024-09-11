@@ -29,7 +29,7 @@ const Question = ({ questionText }) => {
   return (
     <div
       id='QuestContainer'
-      className="text-white mb-4text-center bg-center bg-no-repeat bg-[url('/public/assets/images/QuestionBg.png')]"
+      className="text-white mb-4text-center bg-center bg-no-repeat"
     >
       <div>
         {highlightText(questionText, keywords)}

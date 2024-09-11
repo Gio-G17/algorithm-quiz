@@ -1,30 +1,30 @@
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 767px) {
 
     #restartBtn {
         height: 50px;
         width: 150px;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     #SubmitBtn {
         margin-top: 1.5rem;
-        width: 130px;
-        height: 50px;
-        font-size: 18px;
+        width: 150px;
+        height: 70px;
+        font-size: 20px;
     }
 
     #SubmitQzBtn {
         margin-top: 1.5rem;
-        width: 130px;
-        height: 50px;
+        width: 150px;
+        height: 70px;
         font-size: 18px;
     }
 
     #NextBtn {
         margin-top: 1.5rem;
-        width: 130px;
-        height: 50px;
-        font-size: 18px;
+        width: 150px;
+        height: 70px;
+        font-size: 20px;
     }
 
     #RibaLogo {
@@ -33,39 +33,57 @@
     }
 
     #QuestContainer {
-        height: 8rem;
-        width: 45rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 12rem;
+        width: 81%; /* Set width to 100% to allow expansion */
+        margin-top: -3rem;
         border-radius: 8px;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         font-size: 1.5rem;
         line-height: 1.8rem;
+        background-image: url('../../public/assets/images/QuestionBg.png');
+        background-size: cover;
+        background-position: center;
     }
+    
+    
 
-    #prevBtn, #nextBtn {
+    #prevBtn,
+    #nextBtn {
         height: 50px;
         width: 30px;
     }
 
     #AnsNavCont {
-        max-width: 50rem;
+        width: 100%; /* Allow the container to take up 90% of the viewport width */
+        max-width: 50rem; /* Set a maximum width to prevent excessive expansion */
+        height: auto;
     }
-
+    
     #answersCont {
-        width: 25rem;
-        height: 5rem;
+        width: 100%; /* Make the answers container responsive */
+        min-width: 14rem;
+        max-width: 20rem; /* Set a maximum width */
+        height: 10rem;
     }
 
-    #xMark, #checkMark {
+    #xMark,
+    #checkMark {
         width: 2rem;
         height: 2rem;
     }
 
-    #resultOf, #CorMissText {
-        font-size: 1rem;
+    #resultOf,
+    #CorMissText {
+        font-size: 0.75rem;
     }
 
-    #preRRR, #nbAns {
+    #preRRR,
+    #nbAns {
         font-size: 2rem;
     }
 
@@ -74,22 +92,58 @@
     }
 
     #ansPopupQues {
+        width: 77%;
+        height: 10rem;
+        margin-top: 8.4rem;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+        background-image: url('../../public/assets/images/TextFieldBg.png');
+        background-size: cover;
+        background-position: center;
+        padding: 5rem;
+    }
+
+    #ansPopupFields {
+        width: 29rem;
+        z-index: 9999;
+        border: 0.2rem solid #BC202E;
+    }
+
+    #ansNumbering {
+        font-size: 1.6rem;
+    }
+
+    #ansPopupSingField {
         width: 45rem;
-        height: 8rem;
+        height: 4rem;
+        font-size: 1.6rem;
+        font-weight: lighter;
+    }
+
+    
+    #subCancelRow{
+        margin-top: 2rem;
+        --tw-space-x-reverse: 0;
+        margin-right: 0rem;
+        margin-left: 0rem;
     }
 
     #subCancelBtn {
         width: 12rem;
-        height: 4rem;
+        height: 5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 
     #expContainer {
+        width: 77%;
         font-size: 1.8rem;
         line-height: 2.5rem;
         padding: 1.5rem;
     }
 
-    #expLogo1, #expLogo3 {
+    #expLogo1,
+    #expLogo3 {
         height: 4rem;
     }
 
@@ -98,9 +152,170 @@
     }
 
     #expCloseBtn {
-        width: 10rem;
+        width: 12rem;
+        height: 5rem;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    #restartBtn {
+        height: 50px;
+        width: 150px;
+        font-size: 18px;
+    }
+
+    #SubmitBtn {
+        margin-top: 1.5rem;
+        width: 150px;
+        height: 70px;
+        font-size: 20px;
+    }
+
+    #SubmitQzBtn {
+        margin-top: 1.5rem;
+        width: 150px;
+        height: 70px;
+        font-size: 18px;
+    }
+
+    #NextBtn {
+        margin-top: 1.5rem;
+        width: 150px;
+        height: 70px;
+        font-size: 20px;
+    }
+
+    #RibaLogo {
+        width: 150px;
+        height: 40px;
+    }
+
+    #QuestContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 12rem;
+        width: 81%; /* Set width to 100% to allow expansion */
+        margin-top: -3rem;
+        border-radius: 8px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: 1.5rem;
+        line-height: 1.8rem;
+        background-image: url('../../public/assets/images/QuestionBg.png');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    
+
+    #prevBtn,
+    #nextBtn {
+        height: 50px;
+        width: 30px;
+    }
+
+    #AnsNavCont {
+        width: 100%; /* Allow the container to take up 90% of the viewport width */
+        max-width: 50rem; /* Set a maximum width to prevent excessive expansion */
+        height: auto;
+    }
+    
+    #answersCont {
+        width: 100%; /* Make the answers container responsive */
+        min-width: 14rem;
+        max-width: 20rem; /* Set a maximum width */
+        height: 10rem;
+    }
+
+    #xMark,
+    #checkMark {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    #resultOf,
+    #CorMissText {
+        font-size: 0.75rem;
+    }
+
+    #preRRR,
+    #nbAns {
+        font-size: 2rem;
+    }
+
+    #wordAns {
+        font-size: 1rem;
+    }
+
+    #ansPopupQues {
+        width: 77%;
+        height: 10rem;
+        margin-top: 8.4rem;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+        background-image: url('../../public/assets/images/TextFieldBg.png');
+        background-size: cover;
+        background-position: center;
+        padding: 5rem;
+    }
+
+    #ansPopupFields {
+        width: 29rem;
+        z-index: 9999;
+        border: 0.2rem solid #BC202E;
+    }
+
+    #ansNumbering {
+        font-size: 1.6rem;
+    }
+
+    #ansPopupSingField {
+        width: 45rem;
+        height: 4rem;
+        font-size: 1.6rem;
+        font-weight: lighter;
+    }
+
+    
+    #subCancelRow{
+        margin-top: 2rem;
+        --tw-space-x-reverse: 0;
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }
+
+    #subCancelBtn {
+        width: 12rem;
+        height: 5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #expContainer {
+        width: 77%;
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        padding: 1.5rem;
+    }
+
+    #expLogo1,
+    #expLogo3 {
         height: 4rem;
     }
+
+    #expLogo2 {
+        height: 6rem;
+    }
+
+    #expCloseBtn {
+        width: 12rem;
+        height: 5rem;
+    }
+    
 }
 
 @media (min-width: 810px) and (max-width: 1080px) {
@@ -146,7 +361,8 @@
         line-height: 2rem;
     }
 
-    #prevBtn, #nextBtn {
+    #prevBtn,
+    #nextBtn {
         height: 55px;
         width: 35px;
     }
@@ -160,16 +376,19 @@
         height: 5.5rem;
     }
 
-    #xMark, #checkMark {
+    #xMark,
+    #checkMark {
         width: 2.5rem;
         height: 2.5rem;
     }
 
-    #resultOf, #CorMissText {
+    #resultOf,
+    #CorMissText {
         font-size: 1.1rem;
     }
 
-    #preRRR, #nbAns {
+    #preRRR,
+    #nbAns {
         font-size: 2.2rem;
     }
 
@@ -193,7 +412,8 @@
         padding: 1.8rem;
     }
 
-    #expLogo1, #expLogo3 {
+    #expLogo1,
+    #expLogo3 {
         height: 4.5rem;
     }
 
@@ -250,7 +470,8 @@
         line-height: 2.2rem;
     }
 
-    #prevBtn, #nextBtn {
+    #prevBtn,
+    #nextBtn {
         height: 60px;
         width: 40px;
     }
@@ -264,16 +485,19 @@
         height: 6rem;
     }
 
-    #xMark, #checkMark {
+    #xMark,
+    #checkMark {
         width: 3rem;
         height: 3rem;
     }
 
-    #resultOf, #CorMissText {
+    #resultOf,
+    #CorMissText {
         font-size: 1.2rem;
     }
 
-    #preRRR, #nbAns {
+    #preRRR,
+    #nbAns {
         font-size: 2.4rem;
     }
 
@@ -297,7 +521,8 @@
         padding: 2rem;
     }
 
-    #expLogo1, #expLogo3 {
+    #expLogo1,
+    #expLogo3 {
         height: 5rem;
     }
 
@@ -354,7 +579,8 @@
         line-height: 2.5rem;
     }
 
-    #prevBtn, #nextBtn {
+    #prevBtn,
+    #nextBtn {
         height: 65px;
         width: 40px;
     }
@@ -368,16 +594,19 @@
         height: 6.5rem;
     }
 
-    #xMark, #checkMark {
+    #xMark,
+    #checkMark {
         width: 3.2rem;
         height: 3.2rem;
     }
 
-    #resultOf, #CorMissText {
+    #resultOf,
+    #CorMissText {
         font-size: 1.3rem;
     }
 
-    #preRRR, #nbAns {
+    #preRRR,
+    #nbAns {
         font-size: 2.5rem;
     }
 
@@ -401,7 +630,8 @@
         padding: 2.2rem;
     }
 
-    #expLogo1, #expLogo3 {
+    #expLogo1,
+    #expLogo3 {
         height: 5.5rem;
     }
 
@@ -458,7 +688,8 @@
         line-height: 1.6rem;
     }
 
-    #prevBtn, #nextBtn {
+    #prevBtn,
+    #nextBtn {
         height: 45px;
         width: 25px;
     }
@@ -472,16 +703,19 @@
         height: 4.5rem;
     }
 
-    #xMark, #checkMark {
+    #xMark,
+    #checkMark {
         width: 2rem;
         height: 2rem;
     }
 
-    #resultOf, #CorMissText {
+    #resultOf,
+    #CorMissText {
         font-size: 0.9rem;
     }
 
-    #preRRR, #nbAns {
+    #preRRR,
+    #nbAns {
         font-size: 1.8rem;
     }
 
@@ -505,7 +739,8 @@
         padding: 1.2rem;
     }
 
-    #expLogo1, #expLogo3 {
+    #expLogo1,
+    #expLogo3 {
         height: 3.5rem;
     }
 
@@ -518,7 +753,3 @@
         height: 3.5rem;
     }
 }
-
-
-
-

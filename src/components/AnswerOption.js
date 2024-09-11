@@ -337,7 +337,7 @@ const AnswerOption = ({
             ))}
           </div>
 
-          <div className="flex flex-row space-x-52">
+          <div id='subCancelRow' className="flex flex-row space-x-52">
             <button
               id='subCancelBtn'
               onClick={handlePopupClose}

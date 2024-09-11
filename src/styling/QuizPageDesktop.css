@@ -49,6 +49,8 @@
           line-height: 2.5rem;
           white-space: normal;
           text-align: center;
+          background-image: url('../../public/assets/images/QuestionBg.png');
+
       }
 
       #prevBtn {
@@ -252,6 +254,8 @@
           line-height: 2rem;
           white-space: normal;
           text-align: center;
+          background-image: url('../../public/assets/images/QuestionBg.png');
+
       }
 
       #prevBtn,
@@ -429,6 +433,8 @@
           line-height: 2rem;
           white-space: normal;
           text-align: center;
+          background-image: url('../../public/assets/images/QuestionBg.png');
+
       }
 
       #prevBtn,
