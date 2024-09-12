@@ -1,0 +1,42 @@
+
+
+
+@media (min-width: 963px) and (max-width: 1920px) and (min-height: 864px) {
+
+    #infoTitle{
+        font-size: 4rem !important;
+    }
+
+    #ribaInfoLogo{
+        width: 70vh;
+    }
+
+    #infoNextBtn{
+        height: 10vh !important;
+        width: 50vw !important;
+        border-radius: 10px;
+        background-size: contain;
+      }
+    
+    }
+
+
+
+    @media (min-width: 1000px) and (max-width: 1920px) and (max-height: 865px) {
+
+      #infoTitle{
+          font-size: 3rem !important;
+      }
+  
+      #ribaInfoLogo{
+          width: 60vh;
+      }
+  
+      #infoNextBtn{
+          height: 10vh !important;
+          width: 50vw !important;
+          border-radius: 10px;
+          background-size: contain;
+        }
+      
+      }

@@ -224,7 +224,7 @@ const QuizPage = () => {
           id='SubmitBtn'
           onClick={handleSubmit}
           disabled={isSubmitDisabled}
-          className={` ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
+          className={` ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed ' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
         >
           Submit
         </button>

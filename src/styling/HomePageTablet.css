@@ -136,8 +136,65 @@
 
 @media (min-width: 821px) and (max-width: 962px) {
 
+    #homeLayout {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+
+    #clock-container img {
+        width: 50%;
+    }
+
+    
     #titlept1{
         padding-left: 7rem !important;
             }
+
+    #titles h1 {
+        font-size: 45px;
+        justify-content: end;
+        text-align: end;
+        margin-top: 0.5rem;
+        margin-right: 3rem;
+        margin-left: 1.5rem;
+    }
+
+    #title-start-container {
+        margin-left: 20%;
+        margin-top: 7%;
+    }
+
+    #start-button-container img {
+        position: absolute;
+        left: 41vw;
+        top: 65vh;
+        width: 15vw;
+    }
+
+    #alogSlogan {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #AlgoLogo {
+        width: 35vw;
+        height: 3.5vw;
+        left: 30vw;
+        bottom: 12.5vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #Slogan {
+        position: absolute;
+        width: 50vw;
+        height: 3vw;
+        left: 25vw;
+    }
+
+
 
 }

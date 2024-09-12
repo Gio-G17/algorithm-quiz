@@ -1,8 +1,9 @@
 import React from 'react';
-import '../styling/InfoPageTablet.css'; // Import your CSS file
-import '../styling/HomePageTablet.css'; // Import your CSS file
-import '../styling/HomePageDesktop.css'; // Import your CSS file
-import '../styling/HomePageTablet.css'; // Import your CSS file
+import '../styling/InfoPageTablet.css'; 
+import '../styling/InfoPageDesktop.css'; 
+import '../styling/HomePageTablet.css'; 
+import '../styling/HomePageDesktop.css'; 
+import '../styling/HomePageTablet.css'; 
 
 
 const InfoPage = ({ onNext, onPrev }) => {
@@ -21,7 +22,7 @@ const InfoPage = ({ onNext, onPrev }) => {
         </button>
       </div>
 
-      <h1 id='infoTitle' className="text-6xl w-auto text-black font-light text-center mx-4 mt-36 mb-14">
+      <h1 id='infoTitle' className="w-auto text-black font-light text-center mx-4 mt-36 mb-14">
         Challenge Your <br/> Understanding of</h1>
 
       {/* Text section with Previous and Next buttons on either side */}
@@ -36,12 +37,13 @@ const InfoPage = ({ onNext, onPrev }) => {
             src="/assets/icons/leftArrow.png"
             alt="Previous"
             className="w-11 h-24"
+           
           />
         </button>
 
         {/* Informational Text */}
         <div className='flex items-center justify-center'>
-          <img src="/assets/images/RibaLogo.png" alt="AlgoLogo" className="w-3/4" />
+          <img src="/assets/images/RibaLogo.png"  id='ribaInfoLogo' alt="AlgoLogo" className="w-3/4" />
         </div>
 
 
@@ -62,6 +64,7 @@ const InfoPage = ({ onNext, onPrev }) => {
       {/* Submit/Next Button at the bottom */}
       <div className="flex justify-center w-full mt-4">
         <button
+        id='infoNextBtn'
           onClick={onNext}
           className="text-2xl font-bold text-white bg-cover bg-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]"
           style={{

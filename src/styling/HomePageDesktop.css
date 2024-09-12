@@ -1,5 +1,3 @@
-
-
 /* For screens larger than 1920px (Full HD) */
 @media (min-width: 1920px) {
     #clock-container img {
@@ -61,3 +59,35 @@
         width: 200px;
     }
 }
+
+
+@media (min-width: 963px) and (max-width: 1279px) {
+    #clock-container img {
+        width: 50%;
+    }
+
+    #titles h1 {
+        font-size: 55px;
+    }
+
+    #title-start-container {
+        margin-left: 35%;
+        margin-top: 7vh;
+    }
+
+    #start-button-container img {
+        width: 200px;
+    }
+
+    #Slogan{
+        width: 50vw;
+        height: 4vw;
+        z-index: 0;
+    }
+
+    #AlgoLogo{
+        width: 30vw;
+        height: 3vw; 
+    }
+}
+

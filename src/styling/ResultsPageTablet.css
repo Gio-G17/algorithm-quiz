@@ -2,7 +2,8 @@
 @media (min-width: 601px) and (max-width: 962px) {
     #results-container {
         display: flex;
-        flex-direction: column; /* Stack everything vertically */
+        flex-direction: column;
+        /* Stack everything vertically */
         justify-content: space-between;
         align-items: start;
         height: 65%;
@@ -10,36 +11,78 @@
     }
 
     #text-container {
-        order: 1; /* Place text at thççe top */
-        width: 100%; /* Full width */
+        order: 1;
+        /* Place text at thççe top */
+        width: 100%;
+        /* Full width */
         padding-left: 0;
         text-align: center;
-        margin-bottom: 20px; /* Add some space below the text */
+        margin-bottom: 20px;
+        /* Add some space below the text */
     }
 
 
-    #blood-drop-container-tablet{
+    #blood-drop-container-tablet {
         height: 30vh;
         width: 20vh;
     }
 
     #rstrtQuizBtn {
-        order: 3; /* Button comes last */
+        order: 3;
+        /* Button comes last */
         width: 80%;
         height: 80px;
-        margin-top: 20px; /* Space between blood drop and button */
+        margin-top: 20px;
+        /* Space between blood drop and button */
     }
 
-    #blood-drop-container{
+    #blood-drop-container {
         display: none;
     }
 }
 
 @media (min-width: 835px) and (max-width: 962px) {
 
-#text-container p {
-padding-left: 4rem;
-padding-right: 4rem;        
+    #text-container p {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
 }
 
+@media (min-width: 600px) and (min-height: 900px) {
+
+    #congtextpt1 {
+        font-size: 3rem !important;
+    }
+
+    #congtextpt2 {
+        font-size: 3rem !important;
+
+    }
+}
+
+
+@media (min-height: 900px) and (max-height: 1080px) {
+
+    #congtextpt1 {
+        font-size: 4.5rem !important;
+    }
+
+    #congtextpt2 {
+        font-size: 4.5rem !important;
+
+    }
+}
+
+@media (min-width: 768px) and (min-height: 1000px) {
+
+    #congtextpt1 {
+        font-size: 3.75rem !important;
+    }
+
+    #congtextpt2 {
+        font-size: 3.75rem !important;
+
+    }
 }
