@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styling/InfoPageTablet.css'; // Import your CSS file
 import '../styling/HomePageTablet.css'; // Import your CSS file
-
+import '../styling/HomePageDesktop.css'; // Import your CSS file
+import '../styling/HomePageTablet.css'; // Import your CSS file
 
 
 const InfoPage = ({ onNext, onPrev }) => {

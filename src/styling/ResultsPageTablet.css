@@ -1,0 +1,49 @@
+/* Media Query for screens between 601px and 962px */
+@media (min-width: 601px) and (max-width: 962px) {
+    #results-container {
+        display: flex;
+        flex-direction: column; /* Stack everything vertically */
+        justify-content: justify-between;
+        align-items: start;
+        height: 65%;
+        margin-top: 0;
+    }
+
+    #text-container {
+        order: 1; /* Place text at the top */
+        width: 100%; /* Full width */
+        padding-left: 0;
+        text-align: center;
+        margin-bottom: 20px; /* Add some space below the text */
+    }
+
+    #red-drop{
+        height: 100%;
+    }
+
+    #blood-drop-container {
+        order: 2; /* Blood drop comes after text */
+        height: 100%;
+        margin-bottom: 20px; /* Add some space below */
+    }
+
+    #percentage-overlay {
+        top: 75%; /* Adjust percentage overlay position */
+    }
+
+    #rstrtQuizBtn {
+        order: 3; /* Button comes last */
+        width: 80%;
+        height: 80px;
+        margin-top: 20px; /* Space between blood drop and button */
+    }
+}
+
+/* If you want to handle any additional logo placement from the home page */
+#home-logo {
+    /* Adjust the positioning and size if logos exist */
+    position: absolute;
+    top: 10px; /* Example: place it at the top */
+    left: 20px;
+    width: 150px; /* Adjust logo size if necessary */
+}
