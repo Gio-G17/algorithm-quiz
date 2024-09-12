@@ -52,12 +52,6 @@ const ExplanationModal = ({ explanation, closeExplanation, type }) => {
               id='expCloseBtn'
               onClick={closeExplanation}
               className="py-2 px-4 rounded-lg w-full h-full bg-center bg-[url('/public/assets/images/SubmitBtnBg.png')] text-white font-bold text-2xl mt-3"
-              // style={{
-              //   zIndex: 9999,
-              //   backgroundSize: 'contain',
-              //   width: '10rem',
-              //   height: '4rem',
-              // }}
             >
               Close
             </button>
