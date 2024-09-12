@@ -4,4 +4,32 @@
         display: none;
     }
 
+    #blood-drop-container {
+        height: 55% !important;
+        width: 20%;
+    }
+
+    #rstrtQuizBtn {
+        height: 15vh !important;
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 1280px) and (max-width: 1615px) {
+
+    #congtextpt2 {
+        padding-left: 7rem !important;
+        padding-right: 7rem !important;
+    }
+
+}
+
+@media (min-width: 1615px) and (max-width: 1920px) {
+
+    #congtextpt2 {
+        padding-left: 15rem !important;
+        padding-right: 15rem !important;
+    }
+
 }
