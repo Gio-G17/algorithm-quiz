@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styling/ResultsPageTablet.css'; // Import your CSS file
+import '../styling/ResultsPageDesktop.css'; // Import your CSS file
 
 
 
@@ -48,6 +49,39 @@ const ResultsPage = ({ correctAnswersCount, totalQuestions }) => {
                 <p className="text-5xl font-light mt-12 mb-12 text-center">
                     Thank you for testing your knowledge with us.
                 </p>
+
+
+                <div id="blood-drop-container-tablet" className="relative w-1/4 h-[400px]">
+
+                    {/* Gray Drop Image (Fully visible background) */}
+                    <img
+                        src="/assets/images/gray-drop.png"
+                        alt="Gray Blood Drop"
+                        className="absolute top-0 left-0 w-full h-full"
+                    />
+
+                    {/* Red Drop Image (Cropped from the bottom based on the score) */}
+                    <div
+                        id="red-drop-tablet"
+                        className="absolute top-0 left-0 w-full h-full"
+                        style={{
+                            clipPath: `inset(${100 - scorePercentage}% 0 0 0)`, // Crop from the bottom based on score
+                        }}
+                    >
+                        <img
+                            src="/assets/images/red-drop.png"
+                            alt="Red Blood Drop"
+                            className="w-full h-full"
+                        />
+                    </div>
+
+                    {/* Percentage Text Overlay */}
+                    <div id="percentage-overlay-tablet" className="absolute -inset-24 flex items-center justify-center">
+                        <span className="text-white text-4xl font-bold">{scorePercentage.toFixed(0)}%</span>
+                    </div>
+
+                </div>
+
 
                 {/* Restart Quiz Button */}
                 <button

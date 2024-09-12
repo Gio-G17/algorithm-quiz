@@ -3,32 +3,24 @@
     #results-container {
         display: flex;
         flex-direction: column; /* Stack everything vertically */
-        justify-content: justify-between;
+        justify-content: space-between;
         align-items: start;
         height: 65%;
         margin-top: 0;
     }
 
     #text-container {
-        order: 1; /* Place text at the top */
+        order: 1; /* Place text at thççe top */
         width: 100%; /* Full width */
         padding-left: 0;
         text-align: center;
         margin-bottom: 20px; /* Add some space below the text */
     }
 
-    #red-drop{
-        height: 100%;
-    }
 
-    #blood-drop-container {
-        order: 2; /* Blood drop comes after text */
-        height: 100%;
-        margin-bottom: 20px; /* Add some space below */
-    }
-
-    #percentage-overlay {
-        top: 75%; /* Adjust percentage overlay position */
+    #blood-drop-container-tablet{
+        height: 30vh;
+        width: 20vh;
     }
 
     #rstrtQuizBtn {
@@ -37,13 +29,17 @@
         height: 80px;
         margin-top: 20px; /* Space between blood drop and button */
     }
+
+    #blood-drop-container{
+        display: none;
+    }
 }
 
-/* If you want to handle any additional logo placement from the home page */
-#home-logo {
-    /* Adjust the positioning and size if logos exist */
-    position: absolute;
-    top: 10px; /* Example: place it at the top */
-    left: 20px;
-    width: 150px; /* Adjust logo size if necessary */
+@media (min-width: 835px) and (max-width: 962px) {
+
+#text-container p {
+padding-left: 4rem;
+padding-right: 4rem;        
+}
+
 }
