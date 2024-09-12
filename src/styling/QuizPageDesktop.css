@@ -384,7 +384,7 @@
   }
 
   /* For screens between 1280px and 1535px */
-  @media (min-width: 1280px) and (max-width: 1535px) {
+  @media (min-width: 963px) and (max-width: 1535px) {
 
       #restartBtn {
           height: 40px;
