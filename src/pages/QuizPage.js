@@ -28,7 +28,7 @@ const questions = [
   },
   {
     questionText: 'RIBAVAN®: Efficacy and Beyond ',
-    answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
+    answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '45% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
     correctAnswer: 0,
     explanation: 'RIBAVAN® Provides patients with the Power of Efficacy',
   },
@@ -41,7 +41,7 @@ const questions = [
   {
     questionText: 'In what year was RIBAVAN® Introduced into the Lebanese Market?',
     answers: ['2020', '2021', '2022', '2023'],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: 'RIBAVAN®, is a highly trusted Rivaroxaban with over 3 years of experience in the Lebanese market',
   },
   {
