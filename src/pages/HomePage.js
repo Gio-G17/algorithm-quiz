@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import QuizPage from './QuizPage';
-import '../styling/HomePage.css'; // Import your CSS file
+import '../styling/HomePageDesktop.css'; // Import your CSS file
 import '../styling/HomePageTablet.css'; // Import your CSS file
 
 const HomePage = () => {

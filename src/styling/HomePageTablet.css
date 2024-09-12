@@ -133,3 +133,11 @@
     }
 
 }
+
+@media (min-width: 821px) and (max-width: 962px) {
+
+    #titlept1{
+        padding-left: 7rem !important;
+            }
+
+}
