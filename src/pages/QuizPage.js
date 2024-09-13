@@ -137,17 +137,21 @@ const QuizPage = () => {
       setCorrectAnswersCount((prev) => prev + 1);
     }
 
-    setShowExplanation(true);
+    setShowExplanation(false);
   };
 
   const handleSubmit = () => {
     setSubmittedQuestions((prev) =>
       prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
     );
-    setShowExplanation(true);
+    setShowExplanation(false);
   };
 
   const handleNextQuestion = () => {
+    setShowExplanation(true);
+  };
+
+  const handleInfoNextQuestion = () => {
     setShowExplanation(false);
     if (currentQuestionIndex === questions.length - 1) {
       setQuizCompleted(true); // Mark the quiz as completed when the last question is answered
@@ -165,12 +169,17 @@ const QuizPage = () => {
 
   const closeExplanation = () => {
     setShowExplanation(false);
+    if (currentQuestionIndex === questions.length - 1) {
+      setQuizCompleted(true); // Mark the quiz as completed when the last question is answered
+    } else {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   const isInfoPage = currentQuestion?.type === 'info';
 
   if (isInfoPage) {
-    return <InfoPage onNext={handleNextQuestion} onPrev={handlePrevQuestion} />;
+    return <InfoPage onNext={handleInfoNextQuestion} onPrev={handlePrevQuestion} />;
   }
 
   const isSubmitDisabled = persistedState[currentQuestionIndex]?.userAnswer === undefined;
@@ -224,7 +233,7 @@ const QuizPage = () => {
           id='SubmitBtn'
           onClick={handleSubmit}
           disabled={isSubmitDisabled}
-          className={` ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed ' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
+          className={` ${isSubmitDisabled ? 'opacity-50 cursor-not-allowed' : ''} text-2xl font-bold mb-4 text-white text-center bg-cover bg-center flex justify-center items-center bg-no-repeat bg-[url('/public/assets/images/SubNextBg.png')]`}
         >
           Submit
         </button>
@@ -248,7 +257,7 @@ const QuizPage = () => {
       )}
 
 
-     
+
       {showExplanation && (
         <ExplanationModal
           explanation={questions[currentQuestionIndex].explanation}
