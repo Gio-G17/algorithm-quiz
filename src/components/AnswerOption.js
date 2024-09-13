@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styling/QuizPageDesktop.css'; // Import your QuizPage CSS file
 import '../styling/QuizPageTablet.css'; // Import your QuizPage CSS file
 
-
+const correctSound = new Audio('/assets/audio/correct-bell.mp3'); // Correct answer sound
+const wrongSound = new Audio('/assets/audio/wrong-buzzer.mp3');
 
 const AnswerOption = ({
   answer,
@@ -208,7 +209,7 @@ const AnswerOption = ({
     updatedTextAnswers[i] = value;
     setUserTextAnswers(updatedTextAnswers);
   };
-  const handlePopupSubmit = () => {
+  const handlePopupSubmit = () => {  
     setShowPopup(false);
 
     // Initialize lists to hold correct answers
@@ -225,10 +226,13 @@ const AnswerOption = ({
     }
     if (correctList.length === correctAnswers.length) {
       setComparisonResult('correct');
+      correctSound.play(); // Play correct answer sound
     } else if (correctList.length > 0) {
       setComparisonResult('half-correct');
+      wrongSound.play(); // Play wrong answer sound
     } else {
       setComparisonResult('incorrect');
+      wrongSound.play(); // Play wrong answer sound
     }
 
     setCorrectList(correctList);

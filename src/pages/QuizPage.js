@@ -7,7 +7,8 @@ import ResultsPage from './ResultsPage'; // Import Results Page
 import '../styling/QuizPageDesktop.css'; // Import your QuizPage CSS file
 import '../styling/QuizPageTablet.css'; // Import your QuizPage CSS file
 
-
+const correctSound = new Audio('/assets/audio/correct-bell.mp3'); // Correct answer sound
+const wrongSound = new Audio('/assets/audio/wrong-buzzer.mp3');
 const questions = [
   {
     questionText: 'How many products does Algorithm currently have within the Blood Thinners Portfolio?',
@@ -141,6 +142,19 @@ const QuizPage = () => {
   };
 
   const handleSubmit = () => {
+    if (!submittedQuestions[currentQuestionIndex]) {
+      const userAnswer = persistedState[currentQuestionIndex]?.userAnswer;
+  
+      // Play correct or wrong sound based on the submitted answer
+      if (userAnswer !== undefined) {
+        if (userAnswer === currentQuestion.correctAnswer) {
+          correctSound.play(); // Play correct answer sound
+          setCorrectAnswersCount((prev) => prev + 1);
+        } else {
+          wrongSound.play(); // Play wrong answer sound
+        }
+      }
+    }  
     setSubmittedQuestions((prev) =>
       prev.map((submitted, idx) => (idx === currentQuestionIndex ? true : submitted))
     );
