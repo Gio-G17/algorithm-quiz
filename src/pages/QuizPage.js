@@ -281,6 +281,7 @@ const QuizPage = () => {
           explanation={questions[currentQuestionIndex].explanation}
           closeExplanation={closeExplanation}
           type={questions[currentQuestionIndex].type}
+          currentQuestionIndex={currentQuestionIndex} // Pass the current question index
         />
       )}
     </div>
