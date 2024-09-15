@@ -203,9 +203,9 @@ const QuizPage = () => {
   const isSubmitDisabled = persistedState[currentQuestionIndex]?.userAnswer === undefined;
 
   if (quizCompleted) {
-    console.log(correctAnswersCount);
+    console.log('Correct Answers:' + correctAnswersCount);
     return (
-      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length - 1} /> // Show results page
+      <ResultsPage correctAnswersCount={correctAnswersCount-6} totalQuestions={questions.length - 1} /> // Show results page
     );
   }
 
