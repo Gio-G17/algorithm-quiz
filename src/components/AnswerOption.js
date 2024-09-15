@@ -204,6 +204,16 @@ const AnswerOption = ({
     }
   };
 
+  const getConditionalId = (answer) => {
+    const specificAnswers = [
+      '9000',
+      '23% RRR stroke and systemic embolism in Afib patients vs warfarin',
+      'Higher rates of Intracranial and fatal bleeding in the Rivaroxaban group vs warfarin',
+    ];
+  
+    return specificAnswers.includes(answer) ? 'thirdAnswer' : 'answersCont';
+  };
+
   const handleTextInputChange = (i, value) => {
     const updatedTextAnswers = [...userTextAnswers];
     updatedTextAnswers[i] = value;
@@ -263,11 +273,13 @@ const AnswerOption = ({
     }
   };
 
+
+
   return (
     <>
       <button
-        id='answersCont'
-        onClick={handleOptionSelect}
+  id={getConditionalId(answer)}  // Conditionally set the id
+          onClick={handleOptionSelect}
         className={`flex justify-between items-center p-4 rounded-lg transition-all ${isSubmitted ? 'cursor-not-allowed' : ''} 
     ${userAnswer === index || answer == textFieldsCount ? 'border-4' : 'border-2'} border-[#BC202E]`}
         disabled={isSubmitted}

@@ -72,6 +72,13 @@
         height: 10rem;
     }
 
+    #thirdAnswer{
+        width: 50%;
+        /* Make the answers container responsive */
+        min-width: 14rem;
+        height: 10rem; 
+    }
+
     #xMark{
         width: 2rem;
         height: 2rem;   
