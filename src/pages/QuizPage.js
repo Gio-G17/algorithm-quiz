@@ -31,7 +31,7 @@ const questions = [
     questionText: 'RIBAVAN®: Efficacy and Beyond ',
     answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '45% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
     correctAnswer: 0,
-    explanation: 'For Patients at risk of Recurrent DVT or PE, patients with NVAF at risk of Stroke or Systemic Embolism and patients with CAD or ACS at risk of Atherothrombotic events, RIBAVAN® is a Bioequivalent Rivaroxaban which provide patients with the Power of Efficacy',
+    explanation: 'Provides patients with the Power of Efficacy',
   },
   {
     questionText: 'RIBAVAN®: Safety?',
