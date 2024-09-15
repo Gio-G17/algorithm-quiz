@@ -73,12 +73,20 @@
       }
 
       #answersCont {
-          width: 34.5rem;
+        width: 100%;
           height: 7rem;
           white-space: normal;
           overflow: hidden;
           text-overflow: ellipsis;
       }
+
+      #thirdAnswer{
+        width: 50%;
+          height: 7rem;
+          white-space: normal;
+          overflow: hidden;
+          text-overflow: ellipsis;
+    }
 
       #xMark {
           width: 3rem;
@@ -274,11 +282,19 @@
       }
 
       #answersCont {
-          width: 30rem;
-          height: 6rem;
-          white-space: normal;
-          overflow: hidden;
-          text-overflow: ellipsis;
+        width: 100%;
+        height: 7rem;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #thirdAnswer{
+        width: 50%;
+        height: 7rem;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       #xMark {
@@ -454,10 +470,18 @@
 
       #answersCont {
           width: 100%;
-          height: 5.5rem;
+          height: 7rem;
           white-space: normal;
           overflow: hidden;
           text-overflow: ellipsis;
+      }
+
+      #thirdAnswer{
+        width: 50%;
+        height: 7rem;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       #xMark {
