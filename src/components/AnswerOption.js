@@ -264,17 +264,6 @@ const AnswerOption = ({
     }));
   };
 
-
-  const handleSubmitClick = () => {
-    if (userAnswer === null || userAnswer === undefined) {
-      setSubmitError(true);
-    } else {
-      setSubmitError(false);
-    }
-  };
-
-
-
   return (
     <>
       <button
