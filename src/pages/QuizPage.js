@@ -17,45 +17,38 @@ const questions = [
     correctNumber: 3,
     correctAnswers: ['Ribavan', 'Avixan', 'Klotego'],
     explanation: 'Algorithm is the Unique company with a Complete Blood Thinners Portfolio since 2021',
+    reference:'IMS-2024',
   },
   {
-    questionText: 'Till date, the total number of patients on RIBAVAN®, AVIXAN® & KLOTEGO® is?',
+    questionText: 'Till date, the total number of patients on RIBAVAN® AVIXAN® & KLOTEGO® is?',
     answers: ['5000', '7000', '9000',],
     correctAnswer: 2,
     explanation: 'Algorithm is the leading Pharmaceutical company in the Blood Thinners Portfolio with over 9000 patients on treatment in 2024',
+    reference:'IMS-2024',
   },
   {
     type: 'info', // Custom type for this page
   },
-  // {
-  //   questionText: 'RIBAVAN®: Efficacy and Beyond ',
-  //   answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '45% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
-  //   correctAnswer: 0,
-  //   explanation: 'Provides patients with the Power of Efficacy',
-  // },
-  // {
-  //   questionText: 'RIBAVAN®: Safety?',
-  //   answers: ['Bioequivalent to Originator', 'Higher rates of major or nonmajor clinically relevant bleeding in the Rivaroxaban group vs warfarin', 'Higher rates of Intracranial and fatal bleeding in the Rivaroxaban group vs warfarin',],
-  //   correctAnswer: 0,
-  //   explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
-  // },
   {
     questionText: 'In what year was RIBAVAN® Introduced into the Lebanese Market?',
     answers: ['2020', '2021', '2022', '2023'],
     correctAnswer: 2,
-    explanation: 'RIBAVAN®, is a highly trusted Rivaroxaban with over 3 years of experience in the Lebanese market',
+    explanation: 'RIBAVAN® is a highly trusted Rivaroxaban with over 3 years of experience in the Lebanese market',
+    reference:'IMS-2024',
   },
   {
     questionText: 'Which of the below is correct?',
     answers: ['Ribavan® is the 1st Blood Thinner Product launched by Algorithm', 'The Active Pharmaceutical Ingredients of Ribavan is Certified by European Pharmacopoeia', 'Ribavan® is Bioequivalent to the originator', 'All are correct'],
     correctAnswer: 3,
-    explanation: 'RIBAVAN®, is a High-Quality Bioequivalent Rivaroxaban Generic',
+    explanation: 'RIBAVAN® is a High-Quality Bioequivalent Rivaroxaban Generic',
+    reference:'Ribavan Patient Information Leaflet. Revision date 05-2020. Sridhar et al. An open label, randomized, balanced, two-treatment, two-period, two sequence, single-dose, crossover, oral bioequivalence study of Rivaroxaban 20 mg Film coated tablets from Labormed Pharma S.A., Romania and Xarelto® 20 mg film-coated tablets (rivaroxaban) of Bayer AG, 51368 Leverkusen, Germany, in healthy, adult, human subjects under fed conditions. 2019.',
   },
   {
     questionText: 'RIBAVAN® is .......... more affordable than the originator?',
     answers: ['40%', '50%', '60%', '70%'],
     correctAnswer: 3,
-    explanation: 'RIBAVAN®, is a Cost-Effective Rivaroxaban which provides patients with the Power of Efficacy at an affordable price with an average public price of 1.3 MLBP',
+    explanation: 'RIBAVAN® is a Cost-Effective Rivaroxaban which provides patients with the Power of Efficacy at an affordable price with an average public price of 1.3 MLBP',
+    reference:'Lebanon National Drugs Database 2024 Ribavan Patient Information Leaflet. Revision date 05-2020.',
   },
 
 ];
@@ -205,7 +198,7 @@ const QuizPage = () => {
   if (quizCompleted) {
     console.log('Correct Answers:' + correctAnswersCount);
     return (
-      <ResultsPage correctAnswersCount={correctAnswersCount-6} totalQuestions={questions.length - 1} /> // Show results page
+      <ResultsPage correctAnswersCount={correctAnswersCount} totalQuestions={questions.length - 1} /> // Show results page
     );
   }
 
@@ -282,6 +275,7 @@ const QuizPage = () => {
           closeExplanation={closeExplanation}
           type={questions[currentQuestionIndex].type}
           currentQuestionIndex={currentQuestionIndex} // Pass the current question index
+          reference={questions[currentQuestionIndex].reference}
         />
       )}
     </div>

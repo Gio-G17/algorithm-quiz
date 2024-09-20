@@ -1,15 +1,14 @@
 import React from 'react';
 
-const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestionIndex }) => {
+const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestionIndex, reference }) => {
   const keywords = [
-    'Unique', 'Complete', '2021', 'leading', 'Blood', 'Thinners', 'Portfolio', 
-    'over', '9000', 'Power', 'of', 'Efficacy', 'Bioequivalent', 'safe', '3', 'years', 'highly', 
+    'Unique', 'Complete', '2021', 'leading', 'Blood', 'Thinners', 'Portfolio',
+    'over', '9000', 'Power', 'of', 'Efficacy', 'Bioequivalent', 'safe', '3', 'years', 'highly',
     'trusted', 'High-Quality', 'Cost-Effective', 'affordable'
   ];
-  
+
   const keywordsBlack = ['RIBAVAN®', '1.3', 'MLBP'];
 
-  // Map of question indices for each keyword (same index as the keywords array)
   const keywordQuestionMap = [
     [0],    // Highlight 'Unique' for question 0
     [0],    // Highlight 'Complete' for question 0
@@ -18,51 +17,55 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
     [1],    // Highlight 'Blood' for question 1
     [1],    // Highlight 'Thinners' for question 1
     [1],    // Highlight 'Portfolio' for question 1
-    [1, 5], // Highlight 'over' for questions 1 and 5
+    [1, 3], // Highlight 'over' for questions 1 and 3
     [1],    // Highlight '9000' for question 1
-    [3, 7], // Highlight 'Power' for questions 3 and 7
-    [3, 7], // Highlight 'of' for questions 3 and 7
-    [3, 7], // Highlight 'Efficacy' for questions 3 and 7
-    [4, 6], // Highlight 'Bioequivalent' for questions 4 and 6
-    [4],    // Highlight 'safe' for question 4
-    [5],    // Highlight '3' for question 5
-    [5],    // Highlight 'years' for question 5
-    [5],    // Highlight 'highly' for question 5
-    [5],    // Highlight 'trusted' for question 5
-    [6],    // Highlight 'High-Quality' for question 6
-    [7],    // Highlight 'Cost-Effective' for question 7
-    [7],    // Highlight 'affordable' for question 7
+    [5],    // Highlight 'Power' for question 5
+    [5],    // Highlight 'of' for question 5
+    [5],    // Highlight 'Efficacy' for question 5
+    [4],    // Highlight 'Bioequivalent' for question 4
+    [],     // Highlight 'safe' for question 4
+    [3],    // Highlight '3' for question 3
+    [3],    // Highlight 'years' for question 3
+    [3],    // Highlight 'highly' for question 3
+    [3],    // Highlight 'trusted' for question 3
+    [4],    // Highlight 'High-Quality' for question 4
+    [5],    // Highlight 'Cost-Effective' for question 5
+    [5],    // Highlight 'affordable' for question 5
   ];
 
   const keywordBlackQuestionMap = [
-    [5, 6, 7], // Highlight 'RIBAVAN®' for questions 5, 6, and 7
-    [7],       // Highlight '1.3' for question 7
-    [7],       // Highlight 'MLBP' for question 7
+    [3, 4, 5], [5], [5]
   ];
 
   const highlightText = (text, keywords, keywordMap) => {
     const words = text.split(' ');
-    let highlightedWords = {}; // Track already highlighted words by their index in the sentence
+    let highlightedWords = {};
 
     return words.map((word, index) => {
-      const cleanWord = word.replace(/[,!?]/g, ''); // Remove punctuation for cleaner matching
+      const cleanWord = word.replace(/[,!?]/g, '');
       const keywordIndex = keywords.indexOf(cleanWord);
+      const hasRegisteredSymbol = word.includes('®');  // Check for ® symbol
 
-      // If the keyword is "of", only highlight it once
+      // If the keyword is "of", only highlight it once for question 7
       if (cleanWord === 'of' && currentQuestionIndex === 7) {
         if (highlightedWords['of']) {
-          return word + ' '; // Return unhighlighted 'of' after the first occurrence
+          return word + ' ';
         } else {
-          highlightedWords['of'] = true; // Mark the word as highlighted
+          highlightedWords['of'] = true;
         }
       }
 
-      // Check if the keyword exists and if the current question should highlight it
+      // Highlight the keywords and apply superscript to ®
       if (keywordIndex !== -1 && keywordMap[keywordIndex].includes(currentQuestionIndex)) {
         return (
           <React.Fragment key={index}>
             <span> </span>
-            <strong className="font-bold text-[#BC202E]">{word}</strong>
+            <strong className="font-bold text-[#BC202E]">
+              {word.replace('®', '')}
+              {hasRegisteredSymbol && (
+                <sup style={{ fontSize: '0.6em' }}>®</sup>  // Superscript for ®
+              )}
+            </strong>
             <span> </span>
           </React.Fragment>
         );
@@ -70,11 +73,29 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
         return (
           <React.Fragment key={index}>
             <span> </span>
-            <strong className="font-bold text-black">{word}</strong>
+            <strong className="font-bold text-black">
+              {word.replace('®', '')}
+              {hasRegisteredSymbol && (
+                <sup style={{ fontSize: '0.6em' }}>®</sup>  // Superscript for ®
+              )}
+            </strong>
             <span> </span>
           </React.Fragment>
         );
       }
+
+      // Apply superscript for non-keyword words with ®
+      if (hasRegisteredSymbol) {
+        return (
+          <React.Fragment key={index}>
+            <span> </span>
+            {word.replace('®', '')}
+            <sup style={{ fontSize: '0.6em' }}>®</sup>
+            <span> </span>
+          </React.Fragment>
+        );
+      }
+
       return word + ' ';
     });
   };
@@ -84,12 +105,19 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
       <div id='expContainer' className="bg-white text-black text-3xl p-6 rounded-lg border-4 border-[#BC202E] h-1/2 w-1/2 flex flex-col justify-center items-center">
         <p className="text-center">{highlightText(explanation, keywords, keywordQuestionMap)}</p>
 
+        {/* Display reference below the explanation text */}
+        {reference && (
+          <p className="text-center mt-4 italic text-sm text-gray-600">
+            <span className="font-semibold">Reference:</span> {reference}
+          </p>
+        )}
+
         {/* Add logos if the type is 'text-entry' */}
         {type === 'text-entry' && (
           <div className="flex flex-col items-center mt-6">
-            <img id='expLogo1' src="/assets/images/RibaLogo.png" alt="Logo 1" className="mb-2"/>
-            <img id='expLogo2' src="/assets/images/AviLogo.png" alt="Logo 2" className="mb-2"/>
-            <img id='expLogo3' src="/assets/images/KloLogo.png" alt="Logo 3" className="mb-2"/>
+            <img id='expLogo1' src="/assets/images/RibaLogo.png" alt="Logo 1" className="mb-2" />
+            <img id='expLogo2' src="/assets/images/AviLogo.png" alt="Logo 2" className="mb-2" />
+            <img id='expLogo3' src="/assets/images/KloLogo.png" alt="Logo 3" className="mb-2" />
           </div>
         )}
       </div>
