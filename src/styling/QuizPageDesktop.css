@@ -390,6 +390,11 @@
           height: 8rem;
       }
 
+      #expLogo3{
+        height: 5.5rem;
+
+      }
+
       #expCloseBtn {
           z-index: 9999;
           background-size: contain;
@@ -568,13 +573,17 @@
           align-items: center;
       }
 
-      #expLogo1,
-      #expLogo3 {
+      #expLogo1{
           height: 3rem;
       }
 
       #expLogo2 {
           height: 4.5rem;
+      }
+
+      #expLogo3{
+        height: 3.5rem;
+        margin-top: 0.8rem;
       }
 
       #expCloseBtn {

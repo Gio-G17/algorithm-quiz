@@ -27,18 +27,18 @@ const questions = [
   {
     type: 'info', // Custom type for this page
   },
-  {
-    questionText: 'RIBAVAN®: Efficacy and Beyond ',
-    answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '45% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
-    correctAnswer: 0,
-    explanation: 'Provides patients with the Power of Efficacy',
-  },
-  {
-    questionText: 'RIBAVAN®: Safety?',
-    answers: ['Bioequivalent to Originator', 'Higher rates of major or nonmajor clinically relevant bleeding in the Rivaroxaban group vs warfarin', 'Higher rates of Intracranial and fatal bleeding in the Rivaroxaban group vs warfarin',],
-    correctAnswer: 0,
-    explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
-  },
+  // {
+  //   questionText: 'RIBAVAN®: Efficacy and Beyond ',
+  //   answers: ['21% RRR stroke and systemic embolism in Afib patients vs warfarin', '45% RRR stroke and systemic embolism in Afib patients vs warfarin', '23% RRR stroke and systemic embolism in Afib patients vs warfarin'],
+  //   correctAnswer: 0,
+  //   explanation: 'Provides patients with the Power of Efficacy',
+  // },
+  // {
+  //   questionText: 'RIBAVAN®: Safety?',
+  //   answers: ['Bioequivalent to Originator', 'Higher rates of major or nonmajor clinically relevant bleeding in the Rivaroxaban group vs warfarin', 'Higher rates of Intracranial and fatal bleeding in the Rivaroxaban group vs warfarin',],
+  //   correctAnswer: 0,
+  //   explanation: 'RIBAVAN®, the Bioequivalent Rivaroxaban, is safe with no significant difference for major or nonmajor clinically relevant bleeding and less Intracranial and fatal bleeding vs warfarin',
+  // },
   {
     questionText: 'In what year was RIBAVAN® Introduced into the Lebanese Market?',
     answers: ['2020', '2021', '2022', '2023'],
