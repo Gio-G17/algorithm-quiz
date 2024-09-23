@@ -9,6 +9,8 @@ import '../styling/QuizPageTablet.css'; // Import your QuizPage CSS file
 
 const correctSound = new Audio('/assets/audio/correct-bell.mp3'); // Correct answer sound
 const wrongSound = new Audio('/assets/audio/wrong-buzzer.mp3');
+const applause = new Audio('/assets/audio/applause.mp3');
+
 const questions = [
   {
     questionText: 'How many products does Algorithm currently have within the Blood Thinners Portfolio?',
@@ -112,7 +114,6 @@ const QuizPage = () => {
       if (correctList.length === correctAnswers.length) {
        setCorrectAnswersCount((prev) => prev + 1); // Increment only if fully correct and only once
       }
-      console.log('right ans: ' + (correctAnswersCount)); // Log the correct answer count
       setShowExplanation(false);
     }
   };
@@ -152,6 +153,7 @@ const QuizPage = () => {
 
   const handleResultsNext = () => {
     setShowExplanation(true);
+    applause.play();
   };
 
   const handleInfoNextQuestion = () => {

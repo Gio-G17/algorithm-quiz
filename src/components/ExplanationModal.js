@@ -7,7 +7,7 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
     'trusted', 'High-Quality', 'Cost-Effective', 'affordable'
   ];
 
-  const keywordsBlack = ['RIBAVAN®', '1.3', 'MLBP'];
+  const keywordsBlack = ['RIBAVAN®', '1.3', 'MLBP', 'of'];
 
   const keywordQuestionMap = [
     [0],    // Highlight 'Unique' for question 0
@@ -20,7 +20,7 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
     [1, 3], // Highlight 'over' for questions 1 and 3
     [1],    // Highlight '9000' for question 1
     [5],    // Highlight 'Power' for question 5
-    [5],    // Highlight 'of' for question 5
+    [],    // Highlight 'of' for question 5
     [5],    // Highlight 'Efficacy' for question 5
     [4],    // Highlight 'Bioequivalent' for question 4
     [],     // Highlight 'safe' for question 4
@@ -34,7 +34,7 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
   ];
 
   const keywordBlackQuestionMap = [
-    [3, 4, 5], [5], [5]
+    [3, 4, 5], [5], [5], []
   ];
 
   const highlightText = (text, keywords, keywordMap) => {
