@@ -18,7 +18,7 @@ const questions = [
     type: 'text-entry',
     correctNumber: 3,
     correctAnswers: ['Ribavan', 'Avixan', 'Klotego'],
-    explanation: 'Algorithm is the Unique company with a Complete Blood Thinners Portfolio since 2021',
+    explanation: 'Algorithm is the Unique company with a Complete Blood Thinners Portfolio since 2022',
     reference: 'IMS-2024',
   },
   {
@@ -153,7 +153,6 @@ const QuizPage = () => {
 
   const handleResultsNext = () => {
     setShowExplanation(true);
-    applause.play();
   };
 
   const handleInfoNextQuestion = () => {
@@ -186,6 +185,7 @@ const QuizPage = () => {
   }
 
   if (quizCompleted) {
+    applause.play();
     return (
       <ResultsPage
         correctAnswersCount={correctAnswersCount}
