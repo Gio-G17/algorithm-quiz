@@ -37,68 +37,80 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
     [3, 4, 5], [5], [5], []
   ];
 
-  const highlightText = (text, keywords, keywordMap) => {
-    const words = text.split(' ');
-    let highlightedWords = {};
+const highlightText = (text, keywords, keywordMap) => {
+  const words = text.split(' ');
+  let highlightedWords = {};
 
-    return words.map((word, index) => {
-      const cleanWord = word.replace(/[,!?]/g, '');
-      const keywordIndex = keywords.indexOf(cleanWord);
-      const hasRegisteredSymbol = word.includes('®');  // Check for ® symbol
+  return words.map((word, index) => {
+    const cleanWord = word.replace(/[,!?]/g, '');
+    const keywordIndex = keywords.indexOf(cleanWord);
+    const hasRegisteredSymbol = word.includes('®');  // Check for ® symbol
 
-      // If the keyword is "of", only highlight it once for question 7
-      if (cleanWord === 'of' && currentQuestionIndex === 7) {
-        if (highlightedWords['of']) {
-          return word + ' ';
-        } else {
-          highlightedWords['of'] = true;
-        }
+    // If the keyword is "of", only highlight it once for question 7
+    if (cleanWord === 'of' && currentQuestionIndex === 7) {
+      if (highlightedWords['of']) {
+        return word + ' ';
+      } else {
+        highlightedWords['of'] = true;
       }
+    }
 
-      // Highlight the keywords and apply superscript to ®
-      if (keywordIndex !== -1 && keywordMap[keywordIndex].includes(currentQuestionIndex)) {
-        return (
-          <React.Fragment key={index}>
-            <span> </span>
-            <strong className="font-bold text-[#BC202E]">
-              {word.replace('®', '')}
-              {hasRegisteredSymbol && (
-                <sup style={{ fontSize: '0.6em' }}>®</sup>  // Superscript for ®
-              )}
-            </strong>
-            <span> </span>
-          </React.Fragment>
-        );
-      } else if (keywordsBlack.includes(cleanWord) && keywordBlackQuestionMap[keywordsBlack.indexOf(cleanWord)].includes(currentQuestionIndex)) {
-        return (
-          <React.Fragment key={index}>
-            <span> </span>
-            <strong className="font-bold text-black">
-              {word.replace('®', '')}
-              {hasRegisteredSymbol && (
-                <sup style={{ fontSize: '0.6em' }}>®</sup>  // Superscript for ®
-              )}
-            </strong>
-            <span> </span>
-          </React.Fragment>
-        );
-      }
+    // Insert line break before "1.3 MLBP" and highlight it
+    if (cleanWord === '1.3' && words[index + 1] === 'MLBP') {
+      return (
+        <React.Fragment key={index}>
+          <br />
+          <strong className="font-bold text-black">
+            1.3 MLBP
+          </strong>
+        </React.Fragment>
+      );
+    }
 
-      // Apply superscript for non-keyword words with ®
-      if (hasRegisteredSymbol) {
-        return (
-          <React.Fragment key={index}>
-            <span> </span>
+    // Highlight the keywords and apply superscript to ®
+    if (keywordIndex !== -1 && keywordMap[keywordIndex].includes(currentQuestionIndex)) {
+      return (
+        <React.Fragment key={index}>
+          <span> </span>
+          <strong className="font-bold text-[#BC202E]">
             {word.replace('®', '')}
-            <sup style={{ fontSize: '0.6em' }}>®</sup>
-            <span> </span>
-          </React.Fragment>
-        );
-      }
+            {hasRegisteredSymbol && (
+              <sup style={{ fontSize: '0.6em' }}>®</sup>  // Superscript for ®
+            )}
+          </strong>
+          <span> </span>
+        </React.Fragment>
+      );
+    } else if (keywordsBlack.includes(cleanWord) && keywordBlackQuestionMap[keywordsBlack.indexOf(cleanWord)].includes(currentQuestionIndex)) {
+      return (
+        <React.Fragment key={index}>
+          <span> </span>
+          <strong className="font-bold text-black">
+            {word.replace('®', '')}
+            {hasRegisteredSymbol && (
+              <sup style={{ fontSize: '0.6em' }}>®</sup>  // Superscript for ®
+            )}
+          </strong>
+          <span> </span>
+        </React.Fragment>
+      );
+    }
 
-      return word + ' ';
-    });
-  };
+    // Apply superscript for non-keyword words with ®
+    if (hasRegisteredSymbol) {
+      return (
+        <React.Fragment key={index}>
+          <span> </span>
+          {word.replace('®', '')}
+          <sup style={{ fontSize: '0.6em' }}>®</sup>
+          <span> </span>
+        </React.Fragment>
+      );
+    }
+
+    return word + ' ';
+  });
+};
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-white bg-opacity-50">
