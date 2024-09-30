@@ -219,21 +219,27 @@ const AnswerOption = ({
     updatedTextAnswers[i] = value;
     setUserTextAnswers(updatedTextAnswers);
   };
-  const handlePopupSubmit = () => {  
+  const handlePopupSubmit = () => {
     setShowPopup(false);
-
+  
+    // Convert all user text answers to capitalize first letter and make the rest lowercase
+    const capitalizedTextAnswers = userTextAnswers.map(answer =>
+      answer.charAt(0).toUpperCase() + answer.slice(1).toLowerCase()
+    );
+  
     // Initialize lists to hold correct answers
     let correctList = [];
-
+  
     // Loop through user answers and compare them to correct answers
-    for (let i = 0; i < userTextAnswers.length; i++) {
+    for (let i = 0; i < capitalizedTextAnswers.length; i++) {
       for (let j = 0; j < correctAnswers.length; j++) {
-        if (userTextAnswers[i] === correctAnswers[j]) {
-          correctList.push(userTextAnswers[i]);
+        if (capitalizedTextAnswers[i] === correctAnswers[j]) {
+          correctList.push(capitalizedTextAnswers[i]);
           break; // Stop inner loop if we find a match
         }
       }
     }
+  
     if (correctList.length === correctAnswers.length) {
       setComparisonResult('correct');
       correctSound.play(); // Play correct answer sound
@@ -244,10 +250,12 @@ const AnswerOption = ({
       setComparisonResult('incorrect');
       wrongSound.play(); // Play wrong answer sound
     }
-
+  
     setCorrectList(correctList);
-    handleTextEntrySubmit(userTextAnswers, correctList);
+    handleTextEntrySubmit(capitalizedTextAnswers, correctList);
   };
+  
+  
 
   const handlePopupClose = () => {
     setTextFieldsCount(0);          // Reset the textFieldsCount to 0

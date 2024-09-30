@@ -40,17 +40,17 @@ const questions = [
   },
   {
     questionText: 'Which of the below is correct?',
-    answers: ['Ribavan® is the 1st Blood Thinner Product launched by Algorithm', 'The Active Pharmaceutical Ingredients of Ribavan is Certified by European Pharmacopoeia', 'Ribavan® is Bioequivalent to the originator', 'All are correct'],
+    answers: ['Ribavan® is the 1st Blood Thinner Product launched by Algorithm', 'The Active Pharmaceutical Ingredient of Ribavan is Certified by European Pharmacopoeia', 'Ribavan® is Bioequivalent to the originator', 'All are correct'],
     correctAnswer: 3,
     explanation: 'RIBAVAN® is a High-Quality Bioequivalent Rivaroxaban Generic',
-    reference: 'Ribavan Patient Information Leaflet. Revision date 05-2020. Sridhar et al. An open label, randomized, balanced, two-treatment, two-period, two sequence, single-dose, crossover, oral bioequivalence study of Rivaroxaban 20 mg Film coated tablets from Labormed Pharma S.A., Romania and Xarelto® 20 mg film-coated tablets (rivaroxaban) of Bayer AG, 51368 Leverkusen, Germany, in healthy, adult, human subjects under fed conditions. 2019.',
+    reference: '1. Ribavan Patient Information Leaflet. Revision date 05-2020. 2.Sridhar et al. An open label, randomized, balanced, two-treatment, two-period, two sequence, single-dose, crossover, oral bioequivalence study of Rivaroxaban 20 mg Film coated tablets from Labormed Pharma S.A., Romania and Xarelto® 20 mg film-coated tablets (rivaroxaban) of Bayer AG, 51368 Leverkusen, Germany, in healthy, adult, human subjects under fed conditions. 2019.',
   },
   {
     questionText: 'RIBAVAN® is .......... more affordable than the originator?',
     answers: ['40%', '50%', '60%', '70%'],
     correctAnswer: 3,
     explanation: 'RIBAVAN® is a Cost-Effective Rivaroxaban which provides patients with the Power of Efficacy at an affordable price with an average public price of 1.3 MLBP',
-    reference: 'Lebanon National Drugs Database 2024 Ribavan Patient Information Leaflet. Revision date 05-2020.',
+    reference: '1.Lebanon National Drugs Database 2024 2.Ribavan Patient Information Leaflet. Revision date 05-2020.',
   },
 ];
 

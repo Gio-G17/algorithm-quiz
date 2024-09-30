@@ -116,19 +116,30 @@ const ExplanationModal = ({ explanation, closeExplanation, type, currentQuestion
       return word + ' ';
     });
   };
-  
+
+  // Function to handle splitting the reference based on '2.'
+  const formatReference = (reference) => {
+    if (!reference) return null;
+    
+    // Split the reference at the occurrence of '2.'
+    const [firstReference, secondReference] = reference.split('2.');
+    
+    return (
+      <div className="text-center mt-4 italic text-sm text-gray-600">
+        <span className="font-semibold">Reference:</span>
+        <p>{firstReference.trim()}</p> {/* First reference */}
+        {secondReference && <p>2. {secondReference.trim()}</p>} {/* Second reference if exists */}
+      </div>
+    );
+  };
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-white bg-opacity-50">
       <div id='expContainer' className="bg-white text-black text-3xl p-6 rounded-lg border-4 border-[#BC202E] h-1/2 w-1/2 flex flex-col justify-center items-center">
         <p className="text-center">{highlightText(explanation, keywords, keywordQuestionMap)}</p>
 
-        {/* Display reference below the explanation text */}
-        {reference && (
-          <p className="text-center mt-4 italic text-sm text-gray-600">
-            <span className="font-semibold">Reference:</span> {reference}
-          </p>
-        )}
+        {/* Display reference(s) below the explanation text */}
+        {reference && formatReference(reference)}
 
         {/* Add logos if the type is 'text-entry' */}
         {type === 'text-entry' && (
